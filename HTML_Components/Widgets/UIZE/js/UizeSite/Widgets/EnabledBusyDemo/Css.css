@@ -1,0 +1,34 @@
+.UizeSite_Widgets_EnabledBusyDemo_Css {
+	border:1px solid #ccc;
+	margin:8px;
+	padding:0;
+}
+
+.UizeSite_Widgets_EnabledBusyDemo_Css-heading {
+	text-align:center;
+	font-size:10px;
+	letter-spacing:3px;
+	padding:2px;
+	background:#000;
+	color:#fff;
+}
+
+.UizeSite_Widgets_EnabledBusyDemo_Css-body {
+	color:#000;
+	padding:8px;
+	padding-left:20px;
+	padding-right:20px;
+}
+
+.UizeSite_Widgets_EnabledBusyDemo_Css-depth0 {
+	background:#888;
+}
+
+.UizeSite_Widgets_EnabledBusyDemo_Css-depth1 {
+	background:#aaa;
+}
+
+.UizeSite_Widgets_EnabledBusyDemo_Css-depth2 {
+	background:#ddd;
+}
+

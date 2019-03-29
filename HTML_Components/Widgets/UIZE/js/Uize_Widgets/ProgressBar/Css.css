@@ -1,0 +1,73 @@
+
+.Uize_Widgets_ProgressBar_Css {
+	position: relative;
+}
+
+.Uize_Widgets_ProgressBar_Css-track, .Uize_Widgets_ProgressBar_Css-trackBg, .Uize_Widgets_ProgressBar_Css-trackFull, .Uize_Widgets_ProgressBar_Css-trackEmpty, .Uize_Widgets_ProgressBar_Css-statusText {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.Uize_Widgets_ProgressBar_Css-trackBg {
+	background: #000 url(track-bg.gif) repeat-x left top;
+}
+
+.Uize_Widgets_ProgressBar_Css-trackFull {
+	background: #0f0;
+	opacity: .55;
+	filter: alpha(opacity=55);
+}
+
+.Uize_Widgets_ProgressBar_Css-trackEmpty {
+	background: #ddd;
+	opacity: .2;
+	filter: alpha(opacity=20);
+}
+
+.Uize_Widgets_ProgressBar_Css-statusText {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #eee #666 #666 #eee;
+	color: #eee;
+	text-shadow:-1px -1px 0 rgba(0,0,0,.4),-1px 0 0 rgba(0,0,0,.4),-1px 1px 0 rgba(0,0,0,.4),0 -1px 0 rgba(0,0,0,.4),0 1px 0 rgba(0,0,0,.4),1px -1px 0 rgba(0,0,0,.4),1px 0 0 rgba(0,0,0,.4),1px 1px 0 rgba(0,0,0,.4);
+	text-align: center;
+}
+
+/*** different sizes ***/
+	.Uize_Widgets_ProgressBar_Css-tiny {
+		height: 23px;
+	}
+	.Uize_Widgets_ProgressBar_Css-tiny .Uize_Widgets_ProgressBar_Css-statusText {
+		font-size: 12px;
+		line-height: 20px;
+	}
+                       
+	.Uize_Widgets_ProgressBar_Css-small {
+		height: 28px;
+	}
+	.Uize_Widgets_ProgressBar_Css-small .Uize_Widgets_ProgressBar_Css-statusText {
+		font-size: 13px;
+		line-height: 24px;
+	}
+
+	.Uize_Widgets_ProgressBar_Css-medium {
+		height: 38px;
+	}
+	.Uize_Widgets_ProgressBar_Css-medium .Uize_Widgets_ProgressBar_Css-statusText {
+		font-size: 15px;
+		line-height: 34px;
+		letter-spacing: 1px;
+	}
+
+	.Uize_Widgets_ProgressBar_Css-large {
+		height: 51px;
+	}
+	.Uize_Widgets_ProgressBar_Css-large .Uize_Widgets_ProgressBar_Css-statusText {
+		font-size: 21px;
+		line-height: 46px;
+		letter-spacing: 2px;
+	}
+

@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<title>Standard Control</title>
+<script src="../Scripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<style type="text/css">
+body {
+	background-image: url(../images/background.jpg);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+	  white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+#TableTest3{
+	white-space: pre;
+}
+</style>
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+<!-- InstanceBeginEditable name="doctitle" -->
+
+<!-- InstanceEndEditable -->
+
+<script type="text/javascript">
+
+    
+    function AddRow() {
+
+        var table = document.getElementById("TableTest3");
+        var itemName = document.getElementById("txtColumnName");
+        var curRow = table.rows.length - 1;        
+        var newrow = table.insertRow(-1);
+        var col = table.getElementsByTagName("tr")[0].cells.length;
+        var cell = new Array();
+        var textCM = new Array();
+        for (var i = 0; i < col; i++) {
+            cell[i] = newrow.insertCell(-1);
+            if (itemName.value == "") {
+                cell[i].appendChild(document.createTextNode(""));
+            } else {
+                cell[i].appendChild(document.createTextNode(itemName.value + "_" + curRow + i));
+            }
+            cell[i].height = "15px";
+            cell[i].align = "center";
+            cell[i].style.color = "#00F";
+            newrow.appendChild(cell[i]);
+
+        }
+
+    }
+
+    function AddColumn() {
+        var table = document.getElementById('TableTest3'); //table body
+        var itemName = document.getElementById("txtColumnName");
+        for (var i = 0; i < table.rows.length; i++) {
+            var newCell = table.rows[i].insertCell(-1); //create new cell
+
+            if (i == 0) {
+                newCell.appendChild(document.createTextNode(itemName.value));
+            }
+            else {
+                if (itemName.value == "") {
+                    newCell.appendChild(document.createTextNode(""));
+                } else {
+                    newCell.appendChild(document.createTextNode(itemName.value + "_" + (i - 1) + (table.rows[i].cells.length - 1)));
+                }
+            }
+            newCell.width = "50px";
+            newCell.align = "center";
+            newCell.style.color = "#00F";
+            //newCell.width = "25%";
+            table.rows[i].appendChild(newCell);
+        }
+    }
+
+    function TextInComment(text) {
+        document.getElementById("txtComments").value = text;
+    }
+	</script>
+<body>
+
+<table id="wrapper" cellspacing="0">
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+
+<tr>
+<td width="25%" height="70%" rowspan="4"></td>
+<td width="25%" height="5%" align="left" bgcolor="#0000CC"><blockquote><span class="style1">Standard Control</span></blockquote></td>
+<td width="26%" height="5%" align="right" bgcolor="#0000CC"><!-- InstanceBeginEditable name="Home" --><blockquote><span class="style1"><a href="../index.html">Home</a></span>  <blockquote><!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="4"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" height="4%">
+    <!-- InstanceBeginEditable name="Row1" -->
+       	<span style="font-family: Tahoma; font-size: 14; color: #F00; font-weight:bold" align="left"><blockquote><blockquote>CustomizeTable Control</blockquote></span></p>
+		<span style="font-family: Tahoma; font-size: 12px; color: Black; font-weight:bold;" align="left" >tableTest_1</span></p>
+		
+		<div id="TableTest-1"></div>
+		<script type="text/javascript">
+		
+			inputStr = 			"<Table border=\"1\" style=\"border-color: black; white-space:0;\" width = \"100%\"><tr><td rowspan=\"2\">Class</td><td rowspan=\"2\">Total" +
+								"</td><td colspan=\"2\">Good</td><td colspan=\"2\">Fair" +
+  								"<tr><td>Quantity</td><td>Rate" +
+								"</td><td>Quantity</td><td>Rate" +
+								"</tr>" +
+  								"<tr><td><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('6A1')\">6A1</a></td>" +
+									"<td><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('50')\">50</a></td>" +
+									"<td><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('20')\">20</a></td>" +
+									"<td><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('40%')\">40%</a></td>" +
+									"<td><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('20')\">20</a></td>" + 
+									"<td><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('40%')\">40%</a></td>" +
+								"</tr>" +
+								"<tr><td><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('6A2')\">6A2</a></td>" +
+									"<td><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('52')\">52</a></td>" +
+									"<td><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('26')\">26</a></td>" +
+									"<td><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('50%')\">50%</a></td>" +
+									"<td><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('13')\">13</a></td>" + 
+									"<td><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('25%')\">25%</a></td>" +
+								"</tr></Table>";
+			
+			document.getElementById("TableTest-1").innerHTML = inputStr;
+		
+		</script>
+		
+		<p><span style="font-family: Tahoma; font-size: 12px; color: Black; font-weight:bold;" align="left" >tableTest_2</span></p>
+		
+		<div id="TableTest-2"></div>
+		
+	<script type="text/javascript">
+		
+		var insertTable = 	"<table id=\"TableTest2\" width=\"100%\" border=\"1\" style=\"border-color: black; white-space:0;\">" +
+							"<tr>" +
+							"<td width=\"17%\" class=\"style3\" align=\"center\">Country</td>" +
+							"<td width=\"17%\" class=\"style3\" align=\"center\">StreetName</td>" +
+							"<td width=\"17%\" class=\"style3\" align=\"center\">City(Combobox)</td>" +
+							"<td width=\"17%\" class=\"style3\" align=\"center\">ZipCode</td>" +
+							"<td width=\"16%\" class=\"style3\" align=\"center\">Selection</td>" +
+							"<td width=\"16%\" class=\"style3\" align=\"center\">Link</td>" +
+                            "<td width=\"30%\" class=\"style3\" align=\"center\">Area</td>" +
+							"</tr>";
+						
+						
+		for(var i=0;i<3;i++)
+		{
+			insertTable += 	"<tr>" +
+							"<td width=\"17%\" class=\"style3\" align=\"center\"><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('Country_" + i + "')\">Country_" + i + "</a></td>" +
+							"<td width=\"17%\" class=\"style3\" align=\"center\"><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('Street_" + i + "')\">Street_" + i + "</td>" +
+							"<td width=\"17%\" class=\"style3\" align=\"center\"><select size=\"1\">" +
+																				"<option>City_0</option>" +
+																				"<option>City_1</option>" +
+																				"<option>City_2</option>" +
+																				"<option>City_3</option>" +
+																				"</select></td>" +
+							"<td width=\"17%\" class=\"style3\" align=\"center\"><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('" + i + "')\">" + i + "</a></td>" +
+							"<td width=\"16%\" class=\"style3\" align=\"center\"><input type=\"checkbox\" ></input></td>" +
+							"<td width=\"16%\" class=\"style3\" align=\"center\"><a href=\"http://www.logigear.com\" target=\"_blank\"><span style=\"color: #00F\">Link_" + i + "</span></a></td>" +
+                            "<td width=\"30%\" class=\"style3\" align=\"center\"><input type=\"radio\" name=\"area\" value=\"North\">North<br><input type=\"radio\" name=\"area\" value=\"South\">South</td></td>" +
+							"</tr>";
+		}
+		
+		insertTable += "</table>";
+		document.getElementById("TableTest-2").innerHTML = insertTable;
+	</script>
+	
+		<p><span style="font-family: Tahoma; font-size: 12px; color: Black; font-weight:bold;" align="left" >tableTest_3</span></p>
+		<div id="TableTest-3"></div>
+	
+	<script type="text/javascript">
+		var insertTable = 	"<table id=\"TableTest3\" width=\"100%\" border=\"1\" style=\"border-color: black; white-space:0;\">"
+		//					"<tr>" +
+		//					"<td width=\"17%\" class=\"style3\" align=\"center\">Name</td>" +
+		//					"<td width=\"17%\" class=\"style3\" align=\"center\">Age</td>" +
+		//					"<td width=\"17%\" class=\"style3\" align=\"center\">Gender</td>" + 
+		//					"</tr>";
+		
+		//var gender = "";
+		
+		//for(var i=0;i<3;i++)
+		//{
+		//	if(i%2==0)
+		//	{
+		//		gender = "male";
+		//	}
+		//	else
+		//	{
+		//		gender = "female";
+		//	}
+			
+		//	insertTable += 	"<tr>" +
+		//					"<td width=\"17%\" class=\"style3\" align=\"center\"><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('Person" + i + "')\">Person" + i + "</a></td>" +
+		//					"<td width=\"17%\" class=\"style3\" align=\"center\"><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('" + (17+i) + "')\">" + (17 + i) + "</a></td>" +
+		//					"<td width=\"16%\" class=\"style3\" align=\"center\"><a href='javascript:void(0)' style=\"color: #00F\" onclick=\"TextInComment('" + gender + "')\">" + gender +"</a></td>" +
+		//					"</tr>";
+		//}
+		
+		insertTable +="</Table>";
+		
+		document.getElementById("TableTest-3").innerHTML = insertTable;
+	</script>
+	<script type="text/javascript">
+		$(document).delegate('#txtColumnName', 'keydown', function (e) {
+            var keyCode = e.keyCode || e.which;
+
+            if (keyCode == 9) {
+                e.preventDefault();
+                var start = $(this).get(0).selectionStart;
+                var end = $(this).get(0).selectionEnd;
+                var sChar;
+                // set textarea value to: text before caret + tab + text after caret
+                var sContent = $(this).val().substring(0, start)
+                            + "\t"
+                            + $(this).val().substring(end);
+
+                $(this).val(sContent);
+                // put caret at right position again
+                $(this).get(0).selectionStart =
+                $(this).get(0).selectionEnd = start + 1;                
+            }
+        });
+	</script>
+		<p>
+			<span style="float:left">&nbsp;&nbsp;Item Name:</span>
+			<textarea id="txtColumnName" name="txtColumnName" style="float:left;width:40%;height:20px;resize:none;"></textarea>
+			<input style="height:25px" type="button" id="btnAddColumn" name="btnAddColumn" value="Add Column" onclick="AddColumn();"/>
+		    <input style="height:25px" type="button" id="btnAddRow" name="btnAddRow" value="Add Row" onclick="AddRow();"/>
+			<input type="text" size="80%" id="txtComments" name="txtComments" style="text-align: right; border: 0px; background: #CCCCCC; color: blue;">
+		</p>
+    <!-- InstanceEndEditable --></td>
+</tr>
+<tr>
+  <td colspan="2" valign="top" height="5%"><!-- InstanceBeginEditable name="Row2" -->
+
+  <!-- InstanceEndEditable --></td>
+</tr>
+<tr>
+  <td colspan="4" align="right" height="19%"><span class="style3"></span></td>
+</tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

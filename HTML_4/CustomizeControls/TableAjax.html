@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/control.dwt" codeOutsideHTMLIsLocked="false" -->
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Standard Control</title>
+<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript">
+
+    $(window).bind('resize', positionPopup);
+    function LoadpopUp(qryString)
+    {
+        loadXMLDoc(qryString);
+    }
+
+    function loadXMLDoc(strCTrl) {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {// code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            document.getElementById('txtComments').value = xmlhttp.responseText + " " + strCTrl;
+        }
+        xmlhttp.open("GET", "js/txtAjax.txt", true);
+        xmlhttp.send();
+    }
+</script>
+
+<style type="text/css">
+    #overlay_form{
+	position: absolute;
+	border: 5px solid gray;
+	padding: 10px;
+	background: white;
+	width: 270px;
+	height: 190px;
+}
+#pop{
+	display: block;
+	border: 1px solid gray;
+	width: 65px;
+	text-align: center;
+	padding: 6px;
+	border-radius: 5px;
+	text-decoration: none;
+	margin: 0 auto;
+}
+body {
+	background-image: url(../images/background.jpg);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+      white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: red; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+a { display: block; }
+label { display: block; }  
+    #Text3 {
+        width: 101px;
+        text-align: center;
+    }
+    .auto-style1 {
+        text-align: right;
+    }
+    .auto-style2 {
+        text-align: left;
+    }
+</style>  
+</head>
+<body>
+<table id="wrapper" cellspacing="0">
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+<tr>
+<td width="25%" height="62%" rowspan="7"></td>
+<td width="25%" height="5%" align="left" bgcolor="#0000CC"><blockquote><span class="style1">Standard Control</span></blockquote></td>
+<td width="26%" height="5%" align="right" bgcolor="#0000CC"><!-- InstanceBeginEditable name="Home" --><blockquote><span class="style1"><a href="../index.html">Home</a></span></blockquote><!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="7"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" bgcolor="#FFFFFF" height="4%"><blockquote><span class="style2">Table Ajax Control</span></blockquote></td>
+</tr>
+<tr>
+<td colspan="2" valign="top" bgcolor="#FFFFFF" height="10%">
+<!-- InstanceBeginEditable name="Row2" -->
+	<div id="ItemDisplay" align="center" ></div>
+         <center> <table id="TableAjax" width="90%" border="1" style="border-color: black;">
+          <tr><td width="17%" class="style3" align="center">Country</td>
+							<td width="17%" class="style3" align="center">StreetName</td>
+							<td width="17%" class="style3" align="center">ZipCode</td>
+                            <td width="17%" class="style3" align="center">Button</td>
+                            <td width="17%" class="style3" align="center">Radio</td></tr>
+                                                                 <tr><td width="10%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Country_0');">Country_0</a></td>
+		 <td width="10%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Street_0');">Street_0</td>
+		<td width="10%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('0');">0</a></td>
+        <td width="10%" class="style3" align="center"><input type="button" name="btn_0" value="btn_0" onclick="LoadpopUp('btn_0');"></td>
+        <td width="10%" class="style3" align="center"><input type="radio" name="visit" value="Oceania" onclick="LoadpopUp('Radio Oceania');"></td>
+		</tr>
+          <tr><td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Country_1');">Country_1</a></td>
+		 <td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Street_1');">Street_1</td>
+		<td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('1');">1</a></td>
+        <td width="17%" class="style3" align="center"><input type="button" name="btn_1" value="btn_1" onclick="LoadpopUp('btn_1');"></td>
+        <td width="17%" class="style3" align="center"><input type="radio" name="visit" value="North" onclick="LoadpopUp('Radio North');"></td>
+		</tr>
+
+                        <tr><td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Country_2');">Country_2</a></td>
+		 <td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Street_2');">Street_2</td>
+		<td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('2');">2</a></td>
+        <td width="17%" class="style3" align="center"><input type="button" name="btn_2" value="btn_2" onclick="LoadpopUp('btn_2');"></td>
+        <td width="17%" class="style3" align="center"><input type="radio" name="visit" value="South" onclick="LoadpopUp('Radio South');"></td>
+		</tr>
+
+                                      <tr><td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Country_3');">Country_3</a></td>
+		 <td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Street_3');">Street_3</td>
+		<td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('3');">3</a></td>
+        <td width="17%" class="style3" align="center"><input type="button" name="btn_3" value="btn_3" onclick="LoadpopUp('btn_3');"></td>
+        <td width="17%" class="style3" align="center"><input type="radio" name="visit" value="East" onclick="LoadpopUp('Radio East');"></td>
+		</tr>
+
+         <tr><td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Country_4');">Country_4</a></td>
+		 <td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Street_4');">Street_4</td>
+		<td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('4');">4</a></td>
+        <td width="17%" class="style3" align="center"><input type="button" name="btn_4" value="btn_4" onclick="LoadpopUp('btn_4');"></td>
+        <td width="17%" class="style3" align="center"><input type="radio" name="visit" value="West" onclick="LoadpopUp('Radio West');"></td>
+		</tr>
+         <tr><td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Country_5');">Country_5</a></td>
+		 <td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Street_5');">Street_5</td>
+		<td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('5');">5</a></td>
+        <td width="17%" class="style3" align="center"><input type="button" name="btn_5" value="btn_5" onclick="LoadpopUp('btn_5');"></td>
+        <td width="17%" class="style3" align="center"><input type="radio" name="visit" value="Asisa" onclick="LoadpopUp('Radio Asisa');"></td>
+		</tr>
+
+         <tr><td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Country_6');">Country_6</a></td>
+		 <td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Street_6');">Street_6</td>
+		<td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('6');">6</a></td>
+        <td width="17%" class="style3" align="center"><input type="button" name="btn_6" value="btn_6" onclick="LoadpopUp('btn_6');"></td>
+        <td width="17%" class="style3" align="center"><input type="radio" name="visit" value="European" onclick="LoadpopUp('Radio European');"></td>
+		</tr>
+
+         <tr><td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Country_7');">Country_7</a></td>
+		 <td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Street_7');">Street_7</td>
+		<td width="17%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('7');">7</a></td>
+        <td width="17%" class="style3" align="center"><input type="button" name="btn_7" value="btn_7" onclick="LoadpopUp('btn_7');"></td>
+        <td width="17%" class="style3" align="center"><input type="radio" name="visit" value="Africa" onclick="LoadpopUp('Radio Africa');"></td>
+		</tr>
+
+                                                                  <tr><td width="18%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Country_8');">Country_8</a></td>
+		 <td width="18%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Street_8');">Street_8</td>
+		<td width="18%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('8');">8</a></td>
+        <td width="18%" class="style3" align="center"><input type="button" name="btn_8" value="btn_8" onclick="LoadpopUp('btn_8');"></td>
+        <td width="18%" class="style3" align="center"><input type="radio" name="visit" value="Americas" onclick="LoadpopUp('Radio Americas');"></td>
+		</tr>
+
+         <tr><td width="19%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Country_9');">Country_9</a></td>
+		 <td width="19%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('Street_9');">Street_9</td>
+		<td width="19%" class="style3" align="center"><a href='javascript:void(0)' style="color: #00F" onclick="LoadpopUp('9');">9</a></td>
+        <td width="19%" class="style3" align="center"><input type="button" name="btn_9" value="btn_9" onclick="LoadpopUp('btn_9');"></td>
+        <td width="19%" class="style3" align="center"><input type="radio" name="visit" value="Antarctica" onclick="LoadpopUp('Radio Antarctica');"></td>
+		</tr>
+		</table>
+    </center>
+</td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="top" bgcolor="#FFFFFF" height="7%" align="center">
+  <!-- InstanceEndEditable --></td>
+</tr>
+<tr>
+  <td colspan="2" valign="top" bgcolor="#FFFFFF" height="14%">
+  <!-- InstanceBeginEditable name="Row6" -->
+  <table align="center" width="530" height="50%" bgcolor="#CCCCCC">
+  <tr><td colspan="2" align="center"><input type="text" size="80%" id="txtComments" name="txtComments" style="text-align: right; border: 0px; background: #CCCCCC; color: blue;" disabled="disabled"></td></tr>
+  </table>
+  
+  <!-- InstanceEndEditable --></td>
+</tr>
+<tr>
+  <td colspan="4" align="right" height="19%"><span class="style3"></span></td>
+</tr>
+</table>
+   
+</body>
+<!-- InstanceEnd --></html>

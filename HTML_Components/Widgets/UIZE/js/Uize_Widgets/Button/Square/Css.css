@@ -1,0 +1,24 @@
+
+.Uize_Widgets_Button_Square_Css {
+	padding: 0;
+	position: relative;
+}
+
+/*** styling for different sizes ***/
+
+	.Uize_Widgets_Button_Square_Css-tiny {width: 21px;
+		height: 21px;
+	}
+
+	.Uize_Widgets_Button_Square_Css-small {width: 26px;
+		height: 26px;
+	}
+
+	.Uize_Widgets_Button_Square_Css-medium {width: 36px;
+		height: 36px;
+	}
+
+	.Uize_Widgets_Button_Square_Css-large {width: 49px;
+		height: 49px;
+	}
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>チェックボックス付きリストボックス1</title>
+<script>
+function handleClick(cb) {
+alert("abc");
+}
+</script>
+</head>
+<body>
+<form method="post" action="process.php">
+<ul>
+  <li><input type="checkbox" disabled id="chk1" name="Coffee" value="Yes">Coffee</li>
+  <li><input type="checkbox" checked id="chk2" name="Tea" value="Yes">Tea</li>
+  <li><input type="checkbox" id="chk3" onclick='handleClick(this);' name="Milk" value="Yes">Milk</li>
+  <li><input type="text" id="txtSample">Sample Textbox</li> 
+  <li><legend>Group Fruit</legend></br><fieldset class="checkboxgroup">
+    <label><input type="radio">Apple</label>
+    <label><input type="checkbox" name="Orange" value="Yes">Orange</label>
+    <label><input type="checkbox" name="Coconut" value="Yes">Coconut</label>
+    <label><input type="checkbox" name="Grape" value="Yes">Grape</label>
+</fieldset></li>
+  <li><label class="radio"><input type="checkbox" name="chkTest" value="1">Medium</label></li> 
+</ul>
+
+<ol start="50" id="orderedList">
+  <li><input type="checkbox" disabled id="chk1" name="Coffee1" value="Yes">Coffee</li>
+  <li><input type="checkbox" checked id="chk2" name="Tea1" value="Yes">Tea</li>
+  <li><input type="checkbox" id="chk3" onclick='handleClick(this);' name="Milk1" value="Yes">Milk</li>
+  <li><input type="text" id="txtSample">Sample Textbox</li> 
+  <li><legend>Group Fruit</legend></br><fieldset class="checkboxgroup">
+    <label><input type="radio" id="rdoApple">Apple</label>
+    <label><input type="checkbox" name="Orange1" value="Yes">Orange</label>
+    <label><input type="checkbox" name="Coconut1" value="Yes">Coconut</label>
+    <label><input type="checkbox" name="Grape1" value="Yes">Grape</label>
+</fieldset></li>
+  <li><label class="radio"><input type="checkbox" name="chkTest1" value="1">Medium</label></li> 
+</ol>
+
+
+<input type="submit" value="submit">
+</form> 
+</body>
+</html>

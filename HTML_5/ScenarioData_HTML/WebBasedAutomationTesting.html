@@ -1,0 +1,527 @@
+<html><head>
+		<title>サンプルHTMLアプリケーション</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<script language="javascript">
+function popup(url, w, h, scrollbar){
+	//scrollbar = yes / no / auto
+	var popup, left, top, setting;
+
+	left=screen.width?(screen.width-w)/2:0;
+	top=screen.width?(screen.height-h)/2:0;
+	
+	setting="width=" + w + ",height=" + h + ", scrollbars=" + scrollbar + ", dependent=yes," + "top=" + top + ",left=" + left + "'";
+	popup = window.open("","test",setting);
+	popup.location.href=url;
+	
+	if (popup.opener == null) { 
+   		popup.opener = self; 
+	}
+}
+
+function ClickedTest(){
+	var f=window.document.form1;
+	var tableTest = document.getElementById('tableTest');
+	cells = tableTest.getElementsByTagName('td');
+	for (var i=0,len=cells.length; i<len; i++){
+    cells[i].onclick = function(){
+        var strongs = this.getElementsByTagName('strong');
+		if(strongs.length > 0){
+			var fonts = strongs[0].getElementsByTagName('font');
+			f.Textarea1.value=fonts[0].innerHTML;
+		}
+		else{
+			f.Textarea1.value=this.innerHTML;
+		}
+    }
+}
+}
+
+function doubleClickedTest(){
+	var f=window.document.form1;
+	var tableTest = document.getElementById('tableTest');
+	cells = tableTest.getElementsByTagName('td');
+	for (var i=0,len=cells.length; i<len; i++){
+    cells[i].onclick = function(){
+        var strongs = this.getElementsByTagName('strong');
+		if(strongs.length > 0){
+			var fonts = strongs[0].getElementsByTagName('font');
+			f.Textarea1.value=fonts[0].innerHTML;
+		}
+		else{
+			f.Textarea1.value=this.innerHTML;
+		}
+    }
+}
+}
+
+function test(){
+	var f=window.document.form1; var fullname=f.Text1.value + f.Text2.value; f.Textarea1.value=fullname;
+}
+
+function showAlert(){
+	window.alert("This is an alert message.");
+	test();
+}
+function showPrompt(){
+	window.prompt("Please enter something:","");
+}
+
+function showConfirm(){
+	var res = window.confirm("Are you sure?");
+}
+function submitPage(){
+	if (confirm("This page ready for submit!"))
+		window.document.form1.submit();
+}
+function toggleDisplay(divId) {
+  var div = document.getElementById(divId);
+  div.style.display = (div.style.display=="block" ? "none" : "block");
+}
+
+</script>
+	</head>
+	<body>
+		<form action="" name="form1" method="post" enctype="multipart/form-data">
+			<h1>Web Based Automation Testing.</h1>
+			<b>Page 1</b>.  <a href="http://192.168.167.220/SampleHTMLApp/page2.html">Go to page 2</a>  |  <a href="http://192.168.167.220/SampleHTMLApp/frame2.html">Go to Frame</a> | <a href="http://192.168.167.220/SampleHTMLApp/webtab.html">[Sample Webtab]</a> | <a href="javascript:alert('Special%20chars')">�������</a> | <a href="javascript:popup('file://d:/Sample%20App/SampleJava/Sample4Test.html',900,400,'yes')">Java Applet</a> 
+			<table border="0" cellpadding="3" cellspacing="3" width="800">
+				<tbody><tr>
+					<td colspan="2" align="left" valign="middle" width="100%">
+                    <img ondblclick="alert('img tag was double-clicked');" onclick="javascript:window.alert('img tag was clicked');" alt="LogiGear" src="index_files/home_logo.gif" name="the_image" id="the_image" title="Tooltip web">
+					<a href="javascript:alert('You%20click%20on%20Image%20Link');" title="logigear.com"><img alt="Go to LogiGear" src="index_files/home_logo1.gif" name="the_image2" id="the_image2" border="0"></a>
+					<br>
+					<a href="#" title="Click to show full logo" onclick="window.document.the_image.src='home_logo.gif'; return false;">Full logo </a> - <a href="#" title="Click hide text from logo" onclick="window.document.the_image.src='home_logo1.gif'; return false;">No Text</a>
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp;
+					<a href="javascript:alert('You%20click%20on%20a%20Link');">www.logigear.com</a>&nbsp; &nbsp; &nbsp;
+					<a onclick="javascript:alert('You ready go to PAGE 2');" href="http://192.168.167.220/SampleHTMLApp/page2.html">Page 2</a> - 
+					<a onclick="javascript:alert('You ready go to PAGE 3');" href="http://192.168.167.220/SampleHTMLApp/page3.html">Page 3</a> 
+					</td>
+				</tr>
+				<tr>
+					<td align="left" width="100"><label>First Name</label></td>
+					<td align="left" width="700"><input title="Enter your first name here" ondblclick="alert('You just double-clicked on Text box');" maxlength="32" size="40" name="Text1" id="Text1" type="text"> <input name="invis" value="TA30" type="hidden"></td>
+				</tr>
+				<tr>
+					<td align="left" width="100"><label>Last Name</label></td>
+					<td align="left" width="700"><input title="Enter your last name here" ondblclick="alet('You just double-clicked on Text box');" size="40" name="Text2" id="Text2" type="text"></td>
+				</tr>
+				<tr>
+					<td align="left" width="100"><label>Email</label></td>
+					<td align="left" width="700"><input size="40" name="Email" id="Email" type="text"></td>
+				</tr>
+				<tr>
+					<td align="left" width="100"><label>Password</label></td>
+					<td align="left" width="700">
+                    <input maxlength="12" name="Password1" id="Password1" size="20" type="password"></td>
+				</tr>
+				<tr>
+					<td align="left" width="100"><label>Gender</label></td>
+					<td align="left" width="700"><input name="rdoSexual" id="male" value="male" type="radio">
+						Male&nbsp;&nbsp;&nbsp;<input name="rdoSexual" id="female" value="female" type="radio">
+						Female&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+					<td align="left" width="100"><label>Hobbies</label></td>
+					<td align="left" width="700"><input id="Checkbox1" name="Checkbox1" value="Football" type="checkbox">Football&nbsp;&nbsp;&nbsp;<input id="Checkbox2" name="Checkbox2" value="Musics" type="checkbox">Musics</td>
+				</tr>
+				<tr>
+					<td align="left" width="100"><label>Self-Description</label></td>
+					<td align="left" width="700"><textarea ondblclick="alert('You just double-clicked on Textarea');" name="Textarea1" rows="5" cols="40" id="Textarea1"></textarea></td>
+				</tr>
+				<tr>
+					<td align="left" width="100">Profile</td>
+					<td align="left" width="700"><input id="File1" size="20" name="F1" type="file"></td>
+				</tr>
+				<tr>
+					<td align="left" bgcolor="yellow" width="100">Profession</td>
+					<td align="left" bgcolor="yellow" width="700"><select name="Select1" id="Select1">
+							<option value="1" selected="selected">Automation Engineer</option>
+							<option value="2">Automation Lead</option>
+							<option value="3">SQA</option>
+							<option value="4">SQA Manager</option>
+							<option value="5">Test Lead</option>
+						<option value="6">duong.pham@logigear.com</option>	
+						</select>
+					&nbsp; &nbsp; &nbsp; &nbsp;
+						On change here <select name="Select1x12" id="Select1x12" onchange="javascript:showConfirm();">
+							<option value="1" selected="selected">Automation Engineer</option>
+							<option value="2">Automation Lead</option>
+							<option value="3">SQA</option>
+							<option value="4">SQA Manager</option>
+							<option value="5">Test Lead</option>
+							<option value="6">duong.pham@logigear.com</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="left" width="100">TechSkill</td>
+					<td align="left" width="700">
+<select name="TechSkill">
+     <option selected="selected" label="none" value="none">None</option>
+     <optgroup label="Operating System">
+       <option label="Redhat Linux" value="Redhat Linux">Redhat Linux</option>
+       <option label="Window Server 2003" value="Window Server 2003">Window Server 2003</option>
+       <option label="Unix" value="Unix">Unix</option>
+     </optgroup>
+     <optgroup label="Database">
+       <option label="MS SQL Server 2000" value="MS SQL Server 2000">MS SQL Server 2000</option>
+       <option label="Oracle" value="Oracle">Oracle</option>
+     </optgroup>
+     <optgroup label="Programing Language">
+       <option label="Visual C++" value="Visual C++">Visual C++</option>
+       <option label="Visual Basic" value="Visual Basic">Visual Basic</option>
+	   <option label="Java" value="Java">Java</option>
+     </optgroup>
+ </select>					
+					</td>
+				</tr>				
+				
+				
+
+				
+				<tr>
+					<td align="left" width="100">Subscribe</td>
+					<td align="left" width="700"><p><select ondblclick="alert('List was double-clicked');" multiple="multiple" size="4" name="Select2" id="Select2">
+								<option value="1">Software Testing Articals</option>
+								<option value="2">Software Testing Courses</option>
+								<option value="3">Software Testing Trainings</option>
+								<option value="4">Software Testing Consultancy</option>
+							</select>
+						</p>
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="left" width="100">Auto Submit</td>
+					<td align="left" width="700">
+<!--onchange="javascript:submitPage();"-->					
+					<p><select multiple="multiple" size="3" name="AutoSubmit" id="AutoSubmit">
+								<option value="4">Item �</option>
+								<option value="1">Item 1</option>
+								<option value="2">Item 2</option>
+								<option value="3">Item 3</option>
+								<option value="4">Item 4</option>
+							</select>
+							&nbsp; 
+							<select multiple="multiple" size="3" name="AutoSubmit2" id="AutoSubmit2">
+								<option value="4">Item 1</option>
+								<option value="1">Item 2</option>
+								<option value="1">item 3</option>
+								<option value="1">item 4</option>
+								
+							</select> List not order in case
+							
+							<select multiple="multiple" size="3" name="AutoSubmit3" id="AutoSubmit3">
+								<option value="4">item 1</option>
+								<option value="1">item 2</option>
+								<option value="1">Item 3</option>
+								<option value="1">Item 2</option>
+							</select> List order in case
+							<select multiple="multiple" size="3" name="AutoSubmit4" id="AutoSubmit4">
+								<option value="D">Item D</option>
+								<option value="C">Item C</option>
+								<option value="B">Item B</option>
+								<option value="A">Item A</option>
+							</select> List order DESC
+						</p>
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="left" nowrap="nowrap" width="100"></td>
+					<td align="left" width="700">
+						
+						<button onclick="javascript:window.alert('Clicked Submit Button.');" name="button_tag1" type="button" id="Button1">Submit</button>&nbsp;
+						<button onclick="javascript:window.alert('Clicked Reset Button.');" name="button2" type="reset" id="Button2">Reset</button>&nbsp;
+						<input value="Close me" onclick="javascript:window.close();" type="button">&nbsp;
+						<input value="Submit this Form" type="submit">&nbsp;
+						<button name="button_submit1" type="submit" id="Button1">Button-Submit</button>&nbsp;
+						<button name="button_submit2" type="submit" onclick="javascript:window.alert('Clicked Submit Me 1 Button.');" id="Button_submit_me1">Submit<br>me</button>	
+<button onclick="javascript:window.alert('Clicked Submit Me 2 Button.');" name="button_submit_me_2" type="button" id="Button_submit_me2">Submit<p>me 2</p></button>													
+							
+							</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input name="hidden1" value="LogiGear" type="hidden"></td>
+				</tr>
+				<tr>
+					<td align="left" nowrap="nowrap" width="100">TableTest</td>
+					<td align="left" width="700">
+						<table ondblclick="doubleClickedTest();" onclick="ClickedTest();" name="TableTest" border="1" cellpadding="2" cellspacing="2" width="100%" id="tableTest">
+						<thead>
+							<tr bgcolor="gray">
+								<td align="center"><strong><font color="white">Header 1</font></strong></td>
+								<td align="center"><strong><font color="white">Header 2</font></strong></td>
+								<td align="center"><strong><font color="white">Header 3</font></strong></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>High ascii �</td>
+								<td>Cell 1.2</td>
+								<td>Cell 1.3</td>
+							</tr>
+							<tr>
+								<td>Cell 2.1</td>
+								<td>Cell 2.2</td>
+								<td>Cell 2.3</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr bgcolor="#EFEFEF">
+								<td align="right">Footer 1</td>
+								<td align="right">Footer 2</td>
+								<td align="right">Footer 3</td>
+							</tr>
+						</tfoot>
+						</table>
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="left" nowrap="nowrap" width="100">Button</td>
+					<td align="left" width="700">
+						<p><input onclick="showAlert()" value="Javascript Alert" name="B1" type="button">
+			<input onclick="showPrompt()" value="Javascript Prompt" name="B2" type="button">
+			<input onclick="showConfirm()" value="Javascript Confirm" name="B3" type="button">
+<input onclick="href='D:\Sample App\SampleHTMLApp\page2.html'" value="Show Page2" name="B3" type="button">
+<br><br>
+			<input value="Show hidden form" onclick="javascript:toggleDisplay('hiddendiv');" type="button">
+
+</p><div id="hiddendiv" style="border-right: 1px solid; background-color:pink; display:none ">
+<br>
+<select name="Select123" id="Select123">
+<option value="1" selected="selected">Automation Engineer X</option>
+<option value="2">Automation Lead X</option>
+<option value="3">SQA X</option>
+<option value="4">SQA Manager X</option>
+<option value="5">Test Lead X</option>
+</select><br><br>
+<textarea name="Textarea123X" rows="5" cols="40" id="Textarea123X"></textarea>
+<br>
+</div>
+
+			<br><br><a href="http://192.168.167.220/SampleHTMLApp/popup.htm" target="popup">Show popup window</a><p></p>
+					</td>
+				</tr>
+				
+				
+				
+				<tr>
+					<td align="left" nowrap="nowrap" width="100">Div</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+						<div id="div1" ondblclick="alert('You just double-clicked on DIV tag');">This is DIV tag</div> 
+					</td>
+				</tr>
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">Span</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+						<span id="span1" ondblclick="alert('You just doubled-clicked on SPAN tag');">This is SPAN tag</span>
+					</td>
+				</tr>
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">Paragraph</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+						<p id="p1" ondblclick="alert('You just double-clicked on P tag');">This is P tag</p>
+					</td>
+				</tr>
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">Phrase</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+&lt;em&gt; <em>Emphasized text</em><br>
+&lt;strong&gt; <strong>Strong text</strong><br>
+&lt;dfn&gt; <dfn>Definition term</dfn><br>
+&lt;code&gt; <code>Computer code text</code><br>
+&lt;samp&gt; <samp>Sample computer code text</samp><br>
+&lt;kbd&gt; <kbd>Keyboard text</kbd><br>
+&lt;var&gt; <var>Variable</var><br>
+&lt;cite&gt; <cite>Citation</cite><br> 
+&lt;abbr&gt; <abbr>UN</abbr><br>
+&lt;acronym&gt; <acronym title="World Wide Web">WWW</acronym><br>
+&lt;address&gt; <address>
+<a href="#">Dave Raggett</a>, 
+<a href="#">Arnaud Le Hors</a>, 
+contact persons for the <a href="#">W3C HTML Activity</a><br> 
+$Date: 1999/12/24 23:07:14 $
+</address>
+
+
+					</td>
+				</tr>
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">Quotation</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+&lt;blockquote&gt; <blockquote>BlockQuote text</blockquote><br>
+&lt;Q&gt; <q>Q text</q><br>
+					</td>
+				</tr>
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">Superscripts &amp; Subscripts</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+&lt;sup&gt; Some Text<sup>small 2</sup><br>
+&lt;sub&gt; Any Text<sub>small 1</sub><br>
+					</td>
+				</tr>				
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">PRE formated</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+<pre>This text is in a fixed-pitch
+font, and it preserves
+both      spaces and    
+line breaks</pre>
+					</td>
+				</tr>			
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">Visual rendering of paragraphs</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+<p style="color: sienna; margin-left: 20px">
+This is a paragraph using inline styles
+</p>	
+
+<p color="sienna" margin-left="20px">
+This is a paragraph using inline styles 2
+</p>		
+					</td>
+				</tr>	
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">Marking document changes</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+
+A Sheriff can employ <del>3</del><ins>5</ins> deputies.
+
+<ins datetime="1994-11-05T08:15:30-05:00" title="Changed as a result of Steve B�s comments in meeting.">
+Furthermore, the latest figures from the marketing department
+suggest that such practice is on the rise.
+</ins>
+					</td>
+				</tr>	
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">Ordered lists</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+<ol>
+<li value="30"> makes this list item number 30.
+</li><li value="40"> makes this list item number 40.
+</li><li> makes this list item number 41.
+</li></ol>
+					</td>
+				</tr>
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">Unordered lists</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+<ul>
+<li> ... Level one, number one...
+<!--<OL>-->
+</li><li> ... <a href="#">Level two, number one</a>...
+</li><li> ... Level two, number two...
+<!--<OL start="10">-->
+</li><li> ... Level three, number one...
+<!--</OL>-->
+</li><li> ... <a href="#">Level two, number three</a>...
+<!--</OL>-->
+</li><li> ... Level one, number two...
+</li></ul>
+					</td>
+				</tr>
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">Definition lists</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+<dl>
+<dt>Dweeb
+</dt><dd>young excitable person who may mature
+into a <em>Nerd</em> or <em>Geek</em>
+</dd><dt>Cracker
+</dt><dd>hacker on the Internet
+</dd><dt>Nerd
+</dt><dd>male so into the Net that he forgets
+his wife�s birthday
+</dd></dl>
+					</td>
+				</tr>
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">Full table</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+<table summary="This table gives some statistics about fruit
+flies: average height and weight, and percentage
+with red eyes (for both males and females)." border="1" width="300">
+<caption><em>A test table with merged cells</em></caption>
+<tbody><tr><th rowspan="2"></th><th colspan="2">Average
+</th><th rowspan="2">Red eyes
+</th></tr><tr><th>height</th><th>weight
+</th></tr><tr><th>Males</th><td>1.9</td><td>0.003</td><td>40%
+</td></tr><tr><th>Females</th><td>1.7</td><td>0.002</td><td>43%
+</td></tr></tbody></table>
+					</td>
+				</tr>
+<!--				
+				<tr>
+					<td width="150" align="left" nowrap>Object Flash</td>
+					<td width="700" align="left" bgcolor=whitesmoke>
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="100" height="94">
+          <param name="movie" value="flash.swf">
+          <param name="quality" value="high">
+</object>
+
+					</td>
+				</tr>
+-->				
+<!--				
+				<tr>
+					<td width="150" align="left" nowrap>Applet</td>
+					<td width="700" align="left" bgcolor=whitesmoke>
+<applet code=Example6Applet.class width=500 height=50>
+	<param name=fps value=10>
+</applet>
+					</td>
+				</tr>				
+-->
+
+				<tr>
+					<td align="left" nowrap="nowrap" width="150">Fieldset and Legend</td>
+					<td align="left" bgcolor="whitesmoke" width="700">
+<fieldset>
+<legend>Medical History</legend>
+<input name="history_illness" value="Smallpox" tabindex="20" onclick="javascript:a();" type="checkbox"> Smallpox
+<input name="history_illness2" value="Mumps" tabindex="21" type="checkbox"> Mumps
+<input name="history_illness3" 226="" value="Dizziness" tabindex="22" type="checkbox"> Dizziness
+<input name="history_illness4" value="Sneezing" tabindex="23" type="checkbox"> Sneezing
+</fieldset>					
+					</td>
+				</tr>					
+
+
+				
+			
+			</tbody></table>
+			
+			
+			
+			<!--<p><input onclick="showAlert()" type="button" value="Button test" name="B4"></p>-->
+		</form>
+
+		
+		<p id="ptest" ondblclick="alert('THANKS! You just double-clicked on P tag');">P. Double click on me! Please...</p>
+		<div id="divtest" ondblclick="alert('THANKS! You just double-clicked on DIV tag');">DIV. Double click on me! Please...</div>
+		<span id="spantest" ondblclick="alert('THANKS! You just double-clicked on SPAN tag');">SPAN. Double click on me! Please...</span>
+		
+		<p id="ptest1" onclick="alert('THANKS! You just clicked on P tag');" align="right">P. click on me! Please...</p>
+		<div id="divtest1" onclick="alert('THANKS! You just clicked on DIV tag');" align="right">DIV. click on me! Please...</div>
+		<span id="spantest1" onclick="alert('THANKS! You just clicked on SPAN tag');">SPAN. click on me! Please...</span>
+		<!--<a href='http://y.wimp.com/v/girlaccidents.wmv'>fun link</a>-->
+
+<ul>
+<li> ... Level one, number one...
+<!--<OL>-->
+</li><li> ... <a href="#">Level two, number one</a>...
+</li><li> ... Level two, number two...
+<!--<OL start="10">-->
+</li><li> ... Level three, number one...
+<!--</OL>-->
+</li><li> ... <a href="#">Level two, number three</a>...
+<!--</OL>-->
+</li><li> ... Level one, number two...
+</li></ul>		
+	
+</body></html>

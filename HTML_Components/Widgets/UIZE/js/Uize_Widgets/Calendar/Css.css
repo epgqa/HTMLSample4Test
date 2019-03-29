@@ -1,0 +1,183 @@
+
+.Uize_Widgets_Calendar_Css {
+	display: inline-block;
+	position: relative;
+}	background: #fff;
+
+/*** calendar controls ***/
+	.Uize_Widgets_Calendar_Css-controls {
+		position: relative;
+	}
+	.Uize_Widgets_Calendar_Css-controls .Uize_Widgets_Calendar_Css-indicator {
+		display: block;
+		position: relative;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	/*** styling common to year and month navigation ***/
+		.Uize_Widgets_Calendar_Css-previousMonth, .Uize_Widgets_Calendar_Css-nextMonth {
+			position: absolute;
+			top: 0;
+		}
+		.Uize_Widgets_Calendar_Css-previousMonth {
+			left: 0;
+		}
+		.Uize_Widgets_Calendar_Css-nextMonth {
+			right: 0;
+		}
+
+/*** grid ***/
+	.Uize_Widgets_Calendar_Css-grid {
+		text-align: center;
+	}
+
+	.Uize_Widgets_Calendar_Css-grid a,
+	.Uize_Widgets_Calendar_Css-grid a:link,
+	.Uize_Widgets_Calendar_Css-grid a:visited,
+	.Uize_Widgets_Calendar_Css-grid a:hover,
+	.Uize_Widgets_Calendar_Css-grid a:active {
+		text-decoration: none;
+		border: none;
+	}
+
+	.Uize_Widgets_Calendar_Css-grid th, .Uize_Widgets_Calendar_Css-grid td a {
+		color: #000;
+	}
+	.Uize_Widgets_Calendar_Css-grid td {
+		font-weight: normal;
+	}
+	.Uize_Widgets_Calendar_Css-grid th {
+		font-weight: bold;
+	}
+	.Uize_Widgets_Calendar_Css-grid td a {
+		display: block;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+	}
+	.Uize_Widgets_Calendar_Css-grid th {
+		background: #eee;
+	}
+	.Uize_Widgets_Calendar_Css-grid td a:hover {
+		background-color: #666;
+		color: #fff;
+	}
+	.Uize_Widgets_Calendar_Css-grid td.Uize_Widgets_Calendar_Css-selected a {
+		background-color: #ffa200;
+		font-weight: bold;
+		color: #fff;
+	}
+	.Uize_Widgets_Calendar_Css-grid td.Uize_Widgets_Calendar_Css-grayed {
+		color: #999;
+	}
+	.Uize_Widgets_Calendar_Css-grid table {
+		border-collapse: collapse;
+	}
+	.Uize_Widgets_Calendar_Css-grid th, .Uize_Widgets_Calendar_Css-grid td {
+		border: 0;
+		padding: 0;
+	}
+
+/*** different sizes ***/
+			/*** tiny ***/
+				.Uize_Widgets_Calendar_Css-tiny .Uize_Widgets_Calendar_Css-grid table {
+					margin-top: 3px;
+				}
+				.Uize_Widgets_Calendar_Css-tiny .Uize_Widgets_Calendar_Css-controls,
+				.Uize_Widgets_Calendar_Css-tiny .Uize_Widgets_Calendar_Css-grid td,
+				.Uize_Widgets_Calendar_Css-tiny .Uize_Widgets_Calendar_Css-grid th {
+					font-size: 12px;
+					vertical-align: center;
+				}
+				.Uize_Widgets_Calendar_Css-tiny .Uize_Widgets_Calendar_Css-controls {
+					line-height: 12px;
+					padding-top: 6px;
+					padding-bottom: 5px;
+				}
+				.Uize_Widgets_Calendar_Css-tiny .Uize_Widgets_Calendar_Css-grid td a {
+					line-height: 12px;
+					padding-top: 6px;
+				}
+
+				.Uize_Widgets_Calendar_Css-tiny .Uize_Widgets_Calendar_Css-grid th,
+				.Uize_Widgets_Calendar_Css-tiny .Uize_Widgets_Calendar_Css-grid td {
+					width: 23px;
+					height: 23px;
+				}
+			/*** small ***/
+				.Uize_Widgets_Calendar_Css-small .Uize_Widgets_Calendar_Css-grid table {
+					margin-top: 4px;
+				}
+				.Uize_Widgets_Calendar_Css-small .Uize_Widgets_Calendar_Css-controls,
+				.Uize_Widgets_Calendar_Css-small .Uize_Widgets_Calendar_Css-grid td,
+				.Uize_Widgets_Calendar_Css-small .Uize_Widgets_Calendar_Css-grid th {
+					font-size: 13px;
+					vertical-align: center;
+				}
+				.Uize_Widgets_Calendar_Css-small .Uize_Widgets_Calendar_Css-controls {
+					line-height: 13px;
+					padding-top: 8px;
+					padding-bottom: 7px;
+				}
+				.Uize_Widgets_Calendar_Css-small .Uize_Widgets_Calendar_Css-grid td a {
+					line-height: 13px;
+					padding-top: 8px;
+				}
+
+				.Uize_Widgets_Calendar_Css-small .Uize_Widgets_Calendar_Css-grid th,
+				.Uize_Widgets_Calendar_Css-small .Uize_Widgets_Calendar_Css-grid td {
+					width: 28px;
+					height: 28px;
+				}
+			/*** medium ***/
+				.Uize_Widgets_Calendar_Css-medium .Uize_Widgets_Calendar_Css-grid table {
+					margin-top: 5px;
+				}
+				.Uize_Widgets_Calendar_Css-medium .Uize_Widgets_Calendar_Css-controls,
+				.Uize_Widgets_Calendar_Css-medium .Uize_Widgets_Calendar_Css-grid td,
+				.Uize_Widgets_Calendar_Css-medium .Uize_Widgets_Calendar_Css-grid th {
+					font-size: 15px;
+					vertical-align: center;
+				}
+				.Uize_Widgets_Calendar_Css-medium .Uize_Widgets_Calendar_Css-controls {
+					line-height: 15px;
+					padding-top: 12px;
+					padding-bottom: 11px;
+				}
+				.Uize_Widgets_Calendar_Css-medium .Uize_Widgets_Calendar_Css-grid td a {
+					line-height: 15px;
+					padding-top: 12px;
+				}
+
+				.Uize_Widgets_Calendar_Css-medium .Uize_Widgets_Calendar_Css-grid th,
+				.Uize_Widgets_Calendar_Css-medium .Uize_Widgets_Calendar_Css-grid td {
+					width: 38px;
+					height: 38px;
+				}
+			/*** large ***/
+				.Uize_Widgets_Calendar_Css-large .Uize_Widgets_Calendar_Css-grid table {
+					margin-top: 6px;
+				}
+				.Uize_Widgets_Calendar_Css-large .Uize_Widgets_Calendar_Css-controls,
+				.Uize_Widgets_Calendar_Css-large .Uize_Widgets_Calendar_Css-grid td,
+				.Uize_Widgets_Calendar_Css-large .Uize_Widgets_Calendar_Css-grid th {
+					font-size: 21px;
+					vertical-align: center;
+				}
+				.Uize_Widgets_Calendar_Css-large .Uize_Widgets_Calendar_Css-controls {
+					line-height: 21px;
+					padding-top: 15px;
+					padding-bottom: 15px;
+				}
+				.Uize_Widgets_Calendar_Css-large .Uize_Widgets_Calendar_Css-grid td a {
+					line-height: 21px;
+					padding-top: 15px;
+				}
+
+				.Uize_Widgets_Calendar_Css-large .Uize_Widgets_Calendar_Css-grid th,
+				.Uize_Widgets_Calendar_Css-large .Uize_Widgets_Calendar_Css-grid td {
+					width: 51px;
+					height: 51px;
+				}
+

@@ -1,0 +1,134 @@
+.Uize_Widgets_Dialog_Css-shield {
+	position: absolute;
+	display: none;
+	background-color: #000;
+	opacity: 0.1;
+	filter: alpha(opacity=10);
+	cursor: not-allowed;
+	z-index: 1;
+}
+
+.Uize_Widgets_Dialog_Css {
+	position: absolute;
+	display: none;
+	top: 100px;
+	left: 200px;
+	width: 300px;
+	height: 300px;
+	background: #000;
+	padding: 0px;
+	z-index: 2;
+}
+
+/*** dialog shadow ***/
+	.Uize_Widgets_Dialog_Css-shadow, .Uize_Widgets_Dialog_Css-shadow2, .Uize_Widgets_Dialog_Css-shadow3, .Uize_Widgets_Dialog_Css-shadow4 {
+		display: none;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+
+/*** dialog chrome ***/
+	/*** title bar and status bar ***/
+		.Uize_Widgets_Dialog_Css-bar {
+			position: absolute;
+			left: 0px;
+			width: 100%;
+			height: 27px;
+			text-align: center;
+			font-size: 14px;
+			font-family: Arial, Helvetica, Verdana;
+			margin: -1px;
+			background: #ccc repeat left top;
+		}
+		/*** title bar ***/
+			.Uize_Widgets_Dialog_Css-titleBar {
+				top: -26px;
+			}
+			.Uize_Widgets_Dialog_Css-titleBar .Uize_Widgets_Dialog_Css-title {
+				width: 100%;
+				color: #000;
+				text-shadow: -1px -1px 2px #eee, -1px 1px 2px #eee, 0 -1px 2px #eee, 0 1px 2px #eee;
+				line-height: 22px;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+			.Uize_Widgets_Dialog_Css-titleBar .Uize_Widgets_Dialog_Css-closeButton {
+				display: block;
+				position: absolute;
+				right: 2px;
+				bottom: 2px;
+			}
+
+		/*** dialog status bar ***/
+			.Uize_Widgets_Dialog_Css-statusBar {
+				bottom: -26px;
+			}
+			.Uize_Widgets_Dialog_Css-statusBar .Uize_Widgets_Dialog_Css-cancelButton,
+			.Uize_Widgets_Dialog_Css-statusBar .Uize_Widgets_Dialog_Css-okButton
+			{
+				display: block;
+				position: absolute;
+				bottom: 2px;
+				min-width: 55px;
+			}
+			.Uize_Widgets_Dialog_Css-statusBar .Uize_Widgets_Dialog_Css-cancelButton {
+				left: 2px;
+			}
+			.Uize_Widgets_Dialog_Css-statusBar .Uize_Widgets_Dialog_Css-okButton {
+				right: 2px;
+			}
+
+	/*** dialog corners / edges ***/
+		.Uize_Widgets_Dialog_Css-cornerEastWest, .Uize_Widgets_Dialog_Css-cornerNorthSouth {
+			position: absolute;
+			background: #ccc;
+		}
+		.Uize_Widgets_Dialog_Css-cornerEastWest {
+			height: 100%;
+			width: 5px;
+			top: 0px;
+		}
+		.Uize_Widgets_Dialog_Css-cornerNorthSouth {
+			position: absolute;
+			width: 100%;
+			height: 5px;
+			left: 0px;
+		}
+		.Uize_Widgets_Dialog_Css-cornerCorner {
+			position: absolute;
+			width: 31px;
+			height: 31px;
+			background: #ccc;
+		}
+		/*** edge positioning ***/
+			.Uize_Widgets_Dialog_Css-edgeWest {left: -5px;}
+			.Uize_Widgets_Dialog_Css-edgeEast {right: -5px;}
+			.Uize_Widgets_Dialog_Css-edgeNorth {top: -31px;}
+			.Uize_Widgets_Dialog_Css-edgeSouth {bottom: -31px;}
+
+		/*** edge borders ***/
+			.Uize_Widgets_Dialog_Css-edgeNorth.Uize_Widgets_Dialog_Css-edgeWest {border-top-left-radius: 3px;}
+			.Uize_Widgets_Dialog_Css-edgeNorth.Uize_Widgets_Dialog_Css-edgeEast {border-top-right-radius: 3px;}
+			.Uize_Widgets_Dialog_Css-edgeSouth.Uize_Widgets_Dialog_Css-edgeWest {border-bottom-left-radius: 3px;}
+			.Uize_Widgets_Dialog_Css-edgeSouth.Uize_Widgets_Dialog_Css-edgeEast {border-bottom-right-radius: 3px;}
+
+/*** contents ***/
+	.Uize_Widgets_Dialog_Css-contents {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		overflow: auto;
+	}
+	.Uize_Widgets_Dialog_Css-contents h1 {
+		font-size: 14px;
+		margin: 0 5px;
+		border-bottom: 1px solid #555;
+	}
+	.Uize_Widgets_Dialog_Css-contents p {
+		margin: 4px 4px 12px 4px;
+	}
+

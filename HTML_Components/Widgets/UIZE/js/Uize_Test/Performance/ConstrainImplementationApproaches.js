@@ -1,0 +1,8 @@
+/*
+	UIZE JAVASCRIPT FRAMEWORK
+
+	http://www.uize.com/reference/Uize.Test.Performance.ConstrainImplementationApproaches.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'Uize.Test.Performance.ConstrainImplementationApproaches',builder:function(){'use strict';var c_a=500000,c_b=1000,c_c=1000000,c_d=c_b-1,c_e=c_c+1,c_f=(c_b+c_c)/2,c_g=Uize.constrain;function c_h(c_i,c_j,c_k){return Math.min(Math.max(c_i,Math.min(c_j,c_k)),Math.max(c_j,c_k));}return Uize.Test.declare({title:'Test the performance of different implementation approaches for constraining a value to a range',test:[{title:'An implementation using the Math.min and Math.max methods',test:[{title:'When the value being tested is below the min value of the range',test:function(){for(var c_l=c_a;--c_l>=0;){c_h(c_d,c_b,c_c);c_h(c_d,c_c,c_b);}return true;}},{title:'When the value being tested lies inside the range',test:function(){for(var c_l=c_a;--c_l>=0;){c_h(c_f,c_b,c_c);c_h(c_f,c_c,c_b);}return true;}},{title:'When the value being tested is above the max value of the range',test:function(){for(var c_l=c_a;--c_l>=0;){c_h(c_e,c_b,c_c);c_h(c_e,c_c,c_b);}return true;}}]},{
+title:'The Uize.constrain method\'s implementation',test:[{title:'When the value being tested is below the min value of the range',test:function(){for(var c_l=c_a;--c_l>=0;){c_g(c_d,c_b,c_c);c_g(c_d,c_c,c_b);}return true;}},{title:'When the value being tested lies inside the range',test:function(){for(var c_l=c_a;--c_l>=0;){c_g(c_f,c_b,c_c);c_g(c_f,c_c,c_b);}return true;}},{title:'When the value being tested is above the max value of the range',test:function(){for(var c_l=c_a;--c_l>=0;){c_g(c_e,c_b,c_c);c_g(c_e,c_c,c_b);}return true;}}]}]});}});

@@ -1,0 +1,35 @@
+.Uize_Widgets_Log_Css {
+	width: 100%;
+}
+
+.Uize_Widgets_Log_Css-heading {
+	position: relative;
+	text-align: center;
+	min-height: 17px;
+}
+
+.Uize_Widgets_Log_Css-heading span {
+	letter-spacing: 2px;
+}
+
+.Uize_Widgets_Log_Css-clearButton {
+	position: absolute;
+	right: 2px;
+	top: 2px;
+}
+
+.Uize_Widgets_Log_Css-body {
+	padding: 0 2px 2px 2px;
+}
+
+.Uize_Widgets_Log_Css-messages {
+	font-family: Courier;
+	white-space: nowrap;
+	font-size: 10px;
+	color: #000;
+	border: 1px solid #ddd;
+	padding: 4px;
+	height: 140px;
+	overflow: auto;
+}
+

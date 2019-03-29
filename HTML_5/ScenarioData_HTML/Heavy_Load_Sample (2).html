@@ -1,0 +1,500 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0039)http://192.168.167.220/HTML5/heavy.html -->
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Utilsのコントロール</title> 
+<SCRIPT type="text/javascript">
+    var totalItems = 5;
+    var numRows = 5;
+    var	numColumns = 5;
+	function CreateLinks(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagLink = document.createElement("a");
+			tagLink.href= "http://web.logigear.com/default.aspx";
+			tagLink.innerHTML = "link " + i + " ";
+			if (i==totalElement)
+			{
+				tagLink.id = "navigate_ControlTest";
+				tagLink.name="navigate_ControlTest";
+			}
+			else {tagLink.id = "link " + i;tagLink.name = "link " + i;}
+			tagLink.onclick = function() {
+				alert(this.id);
+				return false;
+			}
+			document.getElementById("3").appendChild(tagLink);
+		}		
+	}
+	
+	function CreateInputButton(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");   
+			tagInput.type = "button";
+			tagInput.value = "Button " + i;
+			if (i==totalElement) {tagInput.id = "button_ControlTest";} else{tagInput.id = "button " + i;}
+			tagInput.onclick = function() {
+				this.value = "You hit me";
+			}
+			document.getElementById("3").appendChild(tagInput);
+		}
+	}
+	
+	function CreateInputText(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="text";
+			tagInput.value = "Text" + i;
+			if (i==totalElement) {tagInput.id = "text_ControlTest";tagInput.name = "text_ControlTest";} else{tagInput.id = "textbox " + i;}
+			document.getElementById("3").appendChild(tagInput);
+		}
+	}
+	
+	function CreateInputCheckbox(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="checkbox";
+			if (i==totalElement) {tagInput.id = "checkbox_ControlTest";tagInput.name = "checkbox_ControlTest";} else{tagInput.id = "checkbox " + i;}
+			document.getElementById("3").appendChild(tagInput);     
+		}
+	}
+	
+	function CreateInputRadio(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="radio";
+			tagInput.name = "radiogroup";
+			//var textRadio = "radio " +i;
+			if (i==totalElement) {tagInput.id = "radio_ControlTest";} else{tagInput.id = "radio " + i;}
+			document.getElementById("3").appendChild(tagInput);
+			//var lblRaido = document.createElement("label");
+			//var textRadio = document.createTextNode("radio " +i);
+			//lblRaido.appendChild(textRadio);
+			//alert(textRadio);
+			//document.getElementByID("radio " + i).addpendChild(textRadio);
+			//document.getElementByID("3").addpendChild(lblRaido);
+		}
+	}
+	
+	function CreateInputEmail(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="email";
+			tagInput.name = "email";
+			if (i==totalElement) {tagInput.id = "email_ControlTest";} else{tagInput.id = "email " + i;}
+			document.getElementById("3").appendChild(tagInput);     
+		}
+	}
+	
+	function CreateInputFile(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="file";
+			tagInput.name = "file";
+			if (i==totalElement) {tagInput.id = "file_ControlTest";} else{tagInput.id = "file " + i;}
+			document.getElementById("3").appendChild(tagInput);     
+		}
+	}
+	
+	function CreateInputHidden(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="hidden";
+			tagInput.name = "hidden";
+			if (i==totalElement) {tagInput.id = "hidden_ControlTest";} else{tagInput.id = "hidden " + i;}
+			document.getElementById("3").appendChild(tagInput);     
+		}
+	}
+	
+	function CreateInputImage(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="image";
+			if (i==totalElement) {tagInput.id = "image_ControlTest";tagInput.name = "imagebtn_ControlTest";} else{tagInput.id = "image " + i;tagInput.name = "image";}
+			tagInput.src = "http://192.168.167.220/HTML5/facebook.jpg";
+			tagInput.width = 35;
+			tagInput.height = 35;
+			document.getElementById("3").appendChild(tagInput);     
+		}
+	}
+	
+	function CreateInputNumber(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="number";
+			tagInput.name = "number";
+			if (i==totalElement) {tagInput.id = "number_ControlTest";} else{tagInput.id = "number " + i;}
+			document.getElementById("3").appendChild(tagInput);     
+		}
+	}
+	
+	function CreateInputPassword(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="password";
+			tagInput.name = "password";
+			if (i==totalElement) {tagInput.id = "password_ControlTest";} else{tagInput.id = "password " + i;}
+			document.getElementById("3").appendChild(tagInput); 
+		}
+	}
+	
+	function CreateInputReset(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="reset";
+			if (i==totalElement) {tagInput.id = "reset_ControlTest";tagInput.name = "reset_ControlTest";} else{tagInput.id = "reset " + i;tagInput.name = "reset";}
+			document.getElementById("3").appendChild(tagInput);     
+		}
+	}
+	
+	function CreateInputSearch(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="search";
+			tagInput.name = "search";
+			if (i==totalElement) {tagInput.id = "search_ControlTest";} else{tagInput.id = "search " + i;}
+			document.getElementById("3").appendChild(tagInput);     
+		}
+	}
+	
+	function CreateInputTel(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="tel";
+			tagInput.name = "tel";
+			if (i==totalElement) {tagInput.id = "tel_ControlTest";} else{tagInput.id = "tel " + i;}
+			document.getElementById("3").appendChild(tagInput);     
+		}
+	}
+	
+	function CreateInputTime(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="time";
+			tagInput.name = "time";
+			if (i==totalElement) {tagInput.id = "time_ControlTest";} else{tagInput.id = "time " + i;}
+			document.getElementById("3").appendChild(tagInput);     
+		}
+	}
+	
+	function CreateInputUrl(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="url";
+			tagInput.name = "url";
+			if (i==totalElement) {tagInput.id = "url_ControlTest";} else{tagInput.id = "url " + i;}
+			document.getElementById("3").appendChild(tagInput);     
+		}
+	}
+	
+	function CreateInputSubmit(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagInput = document.createElement("input");    
+			tagInput.type ="submit";
+			tagInput.id = "submit " + i;
+			if (i==totalElement) {tagInput.id = "submit_ControlTest";tagInput.name = "submit_ControlTest";} else{tagInput.id = "submit " + i;tagInput.name = "submit";}
+			document.getElementById("3").appendChild(tagInput);     
+		}
+	}
+	function CreateSelectOne(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagSelect = document.createElement("select");    
+			if (i==totalElement) {tagSelect.id = "select_ControlTest";tagSelect.name = "select_ControlTest";} else{tagSelect.id = "select " + i;}
+			for(z=1; z <= totalItems; z++){
+				var opt = document.createElement("option");
+				opt.value = "select " + z;
+				opt.text = "select " + z;
+				tagSelect.options.add(opt);
+			}
+			document.getElementById("3").appendChild(tagSelect);     
+		}
+	}
+	
+	function CreateSelectMultiple(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagSelect = document.createElement("select");    
+			if (i==totalElement) {tagSelect.id = "select_ControlTest";tagSelect.name= "select_ControlTest";} else{tagSelect.id = "select " + i;}
+			tagSelect.multiple = "true";
+			for(z=1; z <= totalItems; z++){
+				var opt = document.createElement("option");
+				opt.value = "select " + z;
+				opt.text = "select " + z;
+				tagSelect.options.add(opt);
+			}
+			document.getElementById("3").appendChild(tagSelect);     
+		}
+	}
+	
+	function CreateTables(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagTable = document.createElement("table");
+			if (i==totalElement) {tagTable.id = "table_ControlTest";} else{tagTable.id = "table " + i;}
+			tagTable.border = "1";
+			for (var z = 0; z < numRows; z++) {
+				rowElem = document.createElement('tr');
+				for (var j = 0; j < numColumns; j++) {
+					colElem = document.createElement('td');
+					colElem.appendChild(document.createTextNode("Rows : " + z + " Cols : " + j));
+					rowElem.appendChild(colElem);
+				}
+				tagTable.appendChild(rowElem);
+			}
+			document.getElementById("3").appendChild(tagTable);
+		}
+		var table = document.getElementById('table_ControlTest');
+		cells = table.getElementsByTagName('td');
+		for (var i=0,len=cells.length;i<len; i++)
+		{
+			cells[i].onclick = function(){this.innerHTML="You hit me"};
+		}
+	}
+function myFunction(numberTable) 
+{
+	for(i=1;i<=numberTable;i++)
+	{
+	var TableControl = document.createElement("table");
+	if (i==totalElement) {TableControl.id = "table_ControlTest";} else{TableControl.id = "table " + i;}
+	TableControl.border = "1";
+	for (var z = 0; z < 3; z++) 
+		{
+			rowElem = document.createElement('tr');
+			for (var j = 0; j < 3; j++) 
+			{
+				colElem = document.createElement('td');
+				colElem.appendChild(document.createTextNode("Rows : " + z + " Cols : " + j));
+				rowElem.appendChild(colElem);
+			}
+			TableControl.appendChild(rowElem);
+		}
+	rowElem.appendChild(colElem);
+	document.body.appendChild(TableControl);
+	}
+}
+	function CreateImage(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagImg = document.createElement("img");
+			if (i==totalElement) {tagImg.id = "image_ControlTest";tagImg.name = "image_ControlTest";} else{tagImg.id = "image " + i;}
+			tagImg.src = "http://www.w3schools.com/tags/smiley.gif";
+			document.getElementById("3").appendChild(tagImg);    
+		}
+	}
+	function CreateLabel(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagLabel = document.createElement("label");
+			if (i==totalElement) {tagLabel.id = "label_ControlTest";} else{tagLabel.id = "label " + i;}
+			tagLabel.innerHTML = "label " + i + " ";
+			document.getElementById("3").appendChild(tagLabel);     
+		}
+	}
+	function CreateTextarea(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagTextarea = document.createElement("textarea");
+			if (i==totalElement) {tagTextarea.id = "textarea_ControlTest";tagTextarea.name= "textarea_ControlTest";} else{tagTextarea.id = "textarea " + i;}
+			document.getElementById("3").appendChild(tagTextarea);     
+		}
+	}
+	function CreateButtons(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagButton = document.createElement("button");
+			if (i==totalElement) {tagButton.id = "button_ControlTest";} else{tagButton.id = "button " + i;}
+			tagButton.innerHTML = "Click Me!";
+			document.getElementById("3").appendChild(tagButton);     
+		}
+	}
+	function CreateParagraph(totalElement)
+	{
+		for(i=1;i<=totalElement;i++)
+		{
+			var tagParagraph = document.createElement("p");
+			if (i==totalElement) {tagParagraph.id = "paragraph_ControlTest";} else{tagParagraph.id = "paragraph " + i;}
+			tagParagraph.innerHTML = "This is test paragraph";
+			document.getElementById("3").appendChild(tagParagraph);     
+		}
+	}
+	
+	function DisplayInputTypes(totalElement)
+	{
+		var type = ["checkbox", "text", "radio", "button", "submit", "email", "file", "hidden", "image", "number", "password", "reset", "search", "tel", "url"];
+		var span = document.getElementById("2");
+		var input_types = document.createElement("select");
+		input_types.id = "input_types";
+		span.appendChild(input_types);
+		for (var i = 0; i < type.length; i++)
+		{
+			var opt = document.createElement("option");
+			opt.value = type[i];
+			opt.text = type[i];
+			input_types.options.add(opt);
+		}
+		input_types.selectedIndex = -1;
+		var element_type = document.getElementById("input_types");
+		element_type.addEventListener("change", function() 
+		{
+			switch(element_type.value)
+			{
+				case "checkbox" : CreateInputCheckbox(totalElement);break;
+				case "text": CreateInputText(totalElement);break;
+				case "radio": CreateInputRadio(totalElement);break;
+				case "button": CreateInputButton(totalElement);break;
+				case "submit": CreateInputSubmit(totalElement);break;
+				case "email": CreateInputEmail(totalElement);break;
+				case "file": CreateInputFile(totalElement);break;
+				case "hidden": CreateInputHidden(totalElement);break;
+				case "image": CreateInputImage(totalElement);break;
+				case "number": CreateInputNumber(totalElement);break;
+				case "password": CreateInputPassword(totalElement);break;
+				case "reset": CreateInputReset(totalElement);break;
+				case "search": CreateInputSearch(totalElement);break;
+				case "tel": CreateInputTel(totalElement);break;
+				case "url": CreateInputUrl(totalElement);break;
+			}
+		});
+	}
+	
+	function DisplaySelectTypes(totalElement)
+	{
+		var type = ["one","multiple"];
+		var span = document.getElementById("2");
+		var select_types = document.createElement("select");
+		select_types.id = "select_types";
+		span.appendChild(select_types);
+		for (var i = 0; i < type.length; i++)
+		{
+			var opt = document.createElement("option");
+			opt.value = type[i];
+			opt.text = type[i];
+			select_types.options.add(opt);
+		}
+		select_types.selectedIndex = -1;
+		var select_type = document.getElementById("select_types");
+		select_types.addEventListener("change", function() 
+		{
+			switch(select_types.value)
+			{
+				case "one" : CreateSelectOne(totalElement);break;
+				case "multiple": CreateSelectMultiple(totalElement);break;
+			}
+		});
+	}
+</SCRIPT>
+</HEAD> 
+<body onload="addControlTest()">
+<H1>Heavy Load Sample</H1><SPAN id="1">Select control: 
+<span id="SpanControl">
+<SELECT id="selectControl" onchange="GenerateControl()" >
+</SELECT> 
+</span>
+<INPUT id="txtElements" type="text" oninput ="GenerateControl()"> </SPAN> <SPAN 
+id="2"></SPAN><INPUT onclick="location.reload();" type="button" value="Reload page"><BR>
+<DIV>
+<DIV>
+<DIV>
+<DIV>
+<DIV>
+<DIV>
+<DIV>
+<DIV>
+<DIV>
+<DIV>
+<DIV>
+<DIV><SPAN 
+id="3"></SPAN></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV>
+<SCRIPT type="text/javascript">
+
+function addControlTest()
+{
+	var type = ["Input-Checkbox", "Input-Text", "Input-Radio", "Input-Button", "Input-Submit", "Input-Email", "Input-File", "Input-Hidden", "Input-Image", "Input-Number", "Input-Password", "Input-Reset", "Input-Search", "Input-Tel", "Input-Url", "Link", "Button", "Select-One","Select-Multiple", "Table", "Image", "TextArea", "Label", "Paragraph"];
+		abc = document.getElementById("selectControl");
+		for (var i = 0; i < type.length; i++)
+		{
+			var opt = document.createElement("option");
+			opt.value = type[i];
+			opt.text = type[i];
+			abc.options.add(opt);
+		}
+		abc.selectedIndex = -1;
+}
+function GenerateControl()
+{
+	element = document.getElementById("selectControl");
+	var numOfElement = document.getElementById("txtElements").value;
+	switch(element.value)
+	{
+		case "Link": CreateLinks(numOfElement);break;
+		case "Button": CreateButtons(numOfElement);break;
+		case "Table" : myFunction(numOfElement);break;
+		case "Image" : CreateImage(numOfElement);break;
+		case "TextArea" : CreateTextarea(numOfElement);break;
+		case "Label" : CreateLabel(numOfElement);break;
+		case "Paragraph" : CreateParagraph(numOfElement);break;
+		case "Input-Checkbox" : CreateInputCheckbox(numOfElement);break;
+		case "Input-Text": CreateInputText(numOfElement);break;
+		case "Input-Radio": CreateInputRadio(numOfElement);break;
+		case "Input-Button": CreateInputButton(numOfElement);break;
+		case "Input-Submit": CreateInputSubmit(numOfElement);break;
+		case "Input-Email": CreateInputEmail(numOfElement);break;
+		case "Input-File": CreateInputFile(numOfElement);break;
+		case "Input-Hidden": CreateInputHidden(numOfElement);break;
+		case "Input-Image": CreateInputImage(numOfElement);break;
+		case "Input-Number": CreateInputNumber(numOfElement);break;
+		case "Input-Password": CreateInputPassword(numOfElement);break;
+		case "Input-Reset": CreateInputReset(numOfElement);break;
+		case "Input-Search": CreateInputSearch(numOfElement);break;
+		case "Input-Tel": CreateInputTel(numOfElement);break;
+		case "Input-Url": CreateInputUrl(numOfElement);break;
+		case "Select-One" : CreateSelectOne(numOfElement);break;
+		case "Select-Multiple": CreateSelectMultiple(numOfElement);break;
+	}
+}
+
+</SCRIPT>
+  </body></HTML>

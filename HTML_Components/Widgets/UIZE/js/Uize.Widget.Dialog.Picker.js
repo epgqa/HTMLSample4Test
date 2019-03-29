@@ -1,0 +1,8 @@
+/*
+	UIZE JAVASCRIPT FRAMEWORK
+
+	http://www.uize.com/reference/Uize.Widget.Dialog.Picker.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'Uize.Widget.Dialog.Picker',required:'Uize.Widget.Button.Checkbox',builder:function(e_a){'use strict';var e_b=false,e_c=true;var e_d=e_a.subclass(null,function(){var e_e=this;function e_f(e_g){var e_h=e_e.children.value,e_i=e_h.get('valueDetails'),e_j;e_e.e_k=e_c;e_e.fireSubmissionComplete(e_g,Uize.copyInto({value:e_h.valueOf()},e_i!==e_j?{valueDetails:e_i}:e_j));}e_e.addChild('value',e_e.e_l).wire('Changed.value',function(){!e_e.e_m&&setTimeout(function(){e_f(e_e.e_g);e_e.e_g||e_e.set({shown:e_b});},0);});e_e.addChild('keepOpen',Uize.Widget.Button.Checkbox).wire('Changed.selected',function(e_n){e_e.set({e_g:e_n.source.get('selected')})});function e_o(){e_e.e_k&&e_e.fire({name:'Submission Complete',result:{value:e_e.e_p}});}e_e.wire({Ok:function(){e_f()},Cancel:e_o,Close:e_o,'Before Show':function(){e_e.e_m=e_c;e_e.children.value.set(e_e.get((e_e.e_q||[]).concat('value')));e_e.e_p=e_e.e_r;e_e.e_m=e_e.e_k=e_b;}});e_e.e_s=e_c;e_e.e_t();}),e_u=e_d.prototype;e_u.e_t=function(){
+this.e_s&&this.children.keepOpen.set({selected:this.e_g})};e_u.fireSubmissionComplete=function(e_g,e_v){var e_e=this;e_e.get('shown')&&e_e.fire({name:'Submission Complete',result:e_v,keepOpen:e_g});};e_d.stateProperties({e_g:{name:'keepOpen',onChange:e_u.e_t,value:e_b},e_l:'valueWidgetClass',e_w:'picker',e_q:'pipedProperties',e_r:'value'});e_d.set({shieldOpacity:0});return e_d;}});

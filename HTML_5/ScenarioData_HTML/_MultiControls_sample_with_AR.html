@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>標準コントロール</title>
+<style type="text/css">
+            a:link {COLOR: blue;text-decoration:none;}
+            a:visited {COLOR: blue;}
+            a:hover {COLOR: red;text-decoration: underline;}
+            a:active {COLOR: blue;}
+            a { display: block; COLOR:blue;}
+            label { display: block;}  
+</style>
+</head>
+
+<body>
+<frame>
+<div>
+<!------------------------------------------------------- BUTTON -------------------------------------------------------------->
+<!--<h2><p style="color:#FF0000"><b>Button</b></p></h2>-->
+<!---<label id="lblComment"></label>
+<script type="text/javascript">
+    function DisplayComment(id)
+    {
+        var id= document.getElementById(id);
+        document.getElementById('lblComment').textContent = id.value+" is clicked"
+    }
+</script>-->
+<!--<button id="btn_button test" type="button"  name="btn_button test" onclick="DisplayComment('btn_button test');">Button Control test</button><br>-->
+<h2><p style="color:#FF0000"><b>Input-Button</b></p></h2>
+<input id="button_ControlTest" type="button" name="button_ControlTest" value="ButtonTest" 
+title="button_ControlTest" style="position: relative; top: 0px;"><br>
+<input type="button" id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+value="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"><br>
+<input type="button" id="" value="" name ="" title=""><br>
+<!------------------------------------------------------- CHECKBOX -------------------------------------------------------------->
+
+<h2><p style="color:#FF0000"><b>Checkbox</b></p></h2>
+<p><span style="font-weight: bold;color: #F09">chk_checkbox test<input type="CheckBox" id="chk_checkbox test" title="chk_checkbox test" name="chk_checkbox test" value="CheckBoxTest" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"></span></p>
+
+<p><span style="font-weight: bold;color: #F09"> cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control<input type="CheckBox" 
+id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" 
+title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" 
+name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+value="CheckBoxTest" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"></span></p>
+<p><span style="font-weight: bold;color: #F09"> <input type="CheckBox" id="" title="" name="" value="CheckBoxTest" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"></span></p>
+
+<!-----------------------------------------------------INPUT PASSWORD ----------------------------------------------------------->
+
+<h2><p style="color:#FF0000"><b>InputPassword</b></p></h2>
+<input type="PASSWORD" id="pwb_password test" title="pwb_password test" name="pwb_password test" maxlength="8" value="abc123" onchange="UpdValueField()" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"><br>
+
+<input type="PASSWORD" id= "cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" 
+title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" maxlength="8" 
+ value="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ onchange="UpdValueField()" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"><br>
+ 
+<input type="PASSWORD" id="" title="" name="" maxlength="8" value="" onchange="UpdValueField()" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"><br> 
+<!-----------------------------------------------------RADIO BUTTON -------------------------------------------------------------->
+
+<h2><p style="color:#FF0000"><b>RadioButton</b></p></h2>
+
+<input type="Radio" id="rad_radio test" title="rad_radio test" value="Radio" name="rad_radio test">Radio Button<br>
+<input type="Radio" id= "cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" value="Radio" name="rad_radio test">cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control<br>
+<input type="Radio" id="" title="" value="Radio" name="rad_radio test"><br>
+
+<!------------------------------------------------------- INPUT TEXT ------------------------------------------------------------>
+
+<h2><p style="color:#FF0000"><b>InputText</b></p></h2>
+
+<input type="text" id="txt_input-text test" title="txt_input-text test" name="txt_input-text test" maxlength="20" value ="textbox" onchange="UpdValueField()" textcontent="abc" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"><br>
+
+<input type="text" 
+id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ maxlength="20" value="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ onchange="UpdValueField()" textcontent="abc" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"><br>
+<input type="text" id="" title="" name="" maxlength="20" onchange="UpdValueField()" textcontent="abc" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"><br>
+
+<!------------------------------------------------------- SELECT -------------------------------------------------------------->
+
+<h2><p style="color:#FF0000"><b>Select-one</b></p></h2>
+
+<select id="cbo_combobox test" title="cbo_combobox test" name="cbo_combobox test" size="1" style="width: 200px; position: relative; top: 0px;" onchange="UpdSelectValue()" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');"><option value="Item0">Item0</option><option value="Item1">Item1</option> <option value="Item2">Item2</option> <option value="Item3">Item3</option> <option value="Item4">Item4</option> <option value="Item5">Item5</option> <option value="Item6">Item6</option> <option value="Item7">Item7</option> <option value="Item8">Item8</option> <option value="Item9">Item9</option> <option value="Item10">Item10</option> <option value="Item11">Item11</option> <option value="Item12">Item12</option> <option value="Item13">Item13</option> <option value="Item14">Item14</option> <option value="Item15">Item15</option> <option value="Item16">Item16</option> <option value="Item17">Item17</option> <option value="Item18">Item18</option> <option value="Item19">Item19</option> <option value="Item20">Item20</option> <option value="Item21">Item21</option> <option value="Item22">Item22</option> <option value="Item23">Item23</option> <option value="Item24">Item24</option> <option value="Item25">Item25</option> <option value="Item26">Item26</option> <option value="Item27">Item27</option> <option value="Item28">Item28</option> <option value="Item29">Item29</option> <option value="Item30">Item30</option><option value="Item31">Item31</option><option value="Item32">Item32</option><option value="Item33">Item33</option><option value="Item34">Item34</option><option value="Item35">Item35</option><option value="Item36">cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control</option><option value="Item37"></option>
+<option value="Item with blank space">&nbsp;&nbsp;&nbsp;Item with blank space&nbsp;&nbsp;&nbsp;</option>
+</select><br>
+
+<select id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ size="1" style="width: 200px; position: relative; top: 0px;" onchange="UpdSelectValue()" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');"><option value="Item0">Item0</option><option value="Item1">Item1</option> <option value="Item2">Item2</option> <option value="Item3">Item3</option> <option value="Item4">Item4</option> <option value="Item5">Item5</option> <option value="Item6">Item6</option> <option value="Item7">Item7</option> <option value="Item8">Item8</option> <option value="Item9">Item9</option> <option value="Item10">Item10</option> <option value="Item11">Item11</option> <option value="Item12">Item12</option> <option value="Item13">Item13</option> <option value="Item14">Item14</option> <option value="Item15">Item15</option> <option value="Item16">Item16</option> <option value="Item17">Item17</option> <option value="Item18">Item18</option> <option value="Item19">Item19</option> <option value="Item20">Item20</option> <option value="Item21">Item21</option> <option value="Item22">Item22</option> <option value="Item23">Item23</option> <option value="Item24">Item24</option> <option value="Item25">Item25</option> <option value="Item26">Item26</option> <option value="Item27">Item27</option> <option value="Item28">Item28</option> <option value="Item29">Item29</option> <option value="Item30">Item30</option><option value="Item31">Item31</option><option value="Item32">Item32</option><option value="Item33">Item33</option><option value="Item34">Item34</option><option value="Item35">Item35</option><option value="Item36">cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control</option><option value="Item37"></option></select><br>
+ 
+<select id="" title="" name="" size="1" style="width: 200px; position: relative; top: 0px;" onchange="UpdSelectValue()" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');"><option value="Item0">Item0</option><option value="Item1">Item1</option> <option value="Item2">Item2</option> <option value="Item3">Item3</option> <option value="Item4">Item4</option> <option value="Item5">Item5</option> <option value="Item6">Item6</option> <option value="Item7">Item7</option> <option value="Item8">Item8</option> <option value="Item9">Item9</option> <option value="Item10">Item10</option> <option value="Item11">Item11</option> <option value="Item12">Item12</option> <option value="Item13">Item13</option> <option value="Item14">Item14</option> <option value="Item15">Item15</option> <option value="Item16">Item16</option> <option value="Item17">Item17</option> <option value="Item18">Item18</option> <option value="Item19">Item19</option> <option value="Item20">Item20</option> <option value="Item21">Item21</option> <option value="Item22">Item22</option> <option value="Item23">Item23</option> <option value="Item24">Item24</option> <option value="Item25">Item25</option> <option value="Item26">Item26</option> <option value="Item27">Item27</option> <option value="Item28">Item28</option> <option value="Item29">Item29</option> <option value="Item30">Item30</option><option value="Item31">Item31</option><option value="Item32">Item32</option><option value="Item33">Item33</option><option value="Item34">Item34</option><option value="Item35">Item35</option><option value="Item36">cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control</option><option value="Item37"></option></select><br>
+
+<!------------------------------------------------------- TEXT AREA -------------------------------------------------------------->
+
+<h2><p style="color:#FF0000"><b>TextArea</b></p></h2>
+
+<textarea id="txa_textarea test" title="txa_textarea test" name="txa_textarea test" cols="40" rows="4" onchange="UpdValueField()" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;">At W3Schools you will find all the Web-building tutorials you need, from basic HTML to advanced XML, SQL, ASP, and PHP.</textarea><br>
+
+<textarea id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" 
+ cols="40" rows="4" onchange="UpdValueField()" onclick="DisplayComment('Single click control test');" 
+ ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;">cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control
+ </textarea><br>
+<textarea id="" title="" name="" cols="40" rows="4" onchange="UpdValueField()" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"></textarea><br>
+
+<!------------------------------------------------------- VIDEO-------------------------------------------------------------->		
+			
+<h2><p style="color:#FF0000"><b>Video</b></p></h2>
+<td id="DisplayCell" colspan="2" style="text-align:center">
+                    <script type="text/javascript">
+                        createControls();
+ 
+                    </script><video width="320" height="240" controls="controls" id="video_control test" name="video_control test" title="video_control test" preload="auto" style="position: relative; top: 0px;"><source src="../Video/mov_bbb.mp4" type="video/mp4"><source src="../Video/movie.ogg" type="video/ogg"></video>
+                </td>
+				
+<td id="DisplayCell" colspan="2" style="text-align:center">
+                    <script type="text/javascript">
+                        createControls();
+ 
+                    </script><video width="320" height="240" controls="controls"
+					id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+					name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+					title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+					preload="auto" style="position: relative; top: 0px;"><source src="../Video/mov_bbb.mp4" type="video/mp4"><source src="../Video/movie.ogg" type="video/ogg"></video>
+                </td>
+<td id="DisplayCell" colspan="2" style="text-align:center">
+                    <script type="text/javascript">
+                        createControls();
+ 
+                    </script><video width="320" height="240" controls="controls" id="" name="" title="" preload="auto" style="position: relative; top: 0px;"><source src="../Video/mov_bbb.mp4" type="video/mp4"><source src="../Video/movie.ogg" type="video/ogg"></video>
+                </td>
+
+<!------------------------------------------------------- AUDIO -------------------------------------------------------------->
+	
+	
+	
+<h2><p style="color:#FF0000"><b>Audio</b></p></h2>
+
+<td id="DisplayCell" colspan="2" style="text-align:center">
+                    <script type="text/javascript">
+                        createControls();
+ 
+                    </script><audio controls="controls" id="audio_control test" name="audio_control test" title="audio_control test" preload="auto" style="position: relative; top: 0px;">
+					<source id="source_control test" title="source_control test"src="../Video/Loving_you.ogg" type="audio/ogg"><source src="../Video/Loving_you.mp3" type="audio/mp3"></audio>
+                </td><br>
+				
+			
+				
+<td id="DisplayCell" colspan="2" style="text-align:center">
+                    <script type="text/javascript">
+                        createControls();
+ 
+                    </script><audio controls="controls"
+					id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+					name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+					title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+					preload="auto" style="position: relative; top: 0px;">
+					<source source="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+					id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+					src="../Video/Loving_you.ogg" type="audio/ogg"><source src="../Video/Loving_you.mp3" type="audio/mp3"></audio>
+                </td><br>
+<td id="DisplayCell" colspan="2" style="text-align:center">
+                    <script type="text/javascript">
+                        createControls();
+ 
+                    </script><audio controls="controls" id="" name="" title="" preload="auto" style="position: relative; top: 0px;"><source src="../Video/Loving_you.ogg" type="audio/ogg">
+					<source id="" title=""src="../Video/Loving_you.mp3" type="audio/mp3"></audio>
+                </td><br>	
+
+					
+<!----------------------------------------------Email------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-EMAIL</b></p></h2>	
+<input type="email" id="email_control test" name="email_control test" title="email_control test" style="position: relative; top: 0px;"><br>
+<input type="email" 
+id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" style="position: relative; top: 0px;"><br>
+<input type="email" id="" name="" title="" style="position: relative; top: 0px;"><br>	
+
+<!----------------------------------------------SEARCH------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-SEARCH</b></p></h2>
+<input id="search_control test" type="search" name="search_control test" title="search_control test" style="position: relative; top: 0px;"><br>
+<input id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" type="search" 
+name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" style="position: relative; top: 0px;"><br>
+<input id="" type="search" name="" title="" style="position: relative; top: 0px;"><br>
+
+<!----------------------------------------------URL------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-URL</b></p></h2>	
+<input type="url" id="url_control test" name="url_control test" title="url_control test" style="position: relative; top: 0px;"><br>
+<input type="url" 
+id="url cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="url cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="url cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"style="position: relative; top: 0px;"><br>
+<input type="url" id="" name="" title="" style="position: relative; top: 0px;"><br>
+
+<!----------------------------------------------Input-date------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-DATE</b></p></h2>	
+<input type="date" id="date_control test" name="date_control test" title="date_control test" style="position: relative; top: 0px;"><br>
+<input type="date" 
+id="date cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="date cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="date cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" style="position: relative; top: 0px;"><br>
+<input type="date" id="" name="" title="" style="position: relative; top: 0px;"><br>
+
+<!----------------------------------------------Input-datetime------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-DATETIME</b></p></h2>	
+<input type="datetime" id="datetime_control test" name="datetime_control test" title="datetime_control test" style="position: relative; top: 0px;"><br>
+<input type="datetime" 
+id="datetime cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="datetime cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="datetime cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" style="position: relative; top: 0px;"><br>
+<input type="datetime" id="" name="" title="" style="position: relative; top: 0px;"><br>
+
+<!----------------------------------------------Input-datetime-local------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-DATETIME-LOCAL</b></p></h2>	
+<input type="datetime-local" id="datetime-local_control test" name="datetime-local_control test" title="datetime-local_control test" style="position: relative; top: 0px;"><br>
+<input type="datetime-local" 
+id="datetimelocal cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="datetimelocal cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="datetimelocal cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" style="position: relative; top: 0px;"><br>
+<input type="datetime-local" id="" name="" title="" style="position: relative; top: 0px;"><br>
+
+<!----------------------------------------------Input-color------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-COLOR</b></p></h2>	
+<input type="color" id="color_control test" name="color_control test" title="color_control test" style="position: relative; top: 0px;"><br>
+<input type="color" 
+id="color cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="color cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="color cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" style="position: relative; top: 0px;"><br>
+<input type="color" id="" name="" title="" style="position: relative; top: 0px;"><br>
+
+<!----------------------------------------------Input-month------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-MONTH</b></p></h2>	
+<input type="month" id="month_control test" name="month_control test" title="month_control test" style="position: relative; top: 0px;"><br>
+<input type="month" 
+id="month cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="month cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="month cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" style="position: relative; top: 0px;"><br>
+<input type="month" id="" name="" title="" style="position: relative; top: 0px;"><br>
+
+
+<!----------------------------------------------Input-number------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-NUMBER</b></p></h2>	
+<input type="number" id="number_control test" name="number_control test" title="number_control test" style="position: relative; top: 0px;"><br>
+<input type="number" 
+id="number cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="number cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="number cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" style="position: relative; top: 0px;"><br>
+<input type="number" id="" name="" title="" style="position: relative; top: 0px;"><br>
+
+<!----------------------------------------------Input-range------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-RANGE</b></p></h2>	
+<input type="range" id="range_control test" name="range_control test" title="range_control test" style="position: relative; top: 0px;"><br>
+<input type="range" 
+id="range cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="range cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="range cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" style="position: relative; top: 0px;"><br>
+<input type="range" id="" name="" title="" style="position: relative; top: 0px;"><br>
+<!----------------------------------------------Input-week------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-WEEK</b></p></h2>	
+<input type="week" id="week_control test" name="week_control test" title="week_control test" style="position: relative; top: 0px;"><br>
+<input type="week" 
+id="week cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="week cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="week cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" style="position: relative; top: 0px;"><br>
+<input type="week" id="" name="" title="" style="position: relative; top: 0px;"><br>
+
+<!----------------------------------------------Input-time------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-TIME</b></p></h2>	
+<input type="time" id="time_control test" name="time_control test" title="time_control test" style="position: relative; top: 0px;"><br>
+<input type="time" 
+id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" style="position: relative; top: 0px;"><br>
+<input type="time" id="" name="" title="" style="position: relative; top: 0px;"><br>
+
+<!----------------------------------------------Input-tel------------------------------------------------------------>		
+
+<h2><p style="color:#FF0000"><b>INPUT-TEL</b></p></h2>	
+<input type="tel" id="tel_control test" name="tel_control test" title="tel_control test" style="position: relative; top: 0px;"><br>
+<input type="tel" 
+id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" style="position: relative; top: 0px;"><br>
+<input type="tel" id="" name="" title="" style="position: relative; top: 0px;"><br>
+
+<!------------------------------------------------------- INPUT RESET ---------------------------------------------------------->
+
+<h2><p style="color:#FF0000"><b>InputReset</b></p></h2>
+
+<form name="myform" action="#" method="POST"><div align="left"><input type="text" id="idName" size="25">
+ <input type="reset" id="rst_input-reset test" name="rst_input-reset test" title="rst_input-reset test" value="Reset Button" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"></div></form><br>
+
+<form name="myform" action="#" method="POST"><div align="left"><input type="text" id="idName" size="25">
+ <input type="reset" 
+ id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ name= "cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ value="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"></div></form><br>
+<form name="myform" action="#" method="POST"><div align="left"><input type="text" id="idName" size="25">
+ <input type="reset" id="" name="" title="" value="" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"></div></form>
+
+<!------------------------------------------------------- INPUT SUBMIT ---------------------------------------------------------->
+
+<h2><p style="color:#FF0000"><b>InputSubmit</b></p></h2>
+
+<!--<form name="input" method="get" action="http://www.w3schools.com/html/html_form_action.asp">--><input type="text" name="user">
+<input type="submit" id="sbm_input-submit test" name="sbm_input-submit test" title="sbm_input-submit test" value="Submit Button" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"><!--</form>--><br>
+
+
+<form name="input" method="get" action="http://www.w3schools.com/html/html_form_action.asp"><input type="text" name="user">
+<input type="submit" 
+id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control" 
+value="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"></form><br>
+
+<form name="input" method="get" action="http://www.w3schools.com/html/html_form_action.asp">
+<input type="text" name="user">
+<input type="submit" id="" name="" title="" value="" onclick="DisplayComment('Single click control test');" ondblclick="DisplayComment('Double click control test');" oncontextmenu="DisplayComment('Right click control test');" style="position: relative; top: 0px;"></form><br>
+
+<!----------------------------------------------- SELECT MULTIPLE-------------------------------------------------------------->
+
+<h2><p style="color:#FF0000"><b>Select-multiple</b></p></h2>
+
+<select multiple id="lst_listbox test" title="lst_listbox test" name="lst_listbox test">
+  <option value="Item1">Item1</option> <option value="Item2">Item2</option> <option value="Item3">Item3</option> <option value="Item4">Item4</option> <option value="Item5">Item5</option> <option value="Item6">Item6</option> <option value="Item7">Item7</option> <option value="Item8">Item8</option> <option value="Item9">Item9</option> <option value="Item10">Item10</option> <option value="Item11">Item11</option> <option value="Item12">Item12</option> <option value="Item13">Item13</option> <option value="Item14">Item14</option> <option value="Item15">Item15</option> <option value="Item16">Item16</option> <option value="Item17">Item17</option> <option value="Item18">Item18</option> <option value="Item19">Item19</option> <option value="Item20">Item20</option> <option value="Item21">Item21</option> <option value="Item22">Item22</option> <option value="Item23">Item23</option> <option value="Item24">Item24</option> <option value="Item25">Item25</option> <option value="Item26">Item26</option> <option value="Item27">Item27</option> <option value="Item28">Item28</option> <option value="Item29">Item29</option> <option value="Item30">Item30</option><option value="Item31">cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control</option><option value="Item32"></option>
+</select><br>
+
+<select multiple 
+id="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ title="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control"
+ name="cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control">
+  <option value="Item1">Item1</option> <option value="Item2">Item2</option> <option value="Item3">Item3</option> <option value="Item4">Item4</option> <option value="Item5">Item5</option> <option value="Item6">Item6</option> <option value="Item7">Item7</option> <option value="Item8">Item8</option> <option value="Item9">Item9</option> <option value="Item10">Item10</option> <option value="Item11">Item11</option> <option value="Item12">Item12</option> <option value="Item13">Item13</option> <option value="Item14">Item14</option> <option value="Item15">Item15</option> <option value="Item16">Item16</option> <option value="Item17">Item17</option> <option value="Item18">Item18</option> <option value="Item19">Item19</option> <option value="Item20">Item20</option> <option value="Item21">Item21</option> <option value="Item22">Item22</option> <option value="Item23">Item23</option> <option value="Item24">Item24</option> <option value="Item25">Item25</option> <option value="Item26">Item26</option> <option value="Item27">Item27</option> <option value="Item28">Item28</option> <option value="Item29">Item29</option> <option value="Item30">Item30</option><option value="Item31">cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control</option><option value="Item32"></option>
+</select><br>
+
+<select multiple id="" title="" name="">
+  <option value="Item1">Item1</option> <option value="Item2">Item2</option> <option value="Item3">Item3</option> <option value="Item4">Item4</option> <option value="Item5">Item5</option> <option value="Item6">Item6</option> <option value="Item7">Item7</option> <option value="Item8">Item8</option> <option value="Item9">Item9</option> <option value="Item10">Item10</option> <option value="Item11">Item11</option> <option value="Item12">Item12</option> <option value="Item13">Item13</option> <option value="Item14">Item14</option> <option value="Item15">Item15</option> <option value="Item16">Item16</option> <option value="Item17">Item17</option> <option value="Item18">Item18</option> <option value="Item19">Item19</option> <option value="Item20">Item20</option> <option value="Item21">Item21</option> <option value="Item22">Item22</option> <option value="Item23">Item23</option> <option value="Item24">Item24</option> <option value="Item25">Item25</option> <option value="Item26">Item26</option> <option value="Item27">Item27</option> <option value="Item28">Item28</option> <option value="Item29">Item29</option> <option value="Item30">Item30</option><option value="Item31">cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control</option><option value="Item32"></option>
+</select><br>
+<script type="text/javascript">
+	//Tab and new line 
+	$(document).delegate('textarea,input', 'keydown', function (e) {
+		var keyCode = e.keyCode || e.which;
+
+		if (keyCode == 9 || keyCode == 13) {
+			var sChar;
+			if (keyCode == 9)
+				sChar = "\t"
+			else
+				sChar = "\n"
+			e.preventDefault();
+			var start = $(this).get(0).selectionStart;
+			var end = $(this).get(0).selectionEnd;
+			var sChar;
+			// set textarea value to: text before caret + tab + text after caret
+			var sContent = $(this).val().substring(0, start)
+						+ sChar
+						+ $(this).val().substring(end);
+
+			$(this).val(sContent);
+			// put caret at right position again
+			$(this).get(0).selectionStart =
+			$(this).get(0).selectionEnd = start + 1;
+		}
+	});
+</script>
+</div>
+</frame>			
+</body>
+</html>

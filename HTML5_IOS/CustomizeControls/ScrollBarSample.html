@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/control.dwt" codeOutsideHTMLIsLocked="false" -->
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Standard Control</title>
+
+<style type="text/css">
+body {
+	background-image: url(../images/background.jpg);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+      white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: red; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+.style7 {height: 1%;background-color:#FFFFFF}
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+a { display: block; }
+label { display: block; }  
+    #Text3 {
+        width: 101px;
+        text-align: center;
+    }
+    .auto-style1 {
+        text-align: right;
+    }
+    .auto-style2 {
+        text-align: left;
+    }
+	
+#scrollPane {
+    width:500px;
+    height:400px;
+    border: 13px solid #bed5cd;
+    overflow: scroll;
+    white-space: nowrap;
+}
+
+#btnTop
+{
+	display: block;
+	float: left;
+}
+
+</style>  
+</head>
+<body>
+<table id="wrapper" cellspacing="0">
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+<tr>
+<td width="25%" height="62%" rowspan="7"></td>
+<td width="25%" height="5%" align="left" bgcolor="#0000CC"><blockquote><span class="style1">Standard Control</span></blockquote></td>
+<td width="26%" height="5%" align="right" bgcolor="#0000CC"><!-- InstanceBeginEditable name="Home" --><blockquote><span class="style1"><a href="../index.html">Home</a></span></blockquote><!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="7"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" bgcolor="#FFFFFF" height="4%"><blockquote><span class="style2">ScrollBar Sample</span></blockquote></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="top" bgcolor="#FFFFFF" height="30%" align="center">
+	<div id="scrollPane">
+		 <input id="btnTop" type="button" value="TopLeft" onclick="comment('TopLeft')"/>
+		 <img src="../images/Desert.JPG" width="800px" height="600px"/>
+		 <input id="btnBottom" type="button" value="RightBottom" onclick="comment('RightBottom')"/>		 
+	</div>
+  </td>
+</tr>
+<tr >
+	<td id = "CommentCell" colspan="2" width="100%" class="style7">
+		<p id="txtComment"></p>
+	</td>
+</tr>
+<tr>
+  <td colspan="4" align="right" height="19%"><span class="style3"></span></td>
+</tr>
+</table>
+<script type="text/javascript">
+    function comment(sText)
+	{
+		document.getElementById("txtComment").innerHTML = sText;
+	}
+</script>
+</body>
+<!-- InstanceEnd --></html>

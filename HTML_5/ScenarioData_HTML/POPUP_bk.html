@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://lgvn14027/html5/testPrompt.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>
+
+<p>Click the button to display a prompt box.</p>
+
+<input type="button" id="promptnormal" onclick="test_prompt_normal(&#39;Is this normal prompt 1?&#39;,&#39;Yes&#39;)" value="Normal Prompt">
+
+<p>
+<input type="button" id="promptspecial" onclick="test_prompt_special(&#39;Test我愛你أنا أحبك ĐỪNG123 1?&#39;,&#39;Test我愛你أنا أحبك ĐỪNG123&#39;)" value="Special Prompt">
+</p>
+
+<p>
+<button id="alertnormal" onclick = "alertTest()">Normal Alert</button>
+</p>
+
+<p>
+<button id="alertcrossdomain" onclick = "alertUser('Welcome to this AMAZING web page!')">Cross Domain Alert</button>
+</p>
+
+<p>
+<form name="form1">
+<select name="jumpmenu"
+onChange="jumpto(document.form1.jumpmenu.options[document.form1.jumpmenu.options.selectedIndex].value)">
+<option>Jump to...</option>
+<option value="http://www.twitter.com">Twitter webpage</option>
+<option value="http://www.google.com">Google webpage</option>
+<option value="http://www.vnexpress.net">Vnexpress webpage</option>
+<option value="http://www.yahoo.com.vn">Yahoo webpage</option>
+<option value="http://www.docbao.vn">DocBao webpage</option>
+</select>
+</form>
+</p>
+
+<hr>
+
+<p>Click the button to display a confirm box.</p>
+
+<button id="confirmsingle" onclick="confirm_single()">Single Confirm</button>
+
+<br></br>
+
+<p>An alert box will appear after the confirm box.</p>
+
+<button id="confirmcombine" onclick="confirm_combine()">Combine Confirm</button>
+
+<br></br>
+
+<p>The second confirm box will appear after the first confirm box.</p>
+
+<button id="confirmdouble" onclick="confirm_double()">Double Confirm</button>
+
+<br></br>
+
+<p>Click the button to demonstrate line-breaks in a confirm box.</p>
+
+<button id="confirmlinebreak" onclick="confirm_linebreak()">line-break Confirm</button>
+
+<br></br>
+
+<p>Click the button to demonstrate unicode characters in a confirm box.</p>
+
+<button id="confirmspecialcharacters" onclick="confirm_specialcharacters()">Special Characters Confirm</button>
+
+<p>Click the button to display a prompt box.</p>
+
+<input id="promptdefaulttext" type="button" onclick="prompt_defaulttext(&#39;What is your default value?&#39;,&#39;Test我愛你أنا أحبك ĐỪNG123&#39;)" value="Default Text Prompt">
+
+</br>
+<hr>
+<p id="text"></p>
+<p id="text1"></p>
+<p id="text2"></p>
+<hr>
+
+<p>
+
+<input type="button" onclick="refreshFunction()" value="Refresh" id="refreshButton">
+
+</p>
+
+<script>
+
+function myFunctionConfirm() {
+    confirm("Press a button!");
+}
+
+function myFunctionAlert() {
+    alert("Hello! I am an alert box!");
+}
+
+//normal
+function test_prompt_normal(str, mess){
+	var result = prompt(str,mess);
+	if (result != null){
+		document.getElementById('text').innerHTML = "You choose OK at prompt 1 of normal prompt: "+result;
+		result = prompt('Is this normal prompt 2?','Yes');
+		if (result != null){
+			document.getElementById('text1').innerHTML = "You choose OK at prompt 2 of normal prompt: "+result;
+			result = confirm('Is it OK?');
+			if (result==true){
+				document.getElementById('text2').innerHTML = "You choose OK at prompt 3 of normal prompt";
+			}else{
+				document.getElementById('text2').innerHTML = "You choose Cancel at prompt 3 of normal prompt";
+			}
+		}else{
+			document.getElementById('text1').innerHTML = "You choose Cancel at prompt 2 of normal prompt";
+		}
+	}else{
+		document.getElementById('text').innerHTML = "You choose Cancel at prompt 1 of normal prompt";
+	}
+}
+
+//special-------------------------------------------------------------------------------------------------
+function test_prompt_special(str, mess){
+	var resultSpecial = prompt(str,mess);
+	if (resultSpecial != null){
+		document.getElementById('text').innerHTML = "You choose OK at prompt 1 of special prompt: "+resultSpecial;
+		resultSpecial = prompt('Test我愛你أنا أحبك ĐỪNG123 2?','Test我愛你أنا أحبك ĐỪNG123');
+		if (resultSpecial != null){
+			document.getElementById('text1').innerHTML = "You choose OK at prompt 2 of special prompt: "+resultSpecial;
+			resultSpecial = confirm('Test我愛你أنا أحبك ĐỪNG123 3?');
+			if (resultSpecial==true){
+				document.getElementById('text2').innerHTML = "You choose OK at prompt 3 of special prompt";
+			}else{
+				document.getElementById('text2').innerHTML = "You choose Cancel at prompt 3 of special prompt";
+			}
+		}else{
+			document.getElementById('text1').innerHTML = "You choose Cancel at prompt 2 of special prompt";
+		}
+	}else{
+		document.getElementById('text').innerHTML = "You choose Cancel at prompt 1 of special prompt";
+	}
+}
+
+/**
+	Function: Alert
+**/
+function alertTest() {
+	var r = alert( 
+        'Press a button at line break alert box\nEither OK or Cancel\nThe button you pressed will be displayed in the result window.'
+    );
+	document.getElementById('text').innerHTML = "You choose OK at prompt 1 of normal alert";
+}
+
+/**
+	Function alertUser
+**/
+function alertUser(msg) {
+	alert(msg);
+	document.getElementById('text').innerHTML = "You navigated to a page";
+}
+
+/**
+	Function jumpto
+**/
+function jumpto(x){
+if (x != "null") 
+{
+	if (x != "Jump to...") {
+		alert('Sorry to see you leaving this place. Hope to see you back soon!');
+		document.getElementById('text').innerHTML = "You choose OK " + x + "at prompt 1 of special alert";
+	} else {
+		document.getElementById('text').innerHTML = "You still do stay on this page";
+	}
+}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//default text
+function prompt_defaulttext(str, mess){
+	var resultDefault = prompt(str,mess);
+	if (resultDefault != null)
+	{
+		document.getElementById('text').innerHTML = "You choose OK at prompt 1 of default text prompt: "+resultDefault;
+	}
+	else
+	{
+		document.getElementById('text').innerHTML = "You choose Cancel at prompt 1 of default text prompt"+resultDefault;;
+	}
+}
+
+
+function confirm_single() {
+    var txt;
+    var r = confirm("Press a button at single confirm box!");
+    if (r == true) {
+        txt = "You choose OK at prompt 1 of single confirm!";
+    } else {
+        txt = "You choose CANCEL at prompt 1 of single confirm!";
+    }
+    document.getElementById("text").innerHTML = txt;
+}
+
+function confirm_combine() {
+    var r = confirm("Press a button at combine confirm box!");
+    if (r == true) 
+	{
+		txt = "You pressed OK of prompt 1 at combine confirm box!";
+        alert(txt);
+    } 
+	else 
+	{
+		txt = "You pressed CANCEL of prompt 1 at combine confirm box!";
+        alert(txt);
+    }
+    document.getElementById("text").innerHTML = txt;
+	document.getElementById("text1").innerHTML = "You pressed OK of prompt 2 at combine confirm box!";
+
+}
+
+function confirm_double() {
+    var txt;
+	var r = confirm("Do you want to close this confirm box?");
+    if (r == true) {
+        var r = confirm("Are you sure?");
+		if (r == true) {
+			txt = "You choose OK at prompt 1 of double confirm!";
+			txt1 = "You choose OK at prompt 2 of double confirm!";
+			document.getElementById("text").innerHTML = txt;
+			document.getElementById("text1").innerHTML = txt1;
+		} else {
+			confirm_double();
+		}
+    } else {
+        confirm_double();
+    }
+}
+
+function confirm_linebreak() {
+    var txt;
+    var r = confirm("Press a button at line break confirm box.\nEither OK or Cancel.\nThe button you pressed will be displayed in the result window.");
+    if (r == true) {
+        txt = "You choose OK at prompt 1 of line break confirm box!";
+    } else {
+        txt = "You choose OK at prompt 1 of line break confirm box!";
+    }
+    document.getElementById("text").innerHTML = txt;
+}
+
+function confirm_specialcharacters() {
+    var txt;
+    var r = confirm("Test我愛你أنا أحبك ĐỪNG123");
+    if (r == true) {
+        txt = "You choose OK at prompt 1 of special characters confirm!";
+    } else {
+        txt = "You choose CANCEL at prompt 1 of special characters confirm!";
+    }
+    document.getElementById("text").innerHTML = txt;
+}
+
+//refresh----------------------------------------
+function refreshFunction(){
+document.getElementById('text').innerHTML = "";
+document.getElementById('text1').innerHTML = "";
+document.getElementById('text2').innerHTML = "";
+}
+/////////////////////////////////////////////////
+</script>
+
+</body></html>

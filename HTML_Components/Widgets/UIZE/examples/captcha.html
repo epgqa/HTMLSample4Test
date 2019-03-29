@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Button | JavaScript Examples | UIZE JavaScript Framework</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="keywords" content="widget Uize.Widgets.Button.Widget"/>
+	<meta name="description" content="See a demonstration of the button widget, with a logger that displays its events and state changes, and with links for modifying its state properties."/>
+	<link rel="alternate" type="application/rss+xml" title="UIZE JavaScript Framework - Latest News" href="http://www.uize.com/latest-news.rss"/>
+	<link rel="stylesheet" href="../css/page.css"/>
+	<link rel="stylesheet" href="../css/page.example.css"/>
+	<link rel="stylesheet" href="../css/widget.log.css"/>
+
+</head>
+
+<body>
+
+<script type="text/javascript" src="../js/Uize.js"></script>
+
+<div class="main">
+	<!-- explanation copy -->
+
+
+
+	<div id="page_captcha" style="text-align:center;"></div>
+
+
+<!-- JavaScript code to make the HTML "come alive" -->
+
+<script type="text/javascript">
+
+Uize.module ({
+	required:[
+		'UizeSite.Page.Example.library',
+		'UizeSite.Page.Example',
+		'Uize.Widget.Captcha',
+	],
+	builder:function () {
+		'use strict';
+
+		/*** create the example page widget ***/
+			var page = window.page = UizeSite.Page.Example ({evaluator:function (code) {eval (code)}});
+
+		/*** create the Uize.Widgets.Captcha.Widget instance ***/
+			var captcha = page.addChild (
+			'captcha',
+			Uize.Widget.Captcha,
+			{
+				built:false,
+			});
+			captcha.initializeCaptcha();
+
+		
+		/*** wire up the page widget ***/
+			page.wireUi ();
+	}
+});
+
+</script>
+
+</body>
+</html>
+

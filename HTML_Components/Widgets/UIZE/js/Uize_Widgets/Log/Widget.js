@@ -1,0 +1,8 @@
+/*
+	UIZE JAVASCRIPT FRAMEWORK
+
+	http://www.uize.com/reference/Uize.Widgets.Log.Widget.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'Uize.Widgets.Log.Widget',superclass:'Uize.Widgets.BoxWithHeading.Widget',required:['Uize.Widgets.Button.Widget','Uize.Xml','Uize.Date.Formatter','Uize.Widgets.Log.Html','Uize.Widgets.Log.Css'],builder:function(e_a){'use strict';var e_b=e_a.subclass(null,function(){var e_c=this;e_c.addChild('clear',Uize.Widgets.Button.Widget,{size:'tiny'}).wire('Click',function(){e_c.clear()});e_c.e_d();}),e_e=e_b.prototype;e_e.e_d=function(){var e_f=this.children.clear;e_f&&e_f.set({enabled:this.e_g?false:'inherit'});};e_e.clear=function(){var e_c=this;e_c.isWired?e_c.setNodeInnerHtml('messages',''):(e_c.e_h=null);e_c.set({e_g:true});};e_e.log=function(e_i){var e_c=this,e_j=(e_c.e_k?(Uize.Date.Formatter.format(null,e_c.e_l)+' : '):'')+Uize.Xml.toAttributeValue(e_i)+'<br/>';if(e_c.isWired){e_c.injectNodeHtml('messages',e_j);e_c.setNodeProperties('messages',{scrollTop:1000000});}else{(e_c.e_h||(e_c.e_h=[])).push(e_j);}e_c.set({e_g:false});};e_e.wireUi=function(){var e_c=this;if(!e_c.isWired){
+e_a.doMy(e_c,'wireUi');e_c.setNodeInnerHtml('messages',(e_c.e_h||[]).join(''));e_c.setNodeProperties('messages',{scrollTop:1000000});e_c.e_h=null;}};e_b.stateProperties({e_g:{name:'isEmpty',onChange:e_e.e_d,value:true},e_k:{name:'showTimestamp',value:true},e_l:{name:'timestampFormat',value:'{hh}:{mm}:{ss}.{zzz}'}});e_b.declare({set:{html:Uize.Widgets.Log.Html},staticProperties:{cssModule:Uize.Widgets.Log.Css}});return e_b;}});

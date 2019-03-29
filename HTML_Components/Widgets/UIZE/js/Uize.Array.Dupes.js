@@ -1,0 +1,8 @@
+/*
+	UIZE JAVASCRIPT FRAMEWORK
+
+	http://www.uize.com/reference/Uize.Array.Dupes.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'Uize.Array.Dupes',required:'Uize.Data.Matches',builder:function(){'use strict';var _a=function(){},_b=true,_c=false,_d,_e=Uize;var _f=(function(){var _g={},_h=function(_i){this._i=_i;this._j=_e.lookup(_d,1,_b);},_k=_h.prototype;_k.isIn=function(_l,_m){var _n=this,_i=_n._i,_o=_i?_i(_l):_l,_p=_c;if(_e.isPrimitive(_o)|| !(_e.isObject(_o)||_e.isFunction(_o))){var _q=typeof _o,_j=_n._j;if((_j[_o]||(_j[_o]={}))[_q]){_p=_b;}else if(_m){_j[_o][_q]=_b;}}else{if(_o.tagged==_g){_p=_b;}else if(_m){(_n._r||(_n._r=[])).push({_s:_o,_t:_o.hasOwnProperty('tagged'),_u:_o.tagged});_o.tagged=_g;}}return _p;};_k.addTo=function(_l){return!this.isIn(_l,_b);};_k.cleanUp=function(){var _r=this._r;if(_r){for(var _v=_r.length,_w,_s;--_v>=0;){_s=(_w=_r[_v])._s;_w._t?(_s.tagged=_w._u):delete _s.tagged;}}};return _h;})();_a.dedupe=function(_x,_i,_y){_y=_x;var _z=new _f(_i);_y=_e.Data.Matches.remove(_x,function(_l){return _z.isIn(_l,_b)},null,_y);_z.cleanUp();return _y;};function _A(_x,_B,_i,_y,_C){var _z=new _f(_i);
+_e.forEach(_B,function(_D){_z.isIn(_D,_b)},0,_b);_y=_e.Data.Matches.retain(_x,function(_l){return _z.isIn(_l)==_C},null,_y);_z.cleanUp();return _y;}_a.removeValues=function(_x,_B,_i,_y){return _A(_x,_B,_i,_y,_c);};_a.retainValues=function(_x,_B,_i,_y){return _A(_x,_B,_i,_y,_b);};return _a;}});

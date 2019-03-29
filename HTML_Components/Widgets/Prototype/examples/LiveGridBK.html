@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<title>Web Plugin</title>
+	<style type="text/css">
+	body {
+		background-image: url(../../../images/background.jpg);
+	}
+
+	html, body, #wrapper {
+		  height:100%;
+		  width: 100%;
+		  margin: 0;
+		  padding: 0;
+		  border: none;
+		  white-space:0;
+	   }
+	   
+	.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+	.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+	.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+	.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+	a:link {
+	COLOR: #FFFFFF;
+	text-decoration:none;
+	}
+	a:visited {
+	COLOR: #FFFFFF;
+	}
+	a:hover {
+	COLOR: #FFFFFF;
+	}
+	a:active {
+	COLOR: #FFFFFF;
+	}
+	</style>
+	<script language="javascript" src="js/protoplasm-0.2b2/protoplasm.js"></script>
+	<script language="javascript" src="js/livegrid.js"></script>
+    <script language="javascript">            
+			function getData(offset, limit, sortField, sortDir, callback) {
+			new Ajax.Request('http://localhost/test/getData.php', {
+						parameters: {
+							'offset': offset,
+							'limit': limit,
+							'sort': sortField,
+							'dir': sortDir
+						},
+						onComplete: function(transport) {
+							try {
+								callback(eval('(' + transport.responseText + ')'));
+							} catch (e) {
+								alert(e.message);
+							}
+						}
+					});
+		}
+
+		function selectRows(e, selector) {
+			var selected = selector.selectedRows();
+			var desc = selected.length ? selected.join(', ') : 'None';
+			$('livegrid_selected_label').innerHTML = 'Selected rows: ' + desc;
+		}
+		function openRows(e, selector) {
+			alert('Open row event: ' + selector.selectedRows().join(', '));
+		}
+		function scrollRows(start, count, total) {
+			$('livegrid_label').innerHTML = 'Viewing '+(start+1)+' to '+(start+count)+' of '+total+' results';
+		}
+
+		Protoplasm.use('livegrid').transform('#livegrid', 10, 100, getData, {
+						prefetchBuffer: 'active',
+						selectable: true,
+						rowIdPrefix: 'result_',
+						onrowopen: openRows,
+						onrowselect: selectRows,
+						onscroll: scrollRows,
+						sortHeader: 'livegrid_header',
+						sortField: 'name',
+						sortDir: 'asc',
+						imageWidth: 9,
+						imageHeight: 9
+					});
+    </script>
+	
+</head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<!-- InstanceEndEditable -->
+<body>
+
+<table id="wrapper" cellspacing="0">
+
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+
+<tr>
+<td width="25%" height="70%" rowspan="4"></td>
+<td width="34%"  align="left" bgcolor="#0000CC" style="vertical-align:middle"><span class="style1">&nbsp;&nbsp;&nbsp;Web Plugin</span></td>
+<td width="17%" height="5%" align="right" bgcolor="#0000CC" style="vertical-align:middle"><!-- InstanceBeginEditable name="Home" --><span class="style1"><a href="../../../index.html">Home&nbsp;&nbsp;&nbsp;</a></span> <!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="4"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" height="4%">
+    <!-- InstanceBeginEditable name="Row1" -->
+       	<span style="font-family: Tahoma; font-size: 14; color: #F00; font-weight:bold" align="left">Prototype RichTextEditor</span>
+    <!-- InstanceEndEditable --></td>
+</tr>
+
+<tr>
+	<td colspan="2" valign="top" bgcolor="#FFFFFF" height="53%"><!-- InstanceBeginEditable name="Row2" -->
+		<table width="100%" height="100%">
+		<tr>
+		<td width="100%" height="20%">
+			<table width="70%" align='center'>
+                <tr>
+                    <td>
+						<div id="renderer">
+							 <table id="livegrid_header" cellspacing="0" cellpadding="0" border="0">
+								<tr>
+									<th id="id" style="width:50px;">ID</th>
+									<th id="name" style="width:300px;">Name</th>
+									<th id="phone" style="width:200px;">Contact Number</th>
+									<th id="added" style="width:165px;">Date Added</th>
+								</tr>
+							</table>
+							<div style="float: left;">
+								<table id="livegrid" cellspacing="0" cellpadding="0" border="0">
+									<tbody>
+										<tr>
+											<td style="width:50px;"></td>
+											<td style="width:300px;"></td>
+											<td style="width:200px;"></td>
+											<td style="width:165px;"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+                    </td>
+                </tr>
+			</table>
+		</td>
+		</tr>
+		
+		</table>
+	<!-- InstanceEndEditable -->
+	</td>
+</tr>
+<tr>
+	<td colspan="4" align="right" height="19%"></td>
+</tr>
+</table>
+
+</body>
+<!-- InstanceEnd --></html>

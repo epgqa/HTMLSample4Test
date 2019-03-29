@@ -1,0 +1,8 @@
+/*
+	UIZE JAVASCRIPT FRAMEWORK
+
+	http://www.uize.com/reference/Uize.Build.FileBuilders.BuiltModules.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'Uize.Build.FileBuilders.BuiltModules',required:['Uize.Build.ModuleInfo','Uize.Util.Oop','Uize.Build.Scruncher','Uize.Date'],builder:function(){var _a='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',_b=/\.js$/,_c={Uize:0};return{description:'Built JavaScript module',urlMatcher:function(_d){return _d.fileType=='js'&&this.isBuiltUrl(_d.folderPath);},builderInputs:function(_d){return{jsTemp:this.tempUrlFromBuiltUrl(_d.pathname)};},builder:function(_e){var _f=this,_g=_e.jsTemp,_h=_f.readFile({path:_g});function _i(_j,_k){if(_j in _c){return _c[_j];}else{var _l=0,_m;if(!_k){var _n=_f.getModuleUrl(_j);_f.buildFile(Uize.copy(_f.params,{url:_n}));_k=_f.readFile({path:_f.builtUrl(_n)});}var _o=Uize.Build.ModuleInfo.getDefinitionFromCode(_k);if(_o&&(_m='superclass'in _o)){var _p=_o.superclass;if(_p)_l=_i(_p)+1;}_m||Uize.require(_j,function(_q){_l=Uize.Util.Oop.getInheritanceChain(_q).length;});_c[_j]=_l;return _c[_j]=_l;}}if(!_f.params.isDev){var _j=_f.moduleNameFromTempPath(_g),_r={},
+_s=_f.params.scrunchedHeadComments[_j.slice(0,((_j.indexOf('.')+1)||_j.length+1)-1)],_t=_s==undefined;if(!_t)_r.KEEPHEADCOMMENT='FALSE';if(_j){var _l=_i(_j,_h);_r.MAPPINGS='='+(_l?_a.charAt(_l-1):'')+','+_j.replace(/\./g,'_');}var _u=Uize.Build.Scruncher.scrunch(_h,_r);_h=(_t?'':Uize.substituteInto(_s,{buildDate:Uize.Date.toIso8601(),moduleName:_j},'{KEY}'))+_u.scrunchedCode;}return _h;}};}});

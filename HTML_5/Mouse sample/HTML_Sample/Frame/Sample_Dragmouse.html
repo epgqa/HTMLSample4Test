@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>サンプルドラッグマウス、マウス移動</title>
+  <style>
+  body {
+    background-color: #eef;
+  }
+  div {
+    padding: 20px;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div id="log">pageX: 0, pageY: 0</div>
+ 
+<script>
+$( document ).on( "mousemove", function( event ) {
+  $( "#log" ).text( "pageX: " + Math.round(event.pageX) + ", pageY: " + Math.round(event.pageY) );
+});
+</script>
+ 
+</body>
+</html>

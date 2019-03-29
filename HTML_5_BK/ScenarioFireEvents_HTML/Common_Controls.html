@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<script src="../Scripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../Scripts/js/jquery.jqGrid.min.js"></script>
+<script type="text/javascript" src="../ControlsList/CreateElement.js"></script>
+<script type="text/javascript" src="../FireEvents/FireEventElement.js"></script>
+<title>FireEvents</title>
+<style type="text/css">
+body {
+	background-image: url(../images/background.jpg);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+	  white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+</style>
+<script type="text/javascript">
+	<!--Global variable-->				
+    var ArrFireEvents;
+    var IDControl;
+    var idxID;
+
+    //CommonFunction
+    function DisplayComment(sContent) {
+        var cmt = document.getElementById("txtComments");
+        cmt.innerHTML = "<label id='txtComments' style='font-family:tahoma;color:blue;font-size:12px'>" + sContent + " is called.</label>"
+    }
+
+</script>
+
+<!-- scenario_FireEvent -->
+<script type="text/javascript">
+    function LoadScenario() {
+         ArrFireEvents = [{ name:"Canvas", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Command", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"DataList", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Details", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Figure", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"FigCaption", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Iframe", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputButton", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputSubmit", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputReset", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputCheckBox", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputFile", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputText", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputPassword", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputRadio", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputColor", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputDate", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputDatetime", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputDatetime-local", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputEmail", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputMonth", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputNumber", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputRange", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputSearch", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputTime", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputUrl", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputWeek", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"InputImage", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Image", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Keygen", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Label", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"MessageBox", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Meter", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Map", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Nav", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Output", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Progress", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Area", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Address", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Select", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Summary", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"Table", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"TextArea", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""},{ name:"TimeTag", events: "onclick,ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,ondrop,onmousedown,onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onscroll,onwheel", property:""}];
+        /*
+        ArrFireEvents = [
+            { name: "button", events: "onclick,ondblclick", property: "" },
+            { name: "button", events: "onclick,ondblclick", property: "disabled" }
+        ];
+        */
+    }
+
+    function ViewElement() {
+
+        if (ArrFireEvents == null) return;
+
+        for (i = 0; i < ArrFireEvents.length; i++) {            
+            var oEle = ArrFireEvents[i];
+            if (oEle != null) {
+                IDControl = i.toString();
+                document.write("&nbsp;&nbsp;&nbsp;");
+                document.write("<div style=\"float:left;margin-left:30px;\">");
+                createFireEventElement(oEle.name, oEle.events, oEle.property)
+                document.write("</div>");
+            }
+        }
+    }
+</script>
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+
+</head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<!-- InstanceEndEditable -->
+<body>
+<table id="wrapper" cellspacing="0"  >
+<tr>
+<td width="34%"  align="left" bgcolor="#0000CC" style="vertical-align:middle"><span class="style1">&nbsp;&nbsp;&nbsp;Fire Events</span></td>
+<td width="17%" height="2%" align="right" bgcolor="#0000CC" style="vertical-align:middle"><!-- InstanceBeginEditable name="Home" --><span class="style1"><a href="../index.html">Home&nbsp;&nbsp;&nbsp;</a></span> <!-- InstanceEndEditable --></td>
+</tr>
+<tr>
+	<td colspan="2" valign="top" bgcolor="#FFFFFF" height="53%"><!-- InstanceBeginEditable name="Row2" -->
+        	<div id="Div1" align="center">
+                <script type="text/javascript">
+                    LoadScenario();
+                    ViewElement();
+                </script>
+			</div>
+		
+		<tr height="30px">
+		    <td colspan="4" width="100%" align="right" style="background:#C7CEDF;" >
+                <div id="txtComments" align="right"></div>
+		    </td>
+		</tr>
+	<!-- InstanceEndEditable -->
+	</td>
+</tr>
+</table> 
+
+</body>
+<!-- InstanceEnd --></html>

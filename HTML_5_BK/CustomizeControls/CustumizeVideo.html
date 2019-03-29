@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Standard Control</title>
+<style type="text/css">
+body {
+	background-image: url(../images/background.jpg);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+	  white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+</style>
+</head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<!-- InstanceEndEditable -->
+<body>
+
+<table id="wrapper" cellspacing="0">
+
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+
+<tr>
+<td width="25%" height="70%" rowspan="4"></td>
+<td width="34%"  align="left" bgcolor="#0000CC" style="vertical-align:middle"><span class="style1">&nbsp;&nbsp;&nbsp;Standard Control</span></td>
+<td width="17%" height="5%" align="right" bgcolor="#0000CC" style="vertical-align:middle"><!-- InstanceBeginEditable name="Home" --><span class="style1"><a href="../index.html">Home&nbsp;&nbsp;&nbsp;</a></span> <!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="4"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" height="4%">
+    <!-- InstanceBeginEditable name="Row1" -->
+       	<span style="font-family: Tahoma; font-size: 14; color: #F00; font-weight:bold" align="left">Custumize Video</span>
+    <!-- InstanceEndEditable --></td>
+</tr>
+
+<tr>
+	<td colspan="2" valign="top" bgcolor="#FFFFFF" height="53%"><!-- InstanceBeginEditable name="Row2" -->
+		<table width="100%" height="100%">
+	
+		<tr>
+		<td width="600px" height="20%">
+
+		</td>
+		</tr>
+		
+		<tr>
+		<td width="100%" height="20%">
+			<div style="text-align:center"> 
+  <button onclick="playPause()">Play/Pause</button> 
+  <button onclick="makeBig()">Big</button>
+  <button onclick="makeSmall()">Small</button>
+  <button onclick="makeNormal()">Normal</button>
+  <br> 
+  <video id="video1" width="420">
+    <source src="http://www.w3schools.com/html/movie.mp4" type="video/mp4">
+        <source src="http://www.w3schools.com/html/movie.ogg" type="video/ogg">Your browser does not support HTML5 video.
+  </video>
+</div> 
+
+<script  type="text/javascript">
+    var myVideo = document.getElementById("video1");
+    function playPause() {
+        if (myVideo.paused)
+            myVideo.play();
+        else
+            myVideo.pause();
+    }
+
+    function makeBig() {
+        myVideo.width = 560;
+    }
+
+    function makeSmall() {
+        myVideo.width = 320;
+    }
+
+    function makeNormal() {
+        myVideo.width = 420;
+    }
+</script> 
+
+			
+		</td>
+		</tr>
+		
+		</table>
+	<!-- InstanceEndEditable -->
+	</td>
+</tr>
+<tr>
+	<td colspan="4" align="right" height="19%"></td>
+</tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

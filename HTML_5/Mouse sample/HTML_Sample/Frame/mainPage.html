@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>メインページ</title>
+		<style type="text/css">
+			.wrap {
+				width:100%;
+				margin:0 auto;
+			}
+			.left_col {
+				float:left;
+				width:49.5%;
+			}
+			.right_col {
+				float:right;
+				width:49.5%;
+			}
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		$( document ).ready(function() {
+		});
+		$( document ).on( "mousemove", function( event ) {
+			$( "#console" ).text( "pageX: " + Math.ceil(event.pageX) + ", pageY: " + Math.ceil(event.pageY) );
+		});
+		</script>
+		
+	</head>
+	<body class="wrap">
+		<iframe id="frame_1" class="left_col" src="TestDrag.html" width=500 height=300></iframe>
+		<iframe id="frame_2" class="right_col" src="drag_paragraph.html" width=500 height=300></iframe>
+		<iframe id="frame_3" class="left_col" src="drag_canvas.html" width=500 height=300></iframe>
+		<iframe id="frame_4" class="right_col" src="Sample_Dragmouse.html" width=500 height=300></iframe>
+		<div id="console"></div>
+	</body>
+</html>

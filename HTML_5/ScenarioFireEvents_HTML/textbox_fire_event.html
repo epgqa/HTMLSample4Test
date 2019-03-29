@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<title>標準コントロール</title>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+ 
+<script>
+ 
+$(document).ready(function(){
+ 
+    $("#txtchange").change(function(){
+ 
+        document.getElementById("cmt").innerHTML = "change event occured with value: " + document.getElementById("txtchange").value;
+ 
+  });
+ 
+});
+ 
+function handleInput(ev) {
+	document.getElementById("demo").innerHTML = document.getElementById("add").value;
+}
+function downhandler(ev) {
+	document.getElementById("down").innerHTML = document.getElementById("kdown").value;
+}
+$(document).ready(function(){
+  $("#txt").keypress(function(e){
+    if(e.which == 97)
+	{
+		document.getElementById("demo").innerHTML = "You've just hit 'a' key";
+	}
+	else
+	{
+		document.getElementById("demo").innerHTML ="";
+	}
+  });
+  document.getElementById('add').addEventListener('input',handleInput,false);
+  $("#kdown").keydown(function(){
+	document.getElementById('kdown').addEventListener('input',downhandler,false);
+  });
+});
+
+function upperhandler() {
+    var x = document.getElementById("fname");
+    x.value = x.value.toUpperCase();
+}
+
+function keyup() {
+    document.getElementById("up").innerHTML = document.getElementById("kup").value;
+}
+
+
+
+</script>
+
+</head>
+<body>
+<h3>Keypress event</h3>
+Hit 'a': <input type="text" id="txt"/><br>
+AddEventListener: <input type="text" id="add"/><br>
+<p id="demo"></p>
+
+<h3>Onkeydown event</h3>
+<input id="kdown" type="text" onkeydown="keydown()">
+<p id="down"></p>
+
+<h3>Onkeyup event</h3>
+<input id="kup" type="text" onkeyup="keyup()">
+<p id="up"></p>
+
+</body>
+
+<script>
+window.onload = function() {
+document.getElementById('PhoneNumber').onchange = disablefield;
+document.getElementById('LastName').onchange = disablefield;
+}
+
+function disablefield()
+{
+if ( document.getElementById('PhoneNumber').value == '1'){
+document.getElementById('btn_phone').disabled = false;}
+else {document.getElementById('btn_phone').disabled = true;}
+if (document.getElementById('LastName').value != '' ){
+document.getElementById('btn_name').disabled = false;}
+else {document.getElementById('btn_name').disabled = true;}
+}
+
+function focusFunction() {
+    document.getElementById('focus').disabled = true;
+}
+function refeshFunction() {
+    document.getElementById('focus').disabled = false;
+}
+
+function mouseout() {
+    document.getElementById('out').innerHTML = document.getElementById('mout').value;
+}
+
+function mouseover() {
+    document.getElementById('over').innerHTML = "You've moused over the textbox";
+}
+
+function mousedown() {
+    document.getElementById('mdown').innerHTML = "You've moused down the textbox";
+}
+
+function mouseup() {
+    document.getElementById('mup').innerHTML = "You've moused up the textbox";
+}
+
+function mousemove() {
+    document.getElementById('mmove').innerHTML = "You've moused move on the textbox";
+}
+
+function clickt() {
+    document.getElementById('pclick').innerHTML = "You've clicked on the textbox";
+}
+
+function onfocusFunction(x) {
+    x.style.background = "yellow";
+    document.getElementById('onfocus').innerHTML = "You're just fired event onfocus";
+}
+
+</script>
+
+<body>
+
+<form >
+<br/>
+<h3>Onchange event</h3>
+<input type="button" name="Phone" value="Phone" id="btn_phone" disabled="true"/>
+<input type="button" name="Name" value="Name" id="btn_name"  disabled="true""/>
+<br/>
+Phone:
+<input name="PhoneNumber" type="tel" id="PhoneNumber" size="25" />
+<br/>
+Last Name:
+<input name="LastName" type="text" id="LastName" size="25" />
+
+<h3>Onblur event</h3> 
+Onblur event: <input type="text" id="fname" onblur="upperhandler()">
+
+<p>When you leave the input field, a function is triggered which transforms the input text to upper case.</p> 
+
+<h3>Onfocus event</h3>
+Enter your name: <input type="text" onfocus="focusFunction()">
+<br></br>
+<button id="focus">This button will disable when focus on the textbox</button>
+<br></br>
+<button id="refresh" onclick="refeshFunction()">Refresh</button>
+
+<h3>Onmouseout/onmouseover event</h3>
+<input id="mout" type="text" onmouseout="mouseout()" onmouseover="mouseover()">
+<p id="out"></p>
+<p id="over"></p>
+
+<h3>Onmousedown/onmouseup event</h3>
+<input id="mdownup" type="text" onmousedown="mousedown()" onmouseup="mouseup()">
+<p id="mdown"></p>
+<p id="mup"></p>
+
+<h3>Onmousemove event</h3>
+<input id="move" type="text" onmousemove="mousemove()">
+<p id="mmove"></p>
+
+<h3>Onclick event</h3>
+<input id="tclick" type="text" onclick="clickt()">
+<p id="pclick"></p>
+
+</form>
+
+<form>
+<h3>Jquery</h3>
+Enter text: <input id="txtchange" value="" type="text">
+ 
+text field 2: <input id="txtchange2" type="text">
+ 
+<input type="submit" value="submit now"/>
+
+<p id="cmt"></p>
+ 
+Test onfocus: <input id= "txtfocus" type="text" onfocus="onfocusFunction(this)">
+
+<p id="onfocus"></p>
+ 
+</form>
+
+</body>
+
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<title>Web Plugin</title>
+	<style type="text/css">
+
+		body {
+			background-image: url(../../../images/background.jpg);
+		}
+
+		html, body, #wrapper {
+			  height:100%;
+			  width: 100%;
+			  margin: 0;
+			  padding: 0;
+			  border: none;
+			  white-space:0;
+		   }
+		   
+		.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+		.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+		.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+		.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+		a:link {
+		COLOR: #FFFFFF;
+		text-decoration:none;
+		}
+		a:visited {
+		COLOR: #FFFFFF;
+		}
+		a:hover {
+		COLOR: #FFFFFF;
+		}
+		a:active {
+		COLOR: #FFFFFF;
+		}
+	</style>
+</head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<!-- InstanceEndEditable -->
+<body>
+
+<table id="wrapper" cellspacing="0">
+
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+
+<tr>
+<td width="25%" height="70%" rowspan="4"></td>
+<td width="34%"  align="left" bgcolor="#0000CC" style="vertical-align:middle"><span class="style1">&nbsp;&nbsp;&nbsp;Web Plugin</span></td>
+<td width="17%" height="5%" align="right" bgcolor="#0000CC" style="vertical-align:middle"><!-- InstanceBeginEditable name="Home" --><span class="style1"><a href="../../../index.html">Home&nbsp;&nbsp;&nbsp;</a></span> <!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="4"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" height="4%">
+    <!-- InstanceBeginEditable name="Row1" -->
+       	<span style="font-family: Tahoma; font-size: 14; color: #F00; font-weight:bold" align="left">KineticJS Fill</span>
+    <!-- InstanceEndEditable --></td>
+</tr>
+
+<tr>
+	<td colspan="2" valign="top" bgcolor="#FFFFFF" height="53%"><!-- InstanceBeginEditable name="Row2" -->
+		<table width="100%" height="100%">
+		<tr>
+		<td width="100%" height="20%">
+			<table width="70%" align='center'>
+                <tr>
+                    <td>
+						<div id="renderer">
+							<div id="container"></div>
+								<script src="../js/kinetic-v4.5.4.min.js"></script>
+								<script defer="defer">
+									  function loadImages(sources, callback) {
+										var images = {};
+										var loadedImages = 0;
+										var numImages = 0;
+										// get num of sources
+										for(var src in sources) {
+										  numImages++;
+										}
+										for(var src in sources) {
+										  images[src] = new Image();
+										  images[src].onload = function() {
+											if(++loadedImages >= numImages) {
+											  callback(images);
+											}
+										  };
+										  images[src].src = sources[src];
+										}
+									  }
+									  function draw(images) {
+										var stage = new Kinetic.Stage({
+										  container: 'container',
+										  width: 578,
+										  height: 200
+										});
+										var layer = new Kinetic.Layer();
+
+										var colorPentagon = new Kinetic.RegularPolygon({
+										  x: 80,
+										  y: stage.getHeight() / 2,
+										  sides: 5,
+										  radius: 70,
+										  fill: 'red',
+										  stroke: 'black',
+										  strokeWidth: 4,
+										  draggable: true
+										});
+
+										var patternPentagon = new Kinetic.RegularPolygon({
+										  x: 220,
+										  y: stage.getHeight() / 2,
+										  sides: 5,
+										  radius: 70,
+										  fillPatternImage: images.darthVader,
+										  fillPatternOffset: [-220, 70],
+										  stroke: 'black',
+										  strokeWidth: 4,
+										  draggable: true
+										});
+
+										var linearGradPentagon = new Kinetic.RegularPolygon({
+										  x: 360,
+										  y: stage.getHeight() / 2,
+										  sides: 5,
+										  radius: 70,
+										  fillLinearGradientStartPoint: [-50, -50],
+										  fillLinearGradientEndPoint: [50, 50],
+										  fillLinearGradientColorStops: [0, 'red', 1, 'yellow'],
+										  stroke: 'black',
+										  strokeWidth: 4,
+										  draggable: true
+										});
+
+										var radialGradPentagon = new Kinetic.RegularPolygon({
+										  x: 500,
+										  y: stage.getHeight() / 2,
+										  sides: 5,
+										  radius: 70,
+										  fillRadialGradientStartPoint: 0,
+										  fillRadialGradientStartRadius: 0,
+										  fillRadialGradientEndPoint: 0,
+										  fillRadialGradientEndRadius: 70,
+										  fillRadialGradientColorStops: [0, 'red', 0.5, 'yellow', 1, 'blue'],
+										  stroke: 'black',
+										  strokeWidth: 4,
+										  draggable: true
+										});
+
+										/*
+										 * bind listeners
+										 */
+										colorPentagon.on('mouseover touchstart', function() {
+										  this.setFill('blue');
+										  layer.draw();
+										});
+
+										colorPentagon.on('mouseout touchend', function() {
+										  this.setFill('red');
+										  layer.draw();
+										});
+
+										patternPentagon.on('mouseover touchstart', function() {
+										  this.setFillPatternImage(images.yoda);
+										  this.setFillPatternOffset(-100, 70);
+										  layer.draw();
+										});
+
+										patternPentagon.on('mouseout touchend', function() {
+										  this.setFillPatternImage(images.darthVader);
+										  this.setFillPatternOffset(-220, 70);
+										  layer.draw();
+										});
+
+										linearGradPentagon.on('mouseover touchstart', function() {
+										  this.setFillLinearGradientStartPoint(-50);
+										  this.setFillLinearGradientEndPoint(50);
+										  this.setFillLinearGradientColorStops([0, 'green', 1, 'yellow']);
+										  layer.draw();
+										});
+
+										linearGradPentagon.on('mouseout touchend', function() {
+										  // set multiple properties at once with setAttrs
+										  this.setAttrs({
+											fillLinearGradientStartPoint: [-50, -50],
+											fillLinearGradientEndPoint: [50, 50],
+											fillLinearGradientColorStops: [0, 'red', 1, 'yellow']
+										  });
+										  layer.draw();
+										});
+
+										radialGradPentagon.on('mouseover touchstart', function() {
+										  this.setFillRadialGradientColorStops([0, 'red', 0.5, 'yellow', 1, 'green']);
+										  layer.draw();
+										});
+
+										radialGradPentagon.on('mouseout touchend', function() {
+										  // set multiple properties at once with setAttrs
+										  this.setAttrs({
+											fillRadialGradientStartPoint: 0,
+											fillRadialGradientStartRadius: 0,
+											fillRadialGradientEndPoint: 0,
+											fillRadialGradientEndRadius: 70,
+											fillRadialGradientColorStops: [0, 'red', 0.5, 'yellow', 1, 'blue']
+										  });
+										  layer.draw();
+										});
+
+										layer.add(colorPentagon);
+										layer.add(patternPentagon);
+										layer.add(linearGradPentagon);
+										layer.add(radialGradPentagon);
+										stage.add(layer);
+									  }
+									  var sources = {
+										darthVader: '../images/darth-vader.jpg',
+										yoda: '../images/yoda.jpg'
+									  };
+
+									  loadImages(sources, function(images) {
+										draw(images);
+									  });
+
+								</script>
+						</div>
+                    </td>
+                </tr>
+			</table>
+		</td>
+		</tr>
+		
+		</table>
+	<!-- InstanceEndEditable -->
+	</td>
+</tr>
+<tr>
+	<td colspan="4" align="right" height="19%"></td>
+</tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

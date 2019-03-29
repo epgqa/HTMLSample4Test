@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Standard Control</title>
+<style type="text/css">
+body {
+	background-image: url(../images/background.jpg);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+	  white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+</style>
+
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+			var str = "";
+			var num = -1;
+			function AddButton(){
+				var number = document.getElementById("txtNumberItems").value;
+				var name = document.getElementById("txtItemName").value;
+				var width = document.getElementById("txtWidth").value;
+				var height = document.getElementById("txtHeight").value;
+		
+				for(i=0;i<number;i++)
+				{
+					num +=1;
+					str +="<input type='button' id='btn" + name + num + "' value='" + name + "_" + num + "' name='btn" + name + num + "' style='width:" + width + "px;height:" + height + "px;' onclick=\"showComment('" + name + "_" + num + "');\">&nbsp;";
+				}
+				
+				var pos = document.getElementById("btnDynamicButton");
+				pos.innerHTML = str;
+			}
+					
+			function showComment(button)
+			{
+				var cmt = document.getElementById("txtComments");
+				cmt.innerHTML = "<label id='txtComments' style='font-family:tahoma;color:blue;font-size:12px'>" + button + " is clicked.</label>"
+			}
+
+</script>
+</head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<!-- InstanceEndEditable -->
+<body>
+
+<table id="wrapper" cellspacing="0">
+
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+
+<tr>
+<td width="25%" height="70%" rowspan="4"></td>
+<td width="34%"  align="left" bgcolor="#0000CC" style="vertical-align:middle"><span class="style1">&nbsp;&nbsp;&nbsp;Standard Control</span></td>
+<td width="17%" height="5%" align="right" bgcolor="#0000CC" style="vertical-align:middle"><!-- InstanceBeginEditable name="Home" --><span class="style1"><a href="../index.html">Home&nbsp;&nbsp;&nbsp;</a></span> <!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="4"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" height="4%">
+    <!-- InstanceBeginEditable name="Row1" -->
+       	<span style="font-family: Tahoma; font-size: 14; color: #F00; font-weight:bold" align="left">Dynamic Button</span>
+    <!-- InstanceEndEditable --></td>
+</tr>
+
+<tr>
+	<td colspan="2" valign="top" bgcolor="#FFFFFF" height="53%"><!-- InstanceBeginEditable name="Row2" -->
+		<table width="100%" height="100%">
+	
+		<tr>
+		<td width="600px" height="20%">
+			<div id="btnDynamicButton" align="center"></div>
+		</td>
+		</tr>
+		
+		<tr>
+		<td width="100%" height="20%">
+			<table width="70%" align='center'>
+				<tr>
+					<td width="30%"><label id="lblNumberItems" style="font-size:smaller;">Number of Items:</label></td>
+					<td width="30%"><input id="txtNumberItems" type='text' size="9"  style="text-align:right" value="3" /></td>
+					<td width="10%"><label id="lblWidth" style="font-size:smaller;">Width:</label></td>
+					<td><input type='text' id="txtWidth" size="9" style="text-align:right" value="70" /></td>
+				</tr>
+				<tr>
+					<td width="30%"><label id="lblItemName" style="font-size:smaller;">Item Name:</label></td>
+					<td width="30%"><input id="txtItemName" type='text' size="9" style="text-align:right" value="Item" /></td>
+					<td width="10%"><label id="lblHeight" style="font-size:smaller;">Height:</label></td>
+					<td><input type='text' id="txtHeight" size="9" style="text-align:right" value="20" /></td>
+				</tr>
+				<tr>
+					<td colspan="4" width="100%" align="right"><blockquote><input type="button" id="btnApply" value="Apply" style="width:100px;" onclick="AddButton();" /></blockquote></td>
+				</tr>
+				<tr>
+					<td colspan="4" width="100%" align="right" style="background:#C7CEDF;" height="60px"><blockquote><div id="txtComments" align="right" /></blockquote></td>
+				</tr>
+			</table>
+		</td>
+		</tr>
+		
+		</table>
+	<!-- InstanceEndEditable -->
+	</td>
+</tr>
+<tr>
+	<td colspan="4" align="right" height="19%"></td>
+</tr>
+</table>
+<script type="text/javascript">
+	AddButton();
+</script>
+</body>
+<!-- InstanceEnd --></html>

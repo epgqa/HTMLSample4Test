@@ -1,0 +1,8 @@
+/*
+	UIZE JAVASCRIPT FRAMEWORK
+
+	http://www.uize.com/reference/Uize.Build.Deploy.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'Uize.Build.Deploy',required:['Uize.Build.Wsh','Uize.String','Uize.Services.FileSystem','Uize.Json'],builder:function(){'use strict';return{perform:function(_a){var _b=Uize.Services.FileSystem.singleton(),_c=Uize.Json.from(_b.readFile({path:_a.deployConfigPath})),_d=_c.site,_e=_a.builtPath,_f=_a.tempPath,_g='built.zip',_h='ssh-commands.js';var _i='ftp-commands.txt';function _j(_k){_b.writeFile({path:_i,contents:Uize.isArray(_k)?_k.join('\r\n'):_k});Uize.Build.Wsh.execute('ftp -s:'+_i);_b.deleteFile({path:_i});}function _l(_m,_n){_j(['open '+_m.domain,_m.user,_m.password,_n.join('\r\n'),'quit']);}var _o=_f+'/'+_h;function _p(_q){_b.writeFile({path:_o,contents:Uize.isArray(_q)?_q.join('\r\n'):_q});Uize.Build.Wsh.execute('"'+_c.appPaths.SecureCRT+'" /SCRIPT "'+_o+'"');_b.deleteFile({path:_o});}function _r(_m,_n){_p(['# $language = "JScript"','# $interface = "1.0"','','crt.Session.Connect(\'/SSH2 '+'/L '+_m.user+' '+'/PASSWORD '+_m.password+' '+'/C 3DES '+'/M MD5 '+_m.domain+'\');',
+Uize.String.hugJoin(_n,'crt.Screen.Send(\'','\\n\');'),'crt.Screen.Send(\'exit\\n\');','if (crt.Screen.WaitForString(\'logout\',60)) crt.Quit();']);}_b.deleteFile({path:_f+'/'+_g});Uize.Build.Wsh.execute('"'+_c.appPaths['7-Zip']+'" a '+_f+'/'+_g+' '+_e+' -r');_l(_d,['binary','put '+_f+'/'+_g+' '+_g]);_r(_d,['unzip --L '+_g,'rm '+_g,'rm *.* .htaccess','rm -r '+_b.getFolders({path:_e}).join(' '),'mv '+_e+'/* ~','mv '+_e+'/.htaccess ~/.htaccess','rm -rf '+_e]);alert('DEPLOY COMPLETE!!!');}};}});

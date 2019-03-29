@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Standard Controls</title>
+    <script src="../Scripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="../ControlsList/Util.js" type="text/javascript"></script>
+    <script src="../Scripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+    <script src="Class/TestCase.js" type="text/javascript"></script>
+    <script src="Class/Variables.js" type="text/javascript"></script>
+    <script src="Class/Scenario.js" type="text/javascript"></script>
+    <script src="Class/ControlObj.js" type="text/javascript"></script>
+    <script src="Class/Property.js" type="text/javascript"></script>
+    <script src="Class/DynamicElements.js" type="text/javascript"></script>
+    <script src="Class/IO.js" type="text/javascript"></script>
+
+    <!--Using for jqGrid-->
+    <link href="../Scripts/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="../Scripts/themes/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        body {
+            background-image: url(../images/background.jpg);
+            overflow-y: scroll;
+        }
+
+        html, body, #wrapper {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border: none;
+            white-space: normal;
+            white-space: nowrap;
+        }
+
+        .style1 {
+            color: #FFFFFF;
+            font-weight: bold;
+            font-family: Tahoma;
+            font-size: 15px;
+        }
+
+        .style2 {
+            color: #F00;
+            font-weight: bold;
+            font-family: Tahoma;
+            font-size: 17px;
+        }
+
+        .style3 {
+            color: #00F;
+            font-weight: bold;
+            font-family: Times New Roman;
+            font-size: 15px;
+        }
+
+        checkbox {
+            font-size: 20px;
+        }
+
+        .style4 {
+            width: 25%;
+        }
+
+        a:link {
+            COLOR: none;
+            text-decoration: none;
+        }
+
+        a:visited {
+            COLOR: #FFFFFF;
+        }
+
+        a:hover {
+            COLOR: red;
+        }
+
+        a:active {
+            COLOR: #FFFFFF;
+        }
+
+        a {
+            display: block;
+        }
+
+        label {
+            display: block;
+        }
+
+        #alwaysOnTop {
+            position: fixed;
+            z-index: 999;
+            height: 30px;
+            width: 100%;
+            background-color: purple;
+        }
+
+        #GridDetectProperties {
+          display: block;
+          position: absolute;
+          margin-top: 30px;
+          margin-left: 10px;
+          width: 600px;
+        }
+		#tempControls *{
+			background-color: rgb(244,244,244);
+			color: rgb(173,173,173);
+		}
+    </style>
+</head>
+<body>
+    <div id="GridDetectProperties" style="display:none">
+      <script type="text/javascript">
+          document.write(' <table id="jGridDetectPro" align="center"></table>');
+      </script>
+    </div>
+    <table id="wrapper" cellspacing="0">
+        <tr height="30px">
+            <td  align="left" style="background: #0000CC;">
+                <a id="toggle" href="javascript:Toggle('GridDetectProperties');" style="color:#FFFFFF;">⊕&nbsp;</a>                
+            </td>
+            <td  align="right" style="background: #0000CC;">
+                <div id="txtComments" align="right" style="color: #FFFFFF; font-size: 12px;"></div>
+            </td>
+            <td  id="CloseCell" align="right" style="vertical-align: middle; background: #0000CC;"><span class="style1"><a href="../index.html">Home&nbsp;&nbsp;&nbsp;</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td id="mainControls" colspan="3" valign="top"></td>
+        </tr>
+        <tr>
+            <td id="tempControls" colspan="3" valign="top"></td>
+        </tr>
+    </table>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    var cellMainControls;
+    var cellTempControls;
+
+    function DisplayDetectProperties(scenarioID) {
+        var e = window.event;
+        if (e.which == 3) {
+            var txtComment = document.getElementById("txtComments");
+            if (txtComment) txtComment.textContent = "DetectProperties: " + _ListScenarios[scenarioID]._sComment;
+        }
+    }
+
+    jQuery(document).ready(function ($) {
+        cellMainControls = document.getElementById("mainControls");
+        cellTempControls = document.getElementById("tempControls");
+
+        if (!cellMainControls || !cellTempControls) return;
+
+        //get data file from server
+        var xmlhttp = new XMLHttpRequest();
+
+        var urlData = getUrlParm('id').toLowerCase();
+        urlData = "../ScenarioViewerData_Files/" + urlData;
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                _ListScenarios = LoadListScenarios(xmlhttp.responseText.split("\n"));
+                DisplayingScenario();
+            }
+        }
+        xmlhttp.open("GET", urlData, true);
+        xmlhttp.send();
+    });
+
+    function DisplayingScenario() {
+        if (_ListScenarios === null) return;
+        if (_ListScenarios.length == 0) return;
+
+        CreateGridDetectProperties();
+        DisplayMainControls();
+        DisplayTempControls();
+    }
+
+    function DisplayMainControls() {
+        for (var i = 0; i < _ListScenarios.length; i++) {
+            _ListScenarios[i]._MainControl.createElement();
+            if (_ListScenarios[i]._MainControl != null) {
+
+                _ListScenarios[i]._MainControl.createElement();
+
+                if (_ListScenarios[i]._MainControl._oElement != null) {
+                    cellMainControls.innerHTML += "<div style=\"float:left;margin-left:30px;\">" + _ListScenarios[i]._MainControl._oElement + "</div>";
+
+                }
+            }
+        }
+    }
+
+    function DisplayTempControls() {
+
+        cellTempControls.innerHTML += "<br><br><br>";
+        for (var i = 0; i < _ListScenarios.length; i++) {
+            if (_ListScenarios[i]._lstTempControl != null) {
+                for (var j = 0; j < _ListScenarios[i]._lstTempControl.length; j++) {
+                    _ListScenarios[i]._lstTempControl[j].createElement();
+                    if (_ListScenarios[i]._lstTempControl[j]._oElement != null) {
+
+                        cellTempControls.innerHTML += "<div style=\"float:left;margin-left:30px;\">" + _ListScenarios[i]._lstTempControl[j]._oElement + "</div>";
+                    }
+                }
+            }
+        }
+    }
+
+    function LoadListScenarios(linesData) {
+
+        var listTestCase = JSON.parse(localStorage["listTestCase"]);
+        if (listTestCase === null) return;
+
+        var oIO = new IO();
+        var lstListScenarios = [];
+        var oTestCase;
+        for (var i = 0; i < listTestCase.length; i++) {
+            oTestCase = listTestCase[i];
+
+            var scenarioBlock;
+            var arrScenarioID = oTestCase["_IDScenarios"];
+            for (var id = 0; id < arrScenarioID.length; id++) {
+                var scenarioLength;
+
+                if (oTestCase.nDetect == 0)
+                    scenarioLength = LINES_OF_SCENARIO_INFO + (1 + 1) * 2; //the number of line for each Scenario Block.
+                else
+                    scenarioLength = LINES_OF_SCENARIO_INFO + (oTestCase.nDetect + 1) * 2; //the number of line for each Scenario Block.
+
+                var startScenario = oTestCase.iAddress + scenarioLength * parseInt(arrScenarioID[id]);
+
+                scenarioBlock = oIO.getScenarioBlock(linesData, startScenario, scenarioLength);
+
+                oSce = oIO.createScenario(lstListScenarios.length, scenarioBlock, oTestCase);
+
+                if (oSce != null) lstListScenarios.push(oSce); //lstListScenarios.push(oSce.CopyObj());
+            }
+
+        }
+        return lstListScenarios;
+    }
+	
+	
+
+    //create grid detect properties
+    function CreateGridDetectProperties() {
+        $("#jGridDetectPro").jqGrid({
+            datatype: "local", //json
+            colNames: ['ControlName', 'DetectProperties'],
+            colModel: [
+                          { name: '_sName', index: '_sName', width: 150 },
+                          { name: '_sComment', index: '_sComment', width: 300 },
+            ],
+            width: 600,
+            height: 250,
+            sortorder: "asc",
+            scrollrows: true,
+            loadonce: true,
+            sortable: false,
+            rowNum: 50,
+            rowList: [10, 20, 30],
+            sortname: 'id',            
+        });
+
+        $("#jGridDetectPro").jqGrid('clearGridData');
+        for (var i = 0; i < _ListScenarios.length; i++) {
+            jQuery("#jGridDetectPro").jqGrid('addRowData', i + 1, _ListScenarios[i]);
+        }
+    }
+
+    //script for expander detect properties 
+    function Toggle(sID) {
+        var el = document.getElementById(sID);
+        var sig = document.getElementById("toggle");
+
+        if (el.style.display == "block"){
+            el.style.display = "none";
+            sig.innerHTML = "⊕&nbsp;";
+        } else {
+            el.style.display = "block"; sig.innerHTML = "⊝&nbsp;";
+        }
+    }
+</script>

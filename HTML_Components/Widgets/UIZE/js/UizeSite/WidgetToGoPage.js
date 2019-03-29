@@ -1,0 +1,8 @@
+/*
+	UIZE Web Site
+
+	http://www.uize.com/reference/UizeSite.WidgetToGoPage.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'UizeSite.WidgetToGoPage',superclass:'Uize.Widget.Page',required:['Uize.Node','UizeSite.Templates.WidgetToGoTitle','Uize.Widget.PopupPalette'],builder:function(d_a){'use strict';return d_a.subclass({omegastructor:function(){this.addChild('menu',Uize.Widget.PopupPalette,{hideWhenOut:true,positioning:'absolute'}).fade.set({duration:0});},instanceMethods:{wireUi:function(){var d_b=this;if(!d_b.isWired){Uize.Node.injectHtml(document.body,UizeSite.Templates.WidgetToGoTitle.process({idPrefix:d_b.get('idPrefix'),title:document.title}));Uize.require([d_b.d_c,d_b.d_d],function(d_c,d_d){d_b.addChild('widget',d_c,{built:false,html:d_d}).insertOrWireUi();});var d_e=d_b.children.menu,d_f='../'+d_b.d_g.toLowerCase().replace(/\s+/g,'-')+'.html',d_h=function(d_i,d_j,d_k,d_l,d_m){page.launchPopup({name:d_i,url:d_j,width:d_k,height:d_l,toolbar:d_m,location:d_m,directories:d_m,status:d_m,menubar:d_m,scrollbars:d_m,resizable:d_m});},d_n=function(d_o,d_j){
+d_e.wireNode(d_o,'click',function(){d_h(null,d_j,1010,690,1)});};d_n('getThisWidget',d_f);d_n('aboutThisWidget',d_f);d_n('moreWidgets','../../javascript-widgets.html');d_n('uize','../../index.html');d_e.wireNode('openInNewWindow','click',function(){var d_p=Uize.Node.getDimensions(window);d_h('',location.href,d_p.width,d_p.height,0);});d_a.doMy(d_b,'wireUi');}}},stateProperties:{d_g:'title',d_c:'widgetToGoClass',d_d:'widgetToGoHtml'}});}});

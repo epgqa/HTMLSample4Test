@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>タイプ検出</title>
+</head>
+<body>
+<p>Detectkeys1</p>
+<input type="text" id="txtChar" name ="txtChar">
+<input type="submit" value="Clear "id="Clear" name="Clear" onclick="document.getElementById('txtChar').value = ''">
+<p>Detectkeys2</p>
+<input type="text" id="txtDetect" name ="txtDetect" onkeydown="myFunction(event)">
+<p><span id="pressedKey"></span></p>
+
+<script>
+function myFunction(event) {
+    var x = event.key;
+    document.getElementById("pressedKey").innerHTML = "The pressed key was: " + x;
+}
+</script>
+
+</body>
+</html>

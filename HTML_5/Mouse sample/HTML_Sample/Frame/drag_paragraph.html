@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>段落をドラッグする</title>
+<style type="text/css">
+            a:link {COLOR: blue;text-decoration:none;}
+            a:visited {COLOR: blue;}
+            a:hover {COLOR: red;text-decoration: underline;}
+            a:active {COLOR: blue;}
+            a { display: block; COLOR:blue;}
+            label { display: block;}  
+		#dragndrop {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+		.droptarget {
+			float: left; 
+			width: 100px; 
+			height: 35px;
+			margin: 15px;
+			padding: 10px;
+			border: 1px solid #aaaaaa;
+		}
+</style>
+<script>
+function allowDrop(ev) 
+	{
+		ev.preventDefault();
+	}
+
+function drag(ev) 
+	{
+		ev.dataTransfer.setData("text", ev.target.id);
+		document.getElementById("demo").innerHTML = "Started to drag element";
+	}
+
+function drop(ev) 
+	{
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		ev.target.appendChild(document.getElementById(data));
+		document.getElementById("demo").innerHTML = "The element was dropped";
+	}
+</script>
+</head>
+<body>
+
+<!------------------------------------------------------- Drag and Drop -------------------------------------------------------------->
+
+<h2><p style="color:#FF0000"><b>Drag element into boundary side</b></p></h2>
+
+<input type="button" id="button drag and drop"  draggable="true" ondragstart="drag(event)" name="btn_button drag"  value="drag and drop" title="btn_button drag"><br><br>
+<div id="dragndrop" ondrop="drop(event)" ondragover="allowDrop(event)"></div><br>
+
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <p ondragstart="drag(event)" draggable="true" id="dragtarget">Drag me!</p>
+</div>
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div><br><br><br><br>
+<p id="demo"></p>
+</body>
+</html>

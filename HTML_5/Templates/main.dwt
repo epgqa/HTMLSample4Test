@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>Untitled Document</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+
+<style type="text/css">
+body {
+	background-image: url(../images/background.png);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+	  white-space:0;
+	  white-space: nowrap;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: #F00; font-weight: bold; font-family: Tahoma; font-size: 17px; }
+
+.style3 {color: #00F; font-weight: bold; font-family: Times New Roman; font-size: 15px; }
+
+</style>
+
+</head>
+<title>HTML_StandarControl</title>
+
+<body>
+
+<table id="wrapper" cellspacing="0">
+<tr>
+<td colspan="5" align="right" height="17%"></td>
+</tr>
+
+<tr>
+<td width="25%" rowspan="5"></td>
+<td colspan="2" align="left" bgcolor="#0000CC" width="34%"><blockquote><span class="style1">Standard Controls</span></blockquote></td>
+<td height="5%" width="17%" align="right" valign="middle" bgcolor="#0000CC"><!-- TemplateBeginEditable name="Home" --><blockquote><span class="style1">Home</span></blockquote><!-- TemplateEndEditable --></td>
+<td width="24%" height="70%" rowspan="5"></td>
+</tr>
+
+<tr>
+  <td height="7%" colspan="3" bgcolor="#FFFFFF" width="51%"><span class="style2"><blockquote><label id="lblTitle">List Controls</label></blockquote></span></td>
+</tr>
+<tr>
+  <td height="2%" width="17%" bgcolor="#FFFFFF" valign="top" align="center"><!-- TemplateBeginEditable name="Col1" -->Col1<!-- TemplateEndEditable --></td>
+  <td width="17%" height="2%" align="center" valign="top" bgcolor="#FFFFFF"><!-- TemplateBeginEditable name="Col2" -->Col2<!-- TemplateEndEditable --></td>
+  <td width="17%" height="2%" align="center" valign="top" bgcolor="#FFFFFF"><!-- TemplateBeginEditable name="Col3" -->Col3<!-- TemplateEndEditable --></td>
+</tr>
+<tr>
+  <td height="48%" bgcolor="#FFFFFF" valign="top" align="right"><!-- TemplateBeginEditable name="Col4" -->Col4<!-- TemplateEndEditable --></td>
+  <td width="17%" height="48%" align="center" valign="top" bgcolor="#FFFFFF"><!-- TemplateBeginEditable name="Col5" -->Col5<!-- TemplateEndEditable --></td>
+  <td width="17%" height="48%" align="left" valign="top" bgcolor="#FFFFFF"><!-- TemplateBeginEditable name="Col6" -->Col6<!-- TemplateEndEditable --></td>
+</tr>
+
+<tr>
+  <td colspan="4" align="right" height="21%"><span class="style3"></span></td>
+</tr>
+</table>
+</body>
+</html>

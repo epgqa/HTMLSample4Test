@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<title>Web Plugin</title>
+<style type="text/css">
+body {
+	background-image: url(../../../images/background.jpg);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+	  white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+ #mystatus {
+        background-color: #aaf0ae;
+        width:50em;
+        margin-top: 20px;
+    }
+</style>
+    <script src="http://yui.yahooapis.com/3.8.1/build/yui/yui-min.js"></script>
+<meta charset=utf-8 />
+<script>YUI({
+    // load dt-contextmenu and dt-selection from gallery
+    gallery: 'gallery-2013.01.16-21-05'
+}).use("datatable", "cssfonts", "gallery-datatable-selection", "plugin",
+        "gallery-datatable-contextmenu",
+         function (Y) {
+
+             var myData = [
+                 { rid: 1, rtext: "Character is Destiny.", rnum: 8765.43 },
+                 { rid: 2, rtext: "You must be the change you wish to see in the world.", rnum: 1.23 },
+                 {
+                     rid: 3, rtext: "Even if you are on the right track, you will get run over if you just sit there", rnum: 314.1593
+                 },
+                 { rid: 4, rtext: "A ship is safe in harbor, but that's not what ships are for.", rnum: 2.718281 },
+                 {
+                     rid: 5, rtext: "The real voyage of discovery consists not in seeking new lands but seeing with new eyes.",
+                     rnum: 4
+                 },
+                 { rid: 6, rtext: "Always forgive your enemies; nothing annoys them so much.", rnum: 172.09 }
+             ];
+
+             var randomQ = [
+               "Ooohh, a woman! Woo-woo-woo-woo-woo-woo!!!",
+               "Remind me to kill you later. I will make a note of it...",
+               "I got an uncle in Cairo. He's a cairo-practor.",
+               "Oh... a simple job for simple people.",
+               "Hey Moe! I think we made da wrong toin!"
+             ];
+
+             var recindex = 10.1;
+
+             //
+             //  Create the DataTable
+             //
+             var dt = new Y.DataTable({
+                 columns: ['rid', 'rtext', 'rnum'],
+                 data: myData,
+                 sortable: true,
+                 width: '700px',
+                 // use gallery-datatable-selection to highlight rows
+                 highlightMode: 'row'
+             });
+             dt.render('#tablediv');
+
+             //
+             //  Add the plugin to this DT instance, one on the TBODY the other on the THEAD
+             //
+             dt.plug(Y.Plugin.DataTableContextMenu, {
+                 tbodyMenu: {
+                     menuItems: [
+                         { label: "Update", value: "u" },
+                         { label: "Insert Before", value: "i" },
+                         { label: "Insert After", value: "a" },
+                         { label: "<hr/>", value: null },
+                         { label: "Delete Record", value: "d" },
+                         { label: "Destroy Cmenu", value: "dc" }
+                     ],
+                     after: {
+                         'selectedMenuChange': tdMenuChange
+                     }
+                 },
+
+                 theadMenu: {
+                     menuItems: ["Sort A-Z", "Sort Z-A", "Hide"],
+                     after: {
+                         'selectedMenuChange': thMenuSelect
+                     }
+                 }
+             });
+
+
+             signature
+             //
+             function thMenuSelect(e) {
+                 var th = this.get('contextTarget'),
+                     coln = th.getData('yui3-col-id'),
+                     col = dt.getColumn(coln),
+                     mindx = +(e.newVal.menuIndex);
+
+                 if (coln && col && mindx !== null) {
+                     switch (mindx) {
+                         case 0:
+                             sortO = {};
+                             sortO[coln] = 'asc';
+                             //dt.sort(sortO);
+                             dt.set('sortBy', sortO);
+                             break;
+                         case 1:
+                             sortO = {};
+                             sortO[coln] = 'desc';
+                             dt.sort(sortO);
+                             break;
+                         case 2:
+                             dt.removeColumn(col);
+                     }
+                 }
+             }
+
+             function tdMenuChange(e) {
+                 var tr = this.get('contextTarget'),
+                     rowid = this.get('contextTarget').get('id'),
+                     menu = e.newVal.menuItem.label || e.newVal.menuItem,
+                     mval = e.newVal.menuItem.value;
+
+                 updateStatus("context target TR=[" + rowid + "]  menu choice=[" + menu + "], index=" + e.newVal.menuIndex
+
+         );
+
+                 var msg;
+                 var rec = dt.getRecord(tr),
+                     recNo = dt.data.indexOf(rec) + 1;
+
+                 if (!mval) return;
+                 switch (mval) {
+
+                     case "u":
+                         msg = "Updating record No. " + recNo;
+                         msg = null;
+                         rqi = Math.floor(Math.random() * randomQ.length);
+                         dt.modifyRow(rec, { rtext: "UPDATED: " + randomQ[rqi] });
+                         break;
+
+                     case "i":
+                         msg = "Inserting new record before " + recNo;
+                         msg = null;
+                         rqi = Math.floor(Math.random() * randomQ.length);
+                         dt.addRow({
+                             rid: recindex++,
+                             rtext: "INSERT: " + randomQ[rqi],
+                             rnum: Math.random() * 1000 - 300.0
+                         }, { index: recNo - 1 }
+                         );
+                         break;
+
+                     case "a":
+                         msg = "Inserting new record after " + recNo;
+                         msg = null;
+                         rqi = Math.floor(Math.random() * randomQ.length);
+                         dt.addRow({
+                             rid: recindex++,
+                             rtext: "INSERT: " + randomQ[rqi],
+                             rnum: Math.random() * 1000 - 300.0
+                         }, { index: recNo }
+                         );
+                         break;
+
+                     case "d":
+                         msg = null;
+                         if (confirm("Are you sure you want to delete this record?") === true) {
+                             dt.removeRow(rec);
+                             msg = "Deleted record No. " + recNo;
+                         }
+                         break;
+
+                     case "dc":
+                         if (confirm("You are about to disable this ContextMeny, are you sure=?")) {
+                             cmenu.destroy();
+                             msg = "ContextMenu was destroyed!";
+                         }
+                 }
+                 if (msg) alert(msg);
+
+             }
+
+             function updateStatus(msg) {
+                 var dstatus = Y.one("#mystatus");
+                 dstatus.setHTML(dstatus.getHTML() + '<br/>' + msg);
+             }
+
+         });</script>
+</head>
+
+<body class="yui3-skin-sam">
+
+<table id="wrapper" cellspacing="0">
+
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+
+<tr>
+<td width="25%" height="70%" rowspan="4"></td>
+<td width="34%"  align="left" bgcolor="#0000CC" style="vertical-align:middle"><span class="style1">&nbsp;&nbsp;&nbsp;Web Plugin</span></td>
+<td width="17%" height="5%" align="right" bgcolor="#0000CC" style="vertical-align:middle"><!-- InstanceBeginEditable name="Home" --><span class="style1"><a href="../../../index.html">Home&nbsp;&nbsp;&nbsp;</a></span> <!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="4"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" height="4%">
+    <!-- InstanceBeginEditable name="Row1" -->
+       	<span style="font-family: Tahoma; font-size: 14; color: #F00; font-weight:bold" align="left">DataGrid YUI</span>
+    <!-- InstanceEndEditable --></td>
+</tr>
+
+<tr>
+	<td colspan="2" valign="top" bgcolor="#FFFFFF" height="53%"><!-- InstanceBeginEditable name="Row2" -->
+		<table width="100%" height="100%">
+		
+		<tr>
+		<td width="100%" height="20%">
+			<table width="70%" align='center'>
+                <tr>
+                    <td>
+                        		<div id="tablediv"></div>
+        <div id="mystatus"><b>Status:</b></div>
+	</div>
+                    </td>
+                </tr>
+			</table>
+		</td>
+		</tr>
+		
+		</table>
+	<!-- InstanceEndEditable -->
+	</td>
+</tr>
+<tr>
+	<td colspan="4" align="right" height="19%"></td>
+</tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>デジタル時計</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+
+<script>
+var t;
+function startTime() {
+    var today=new Date();
+    var h=today.getHours();
+    var m=today.getMinutes();
+    var s=today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML = h+":"+m+":"+s;
+t = setTimeout(function(){startTime(true)},500);
+
+    //var t = setTimeout(function(){startTime()},500);
+}
+
+function checkTime(i) {
+    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+function myStopFunction() {
+    clearTimeout(t);
+}
+
+</script>
+</head>
+
+<body onload="startTime()">
+
+<div id="txt" style="font-size:60px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;"></div>
+<br>
+<input type="button" id="btn_pause" value="Pause" onclick="myStopFunction()"></input>
+<input type="button" id="btn_continue" value="Continue" onclick="startTime()"></input>
+
+</body>
+</html>

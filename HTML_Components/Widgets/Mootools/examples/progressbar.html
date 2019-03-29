@@ -1,0 +1,420 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<title>Web Plugin</title>
+<style type="text/css">
+body {
+	background-image: url(../../../images/background.jpg);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+	  white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+</style>
+                <script type="text/javascript" src="js/progress/mootools-yui-compressed.js"></script>
+        <script type="text/javascript" src="js/progress/MooProgressBar.js"></script>
+            <script type="text/javascript">
+                /*
+                 * Initialize the Bars
+                 */
+
+                window.addEvent('domready', function () {
+                    new MooProgressBar($('bar1'));
+
+                    new MooProgressBar($('bar2'), {
+                        range: 1382,
+                        start: 306.8,
+                        unit: 'KB',
+                        start: 306.8,
+                        precision: 2,
+                        onProgress: function (progress, value, unit, precision) {
+                            $('progress_input2').value = progress;
+                            $('value_input2').value = value;
+                            console.log('bar2 progressed to ' + value.toFixed(precision) + unit + ' (' + progress.toFixed(precision) + '%)');
+                        }
+                    });
+
+                    new MooProgressBar($('bar3'), {
+                        range: [200, 100],
+                        unit: '',
+                        precision: 2,
+                        getLabel: function (progress, value, unit, precision) {
+                            return value.toFixed(precision) + unit + ' left, ' + progress.toFixed(precision) + '% done';
+                        }
+                    });
+                    $('progress_input2').addEvent('keydown', function (ev) {
+                        if (ev && ev.key == 'enter') {
+                            $('bar2').retrieve('MooProgressBar').setProgress(ev.target.value);
+                        }
+                    });
+                    $('value_input2').addEvent('keydown', function (ev) {
+                        if (ev && ev.key == 'enter') {
+                            $('bar2').retrieve('MooProgressBar').setValue(ev.target.value);
+                        }
+                    });
+
+                    new MooProgressBar($('bar4'), {
+                        getLabel: function () { return 'Please wait...' },
+                        onComplete: function () { this.setLabel('Finished!') }
+                    });
+
+                    new MooProgressBar($('bar5'), {
+                        range: [73, 0],
+                        effect_duration: 1500,
+                        getLabel: function (progress, value) {
+                            var h = Math.floor(value / 60), m = Math.floor(value % 60);
+                            return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m + ' left';
+                        }
+                    });
+
+                    $$('.progressbar').each(function (elem) {
+                        elem.retrieve('MooProgressBar').addEvent('complete', function (value) {
+                            window.clearTimeout(timer[elem.id]);
+                            timer[elem.id] = null;
+                            console.log(elem.id + ' finished', value);
+                            //this.setLabel('Finished!');
+                        });
+                    });
+                });
+
+
+                /*
+                 * Some demo Helpers
+                 */
+
+                var timer = {};
+                function startPeriodical(bar_nr) {
+                    if (timer['bar' + bar_nr]) {
+                        window.clearTimeout(timer['bar' + bar_nr]);
+                        timer['bar' + bar_nr] = null;
+                    } else {
+                        var bar = $('bar' + bar_nr).retrieve('MooProgressBar');
+                        timer['bar' + bar_nr] = (function () {
+                            bar.setProgress(bar.getProgress() + (Math.random() * 10));
+                        }).periodical(750);
+                    }
+                }
+                function startEverySecond() {
+                    if (timer['bar5']) {
+                        window.clearTimeout(timer['bar5']);
+                        timer['bar5'] = null;
+                    } else {
+                        var bar = $('bar5').retrieve('MooProgressBar');
+                        timer['bar5'] = (function () {
+                            bar.setValue(bar.getValue() - 1);
+                        }).periodical(1000);
+                    }
+                }
+                function setBarProgress(nr, value) {
+                    $('bar' + nr).retrieve('MooProgressBar').setProgress(value);
+                }
+                function setBarValue(nr, value) {
+                    $('bar' + nr).retrieve('MooProgressBar').setValue(value);
+                }
+
+
+        </script>
+        <style type="text/css">
+            /*
+             * Defaults
+             */
+            .progressbar{
+                width:160px;
+                height:24px;
+                border:1px solid black;
+                overflow:hidden;
+                white-space:nowrap;
+                font-size:small;
+                text-align:center;
+                line-height:24px;
+                display:inline-block;
+            }
+            .progressbar_inner{
+                width:0;
+                height:100%;
+                position:relative; /* This is important! */
+            }
+            /* The visual bar */
+            .progressbar_bg{
+                position:absolute;
+                top:0;
+                width:100%;
+                height:100%;
+                background-color:#004D8B;
+                overflow:hidden
+            }
+            /* The labels */
+            .progressbar_label{
+                position:relative;
+                width:100%;
+                overflow:visible;
+                padding:0 4px;
+            }
+            /* The bottom label */
+            .progressbar_inner > .progressbar_label{
+                color:black;
+            }
+            /* The top label */
+            .progressbar_bg > .progressbar_label{
+                color:white;
+            }
+
+            
+            /* 
+             * The demo Bars
+             */
+
+            #bar3{
+                width: 220px;
+            }
+
+
+            #bar2{
+                border-width:0;
+                height:20px;
+                line-height:20px;
+                background-color:#eee;
+            }
+            #bar2 .progressbar_bg{
+                background-color:black
+            }
+
+            #bar2 .progressbar_inner > .progressbar_label{
+                color:black;
+            }
+            #bar2 .progressbar_bg > .progressbar_label{
+                color:#eee;
+            }
+
+            #bar3 .progressbar_inner > .progressbar_label{
+                text-align:left;
+            }
+            #bar3 .progressbar_bg > .progressbar_label{
+                text-align:left;
+            }
+
+
+            #bar4{
+                width:200px;
+                height:25px;
+                border-radius:6px;
+            }
+            #bar4 .progressbar_label{
+                font-family:arial;
+                font-size:large;
+                font-weight:bolder;
+                padding:0 6px;
+            }
+            
+            /* Using an animated gif */
+            #bar4 .progressbar_bg{
+                background:url("js/progress/progress.gif") 0 0 no-repeat;
+                border-radius:6px;
+                -moz-border-radius:6px;
+                -webkit-box-shadow: 0 0 6px 0 #000;
+                box-shadow: 0 0 6px 0 #000;
+            }
+
+
+            #bar5{
+                width: 400px;
+            }
+        </style>
+
+</head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<!-- InstanceEndEditable -->
+<body>
+
+<table id="wrapper" cellspacing="0">
+
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+
+<tr>
+<td width="25%" height="70%" rowspan="4"></td>
+<td width="34%"  align="left" bgcolor="#0000CC" style="vertical-align:middle"><span class="style1">&nbsp;&nbsp;&nbsp;Web Plugin</span></td>
+<td width="17%" height="5%" align="right" bgcolor="#0000CC" style="vertical-align:middle"><!-- InstanceBeginEditable name="Home" --><span class="style1"><a href="../../../index.html">Home&nbsp;&nbsp;&nbsp;</a></span> <!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="4"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" height="4%">
+    <!-- InstanceBeginEditable name="Row1" -->
+       	<span style="font-family: Tahoma; font-size: 14; color: #F00; font-weight:bold" align="left">ProgressBar MooTools</span>
+    <!-- InstanceEndEditable --></td>
+</tr>
+
+<tr>
+	<td colspan="2" valign="top" bgcolor="#FFFFFF" height="53%"><!-- InstanceBeginEditable name="Row2" -->
+		<table width="100%" height="100%">
+		
+		<tr>
+		<td width="100%" height="20%">
+			<table width="70%" align='center'>
+                <tr>
+                    <td>
+<h1>MooProgressBar Demo</h1>
+        
+        <hr>
+
+        Simple percentage: 
+        <div class="progressbar" id="bar1">
+            <div class="progressbar_inner">
+                <div class="progressbar_label"></div>
+                <div class="progressbar_bg">
+                    <div class="progressbar_label"></div>
+                </div>
+            </div>
+        </div>
+        
+        <br />
+        <input type="button" value="0%" onclick="setBarProgress(1, 0)">
+        <input type="button" value="10%" onclick="setBarProgress(1, 10)">
+        <input type="button" value="20%" onclick="setBarProgress(1, 20)">
+        <input type="button" value="50%" onclick="setBarProgress(1, 50)">
+        <input type="button" value="80%" onclick="setBarProgress(1, 80)">
+        <input type="button" value="100%" onclick="setBarProgress(1, 100)">
+        <input type="button" value="Periodical" onclick="startPeriodical(1)">
+
+        <hr>
+        
+        Upload:
+        <div class="progressbar" id="bar2">
+            <div class="progressbar_inner">
+                <div class="progressbar_label">0%</div>
+                <div class="progressbar_bg">
+                    <div class="progressbar_label">0%</div>
+                </div>
+            </div>
+        </div>
+        
+        <br />
+        <input type="button" value="0%" onclick="setBarProgress(2, 0)">
+        <input type="button" value="10%" onclick="setBarProgress(2, 10)">
+        <input type="button" value="20%" onclick="setBarProgress(2, 20)">
+        <input type="button" value="50%" onclick="setBarProgress(2, 50)">
+        <input type="button" value="80%" onclick="setBarProgress(2, 80)">
+        <input type="button" value="100%" onclick="setBarProgress(2, 100)">
+        <input type="button" value="Periodical" onclick="startPeriodical(2)">
+        <input type="text" value="" id="progress_input2">
+        <br />
+        <input type="button" value="0" onclick="setBarValue(2, 0)">
+        <input type="button" value="200" onclick="setBarValue(2, 200)">
+        <input type="button" value="412" onclick="setBarValue(2, 412)">
+        <input type="button" value="607" onclick="setBarValue(2, 607)">
+        <input type="button" value="912" onclick="setBarValue(2, 912)">
+        <input type="button" value="1382" onclick="setBarValue(2, 1382)">
+        <input type="text" value="" id="value_input2">
+
+        <hr>
+
+        200 - 100 :
+        <div class="progressbar" id="bar3">
+            <div class="progressbar_inner">
+                <div class="progressbar_label"></div>
+                <div class="progressbar_bg">
+                    <div class="progressbar_label"></div>
+                </div>
+            </div>
+        </div>
+        
+        <br />
+        <input type="button" value="0%" onclick="setBarProgress(3, 0)">
+        <input type="button" value="10%" onclick="setBarProgress(3, 10)">
+        <input type="button" value="20%" onclick="setBarProgress(3, 20)">
+        <input type="button" value="50%" onclick="setBarProgress(3, 50)">
+        <input type="button" value="80%" onclick="setBarProgress(3, 80)">
+        <input type="button" value="100%" onclick="setBarProgress(3, 100)">
+        <input type="button" value="Periodical" onclick="startPeriodical(3)">
+
+        <hr>
+
+        Image :
+        <div class="progressbar" id="bar4">
+            <div class="progressbar_inner">
+                <div class="progressbar_label"></div>
+                <div class="progressbar_bg">
+                    <div class="progressbar_label"></div>
+                </div>
+            </div>
+        </div>
+        
+        <br />
+        <input type="button" value="0%" onclick="setBarProgress(4, 0)">
+        <input type="button" value="10%" onclick="setBarProgress(4, 10)">
+        <input type="button" value="20%" onclick="setBarProgress(4, 20)">
+        <input type="button" value="50%" onclick="setBarProgress(4, 50)">
+        <input type="button" value="80%" onclick="setBarProgress(4, 80)">
+        <input type="button" value="100%" onclick="setBarProgress(4, 100)">
+        <input type="button" value="Periodical" onclick="startPeriodical(4)">
+        <br />
+        <span style="font-size:small;">Background image from <a href="javascript:if(confirm('http://preloaders.net/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://preloaders.net/'" tppabs="http://preloaders.net/" target="_blank">http://preloaders.net/</a></span>
+
+        <hr>
+        
+        Long Time: 
+        <div class="progressbar" id="bar5">
+            <div class="progressbar_inner">
+                <div class="progressbar_label">0%</div>
+                <div class="progressbar_bg">
+                    <div class="progressbar_label">0%</div>
+                </div>
+            </div>
+        </div>
+        
+        <br />
+        <input type="button" value="0%" onclick="setBarProgress(5, 0)">
+        <input type="button" value="10%" onclick="setBarProgress(5, 10)">
+        <input type="button" value="20%" onclick="setBarProgress(5, 20)">
+        <input type="button" value="50%" onclick="setBarProgress(5, 50)">
+        <input type="button" value="80%" onclick="setBarProgress(5, 80)">
+        <input type="button" value="100%" onclick="setBarProgress(5, 100)">
+        <input type="button" value="Periodical" onclick="startEverySecond()">
+        
+        <hr>
+        <br /><br />
+                    </td>
+                </tr>
+			</table>
+		</td>
+		</tr>
+		
+		</table>
+	<!-- InstanceEndEditable -->
+	</td>
+</tr>
+<tr>
+	<td colspan="4" align="right" height="19%"></td>
+</tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

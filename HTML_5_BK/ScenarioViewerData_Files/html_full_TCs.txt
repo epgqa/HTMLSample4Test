@@ -1,0 +1,113 @@
+Platform: HTML
+[TestCase_0]
+Control: div
+SuggestProperties: id;name;text
+NDetect: 2
+NScenario: 3
+Address: 0
+[End]
+[TestCase_1]
+Control: image
+SuggestProperties: id;name;alt;src
+NDetect: 3
+NScenario: 4
+Address: 30
+[End]
+[TestCase_2]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 2
+NScenario: 3
+Address: 78
+[End]
+[TestCase_3]
+Control: input-checkbox
+SuggestProperties: id;name
+NDetect: 1
+NScenario: 2
+Address: 108
+[End]
+[TestCase_4]
+Control: input-datetime-local
+SuggestProperties: id;name
+NDetect: 1
+NScenario: 2
+Address: 124
+[End]
+[TestCase_5]
+Control: input-radio
+SuggestProperties: id;name
+NDetect: 1
+NScenario: 2
+Address: 140
+[End]
+[TestCase_6]
+Control: input-text
+SuggestProperties: id;name
+NDetect: 1
+NScenario: 2
+Address: 156
+[End]
+[TestCase_7]
+Control: label
+SuggestProperties: id;text
+NDetect: 1
+NScenario: 2
+Address: 172
+[End]
+[TestCase_8]
+Control: link
+SuggestProperties: id;name;image alt;href;text
+NDetect: 3
+NScenario: 10
+Address: 188
+[End]
+[TestCase_9]
+Control: select-multiple
+SuggestProperties: id;name
+NDetect: 1
+NScenario: 2
+Address: 308
+[End]
+[TestCase_10]
+Control: select-one
+SuggestProperties: id;name
+NDetect: 1
+NScenario: 2
+Address: 324
+[End]
+[TestCase_11]
+Control: table
+SuggestProperties: id;caption
+NDetect: 1
+NScenario: 2
+Address: 340
+[End]
+[TestCase_12]
+Control: texarea
+SuggestProperties: id;name
+NDetect: 1
+NScenario: 2
+Address: 356
+[End]
+[TestCase_13]
+Control: video
+SuggestProperties: id
+NDetect: 1
+NScenario: 1
+Address: 372
+[End]
+[TestCase_14]
+Control: video
+SuggestProperties: id
+NDetect: 1
+NScenario: 1
+Address: 380
+[End]
+[TestCase_15]
+Control: video
+SuggestProperties: id
+NDetect: 1
+NScenario: 1
+Address: 388
+[End]

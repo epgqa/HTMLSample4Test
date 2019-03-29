@@ -1,0 +1,8 @@
+/*
+	UIZE Web Site
+
+	http://www.uize.com/reference/UizeSite.Templates.ParamsTable.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'UizeSite.Templates.ParamsTable',required:[],builder:function(){'use strict';var _a=function(){};_a.process=function(input){var output=[];var params=input.params,idPrefix=input.idPrefix;output.push('\n<table id="',idPrefix,'" class="paramsTable">');for(var paramName in params){output.push('\n	<tr>\n		<td class="fieldLabel">',paramName,'</td>\n		<td class="field">');var paramType=params[paramName],paramId=idPrefix+'_'+paramName;if(paramType=='boolean'){output.push('\n			<input id="',paramId,'" type="checkbox"/>');}else if(Uize.isArray(paramType)){output.push('\n			<select id="',paramId,'">');for(var optionNo= -1,totalOptions=paramType.length;++optionNo<totalOptions;){var value=paramType[optionNo];output.push('\n				<option value="',value,'">',value,'</option>');}output.push('\n			</select>');}else if(typeof paramType=='object'){output.push('\n			<input id="',paramId,'" type="text" style="width:50px;"/> (',paramType.minValue,'-',paramType.maxValue,')');}else if(paramType=='string-multiline'){
+output.push('\n			<textarea id="',paramId,'"/ wrap="off"></textarea>');}else{output.push('\n			<input id="',paramId,'" type="text"/>');}output.push('\n		</td>\n	</tr>');}output.push('\n</table>\n');return output.join('');};_a.input={params:'object',idPrefix:'string'};return _a;}});

@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Web Plugin</title>
+    <link href="/favicon.ico" rel="shortcut icon" />
+    <link href="itoggle/src/engage.itoggle.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="itoggle/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="itoggle/js/chili.js"></script>
+    <script type="text/javascript" src="itoggle/js/global.js"></script>
+    <script type="text/javascript" src="itoggle/src/engage.itoggle.1.7.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Start jQuery goodness
+            $('#itoggle input#example_1').iToggle({
+                easing: 'easeOutExpo',
+                onClickOn: function () {
+                    $('#console').show().css({ opacity: 0 }).animate({ opacity: 1 }, 400);
+                    statusUpdate('Console on');
+                    $('input:checkbox').addClass('iT_checkbox_on');
+                    $('input:radio').addClass('iT_checkbox_on');
+                },
+                onClickOff: function () {
+                    statusUpdate('Console off');
+                    $('#console').animate({ opacity: 0 }, 400);
+                    $('input:checkbox').removeClass('iT_checkbox_on');
+                    $('input:radio').removeClass('iT_checkbox_on');
+                }
+            });
+            $('#itoggle #example_2').iToggle({
+                easing: 'easeOutExpo',
+                onClickOn: function () {
+                    statusUpdate('Clicked on ' + $(this).attr('for'));
+                },
+                onSlideOn: function () {
+                    statusUpdate('Slide on ' + $(this).attr('for'));
+                },
+                onClickOff: function () {
+                    statusUpdate('Clicked off ' + $(this).attr('for'));
+                },
+                onSlideOff: function () {
+                    statusUpdate('Slide off ' + $(this).attr('for'));
+                }
+            });
+
+            $('#itoggle #example_3').iToggle({
+                easing: 'easeOutExpo',
+                type: 'radio',
+                onClickOn: function () {
+                    statusUpdate('Clicked on ' + $(this).attr('for'));
+                },
+                onSlideOn: function () {
+                    statusUpdate('Slide on ' + $(this).attr('for'));
+                },
+                onClickOff: function () {
+                    statusUpdate('Clicked off ' + $(this).attr('for'));
+                },
+                onSlideOff: function () {
+                    statusUpdate('Slide off ' + $(this).attr('for'));
+                }
+            });
+
+            function statusUpdate(text) {
+                $('#console').prepend('<p>' + text + '</p>');
+                $('#console p:nth-child(1)').css({ color: '#0F0' });
+                $('#console p:nth-child(2)').css({ color: '#0C0' });
+                $('#console p:nth-child(3)').css({ color: '#090' });
+                $('#console p:nth-child(4)').css({ color: '#090' });
+                $('#console p:nth-child(5)').css({ color: '#060' });
+                $('#console p:nth-child(6)').css({ color: '#030' });
+                $('#console p:nth-child(7)').remove();
+            }
+
+            // End jQuery goodness
+        });
+	</script>
+    <style type="text/css">
+	body {
+			background-image: url(../../../images/background.jpg);
+		}
+
+		html, body, #wrapper {
+			  height:100%;
+			  width: 100%;
+			  margin: 0;
+			  padding: 0;
+			  border: none;
+			  white-space:0;
+		   }
+		   
+		.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+		.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+		.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+		.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+		a:link {
+		COLOR: #FFFFFF;
+		text-decoration:none;
+		}
+		a:visited {
+		COLOR: #FFFFFF;
+		}
+		a:hover {
+		COLOR: #FFFFFF;
+		}
+		a:active {
+		COLOR: #FFFFFF;
+		}
+		#container
+		{
+		border: 1px dashed #AAA;
+		}
+	</style>
+</head>
+<body>
+
+    <table id="wrapper" cellspacing="0">
+        <tr>
+            <td colspan="4" align="right" height="15%"></td>
+        </tr>
+
+        <tr>
+            <td width="25%" height="70%" rowspan="4"></td>
+            <td width="34%" align="left" bgcolor="#0000CC" style="vertical-align: middle"><span class="style1">&nbsp;&nbsp;&nbsp;Web Plugin</span></td>
+            <td width="17%" height="5%" align="right" bgcolor="#0000CC" style="vertical-align: middle">
+                <!-- InstanceBeginEditable name="Home" -->
+                <span class="style1"><a href="../../../index.html">Home&nbsp;&nbsp;&nbsp;</a></span>
+                <!-- InstanceEndEditable -->
+            </td>
+            <td width="24%" height="70%" rowspan="4"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" valign="bottom" height="4%">
+                <!-- InstanceBeginEditable name="Row1" -->
+                <span style="font-family: Tahoma; font-size: 14; color: #F00; font-weight: bold" align="left">iToggle</span>
+                <!-- InstanceEndEditable -->
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" valign="top" bgcolor="#FFFFFF" height="53%">
+                <!-- InstanceBeginEditable name="Row2" -->
+                <table width="100%" height="100%">
+                    <tr>
+                        <td width="100%" height="20%">
+                            <table width="70%" align='center'>
+                                <tr>
+                                    <td>
+                                        <div id="content">
+                                            <div id="itoggle">
+                                                <h3>Example 01</h3>
+                                                <p>The simplest implementation.</p>
+                                                <input type="checkbox" id="example_1" />
+                                                <div id="example_2">
+                                                    <h3>Example 02</h3>
+                                                    <p>Using it on a group of checkboxes with labels.</p>
+                                                    <label for="example_2a">Example 2 a</label>
+                                                    <input type="checkbox" checked="checked" id="example_2a" />
+                                                    <label for="example_2b">Example 2 b</label>
+                                                    <input type="checkbox" id="example_2b" />
+                                                    <label for="example_2c">Example 2 c</label>
+                                                    <input type="checkbox" checked="checked" id="example_2c" />
+                                                </div>
+                                                <div id="example_3">
+                                                    <h3>Example 03</h3>
+                                                    <p>Using it with a group of radio buttons.</p>
+                                                    <input type="radio" id="example_3a" name="example_3" checked="checked" />
+                                                    <input type="radio" id="example_3b" name="example_3" />
+                                                    <input type="radio" id="example_3c" name="example_3" />
+                                                </div>
+                                                <div id="console">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" align="right" height="19%"></td>
+        </tr>
+    </table>
+</body>
+</html>

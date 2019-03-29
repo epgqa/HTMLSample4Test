@@ -1,0 +1,62 @@
+/* palette in generation */
+.js-palette { }
+
+.js-palette span {
+    border: 1px solid #222;
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    margin: 2px 1px;
+    vertical-align: middle;
+    width: 20px;
+}
+
+.js-palette span:hover {
+    border: 2px solid #222;
+    margin: 1px 0px;
+}
+
+.js-palette .jsp-selected {
+    border: 2px solid #222;
+}
+
+.js-palette span.jsp-selected:hover {
+    margin: 2px 1px !important;
+}
+
+.js-palette .jsp-desc {
+    color: #222;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+/* float palette */
+.jsp-popup {
+    background-color: White;
+    border: 1px solid #ddd;
+    display: inline-block;
+    padding: 8px;
+    position: absolute;
+} 
+
+@media handheld, only screen and (max-device-width:480px) {
+
+    .jsp-popup {
+        border-left: none;
+        border-right: none;
+        left: 0 !important;
+        margin:0;
+        padding: 8px 0;
+        width: 100%;
+    }
+
+    .jsp-popup  .jsp-cont {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .jsp-popup .jsp-desc {
+        text-align: center;
+    }
+
+}

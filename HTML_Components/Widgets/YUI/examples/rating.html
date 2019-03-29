@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<title>Web Plugin</title>
+<style type="text/css">
+body {
+	background-image: url(../../../images/background.jpg);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+	  white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+</style>
+        <link rel="stylesheet" href="css/rating/gallery-ratings.css" type="text/css" />
+    <style type="text/css">
+    .widget_demo .demo {margin-bottom: 50px;}
+    pre { background-color: #000; color: #fff; width: 75%; }
+        body {
+            padding: 25px;
+        }
+    </style>
+</head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<!-- InstanceEndEditable -->
+<body class="yui-skin-sam">
+
+<table id="wrapper" cellspacing="0">
+
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+
+<tr>
+<td width="25%" height="70%" rowspan="4"></td>
+<td width="34%"  align="left" bgcolor="#0000CC" style="vertical-align:middle"><span class="style1">&nbsp;&nbsp;&nbsp;Web Plugin</span></td>
+<td width="17%" height="5%" align="right" bgcolor="#0000CC" style="vertical-align:middle"><!-- InstanceBeginEditable name="Home" --><span class="style1"><a href="../../../index.html">Home&nbsp;&nbsp;&nbsp;</a></span> <!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="4"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" height="4%">
+    <!-- InstanceBeginEditable name="Row1" -->
+       	<span style="font-family: Tahoma; font-size: 14; color: #F00; font-weight:bold" align="left">TreeView YUI</span>
+    <!-- InstanceEndEditable --></td>
+</tr>
+
+<tr>
+	<td colspan="2" valign="top" bgcolor="#FFFFFF" height="53%"><!-- InstanceBeginEditable name="Row2" -->
+		<table width="100%" height="100%">
+		
+		<tr>
+		<td width="100%" height="20%">
+			<table width="70%" align='center'>
+                <tr>
+                    <td>
+                          <h2>Gallery-Ratings Widget Demo</h2>
+  <div class="widget_demo">
+    <div class="demo default">Default Style: <span id="myWidget_basic">2.5</span></div>
+    <div class="demo default-inline">Default Inline: <span id="myWidget_inline">2.5</span></div>
+    <div class="demo small">Small style: <span id="myWidget_small">2.5</span></div>
+    <div class="demo small-inline">Small Inline: <span id="myWidget_small_inline">2.5</span></div>
+  </div>
+                          <script type="text/javascript" src="http://yui.yahooapis.com/3.1.0/build/yui/yui-min.js"></script>
+  <script type="text/javascript">
+      YUI({
+          gallery: 'gallery-2010.04.14-19-47'
+      }).use("gallery-ratings", "event", function (Y) {
+          var ratings = new Y.Ratings({ srcNode: "#myWidget_basic" });
+          ratings.render();
+          var ratings2 = new Y.Ratings({ srcNode: "#myWidget_inline", inline: true });
+          ratings2.render();
+          var ratings3 = new Y.Ratings({ srcNode: "#myWidget_small", skin: "small" });
+          ratings3.render();
+          var ratings4 = new Y.Ratings({ srcNode: "#myWidget_small_inline", skin: "small", inline: true });
+          ratings4.render();
+
+          Y.on("ratings:ratingChange", function (e) {
+              var id = e.target.get("contentBox").get("id");
+              Y.log(id + " New Value: " + e.newVal + " was: " + e.prevVal);
+          });
+      });
+  </script>
+                    </td>
+                </tr>
+			</table>
+		</td>
+		</tr>
+		
+		</table>
+	<!-- InstanceEndEditable -->
+	</td>
+</tr>
+<tr>
+	<td colspan="4" align="right" height="19%"></td>
+</tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

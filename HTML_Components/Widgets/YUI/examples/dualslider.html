@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<title>Web Plugin</title>
+<style type="text/css">
+body {
+	background-image: url(../../../images/background.jpg);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+	  white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+</style>
+    	  <style>	    
+	    .Metro
+	    {	       
+	       font-family: 'Segoe UI Light', 'Segoe UI', 'Verdana';
+	       font-weight: 100;
+	    }
+	    .MetroColor
+	    {
+	    	color: #707070;
+	    }
+	  </style>
+		<script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
+		<script type="text/javascript">
+		    YUI({
+		        //Last Gallery Build of this module
+		        gallery: 'gallery-2011.11.10-16-24'
+		    })
+		    YUI().use('gallery-yui-dualslider', function (Y) {
+		        var eleYuiSlider = new Y.DualSlider({
+		            id: 'SliderDev',
+		            axis: 'x',
+		            min: 0,
+		            max: 10,
+		            length: '300px'
+		        });
+		        eleYuiSlider.after('slideEnd', function (e) {
+		            var eleYuiSlider = e.currentTarget;
+		            eleYuiSlider.syncUI();
+		        });
+		        eleYuiSlider.after(['valueChange', 'value2Change'], function (e) {
+		            if (e.attrName == 'value2')
+		                document.getElementById('slider2Value').innerHTML = e.newVal;
+		            else
+		                document.getElementById('slider1Value').innerHTML = e.newVal;
+		        });
+
+		        eleYuiSlider.render('pre');
+
+		        eleYuiSlider.setValue(2);
+		        eleYuiSlider.setValue2(6);
+		    });
+		</script>
+</head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<!-- InstanceEndEditable -->
+<body class="yui3-skin-sam">
+
+<table id="wrapper" cellspacing="0">
+
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+
+<tr>
+<td width="25%" height="70%" rowspan="4"></td>
+<td width="34%"  align="left" bgcolor="#0000CC" style="vertical-align:middle"><span class="style1">&nbsp;&nbsp;&nbsp;Web Plugin</span></td>
+<td width="17%" height="5%" align="right" bgcolor="#0000CC" style="vertical-align:middle"><!-- InstanceBeginEditable name="Home" --><span class="style1"><a href="../../../index.html">Home&nbsp;&nbsp;&nbsp;</a></span> <!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="4"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" height="4%">
+    <!-- InstanceBeginEditable name="Row1" -->
+       	<span style="font-family: Tahoma; font-size: 14; color: #F00; font-weight:bold" align="left">Dual Slider YUI</span>
+    <!-- InstanceEndEditable --></td>
+</tr>
+
+<tr>
+	<td colspan="2" valign="top" bgcolor="#FFFFFF" height="53%"><!-- InstanceBeginEditable name="Row2" -->
+		<table width="100%" height="100%">
+		
+		<tr>
+		<td width="100%" height="20%">
+			<table width="70%" align='center'>
+                <tr>
+                    <td>
+      <h1 class="Metro MetroColor">Dual Slider Dev</h1>
+		<br/>
+		<table>
+			<tr>
+				<td class="Metro MetroColor">Thumb 1: </td><td class="Metro"><span id="slider1Value">[Null]</span></td>
+			</tr>
+			<tr>
+				<td class="Metro MetroColor">Thumb 2: </td><td class="Metro"><span id="slider2Value">[Null]</span></td>
+			</tr>
+            <tr>
+				<td class="Metro MetroColor"></td><td class="Metro"><pre></pre></td>
+			</tr>
+		</table>
+		<br/>
+                    </td>
+                </tr>
+			</table>
+		</td>
+		</tr>
+		
+		</table>
+	<!-- InstanceEndEditable -->
+	</td>
+</tr>
+<tr>
+	<td colspan="4" align="right" height="19%"></td>
+</tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

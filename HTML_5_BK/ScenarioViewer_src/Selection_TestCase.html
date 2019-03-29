@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>HTML Viewer Scenarios</title>
+    <script src="../Scripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="../ControlsList/Util.js" type="text/javascript"></script>
+    <script src="../Scripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+    <script src="Class/TestCase.js" type="text/javascript"></script>
+    <script src="Class/Variables.js" type="text/javascript"></script>
+    <script src="Class/Scenario.js" type="text/javascript"></script>
+    <script src="Class/ControlObj.js" type="text/javascript"></script>
+    <script src="Class/DynamicElements.js" type="text/javascript"></script>
+    <script src="Class/IO.js" type="text/javascript"></script>
+
+    <!--Using for jqGrid-->
+    <link href="../Scripts/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="../Scripts/themes/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+
+
+
+    <style type="text/css">
+        body {
+            background-image: url(../images/background.jpg);
+            overflow: hidden;
+        }
+
+        html, body, #wrapper {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border: none;
+            white-space: normal;
+            white-space: nowrap;
+        }
+
+        .style1 {
+            color: #FFFFFF;
+            font-weight: bold;
+            font-family: Tahoma;
+            font-size: 15px;
+        }
+
+        .style2 {
+            color: #F00;
+            font-weight: bold;
+            font-family: Tahoma;
+            font-size: 17px;
+        }
+
+        .style3 {
+            color: #00F;
+            font-weight: bold;
+            font-family: Times New Roman;
+            font-size: 15px;
+        }
+
+        checkbox {
+            font-size: 20px;
+        }
+
+        .style4 {
+            width: 25%;
+        }
+
+        .auto-style1 {
+            width: 866px;
+            height: 28px;
+        }
+
+        .auto-style2 {
+            width: 866px;
+            height: 21px;
+        }
+
+        .auto-style3 {
+            height: 28px;
+        }
+
+        a:link {
+            COLOR: #FFFFFF;
+            text-decoration: none;
+        }
+
+        a:visited {
+            COLOR: #FFFFFF;
+        }
+
+        a:hover {
+            COLOR: #FFFFFF;
+        }
+
+        a:active {
+            COLOR: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <table width="60%" height="650" cellspacing="0" cellpadding="2">
+        <tr>
+            <td colspan="2" height="10%"></td>
+        </tr>
+        <tr bgcolor="#0000CC">
+            <td id="HeaderCell" align="left" height="2%" style="vertical-align: middle" class="style4"><span class="style1">&nbsp;&nbsp;&nbsp;Viewer Scenario</span></td>
+            <td id="CloseCell" align="right" height="2%" style="vertical-align: middle"><span class="style1"><a href="../index.html">Home&nbsp;&nbsp;&nbsp;</a></span></td>
+        </tr>
+        <tr>
+            <td id="TitleCell" height="2%" align="left" style="vertical-align: middle" class="style4">
+                <p id="IDCaption" style="color: red; font-weight: bold; font-family: Tahoma; font-size: 18px">TestCase Data</p>
+            </td>
+        </tr>
+        <tr>
+            <td id="PropertyCell" height="25%" colspan="1" align="left">                
+                <script type="text/javascript">
+                    document.write(' <table id=' + IDGridTestCase + ' align="center"></table>');
+                </script>                
+            </td>
+        </tr>
+        <tr height="2%" align="right">
+            <td colspan="1">
+                <input id="btnApply" type="button" value="Apply" style="width: 130px; height: 30px;" onclick="ShowViewScenario();" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+        </tr>
+    </table>   
+    </center>
+
+</body>
+<script type="text/javascript">
+
+    CreateGridTestCase();
+
+    jQuery(document).ready(function ($) {
+
+        var xmlhttp = new XMLHttpRequest();
+
+        var urlID = getUrlParm('id').toLowerCase();
+
+        if (urlID.lastIndexOf(POSFIX_TESTCASE_FILE.toLowerCase()) < 0) {
+            alert("TestCase file is invalid"); return;
+        }
+
+        _urlTestCase = "../ScenarioViewerData_Files/" + urlID;
+        _urlData = urlID.replace(POSFIX_TESTCASE_FILE.toLowerCase(), POSFIX_DATA_FILE.toLowerCase());
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                LoadDataGridTestCase(xmlhttp.responseText);
+            }
+        }
+        xmlhttp.open("GET", _urlTestCase, true);
+        xmlhttp.send();
+
+    });
+
+    function CreateGridTestCase() {
+        $("#" + IDGridTestCase).jqGrid({
+            datatype: "local", //json
+            colNames: ['Name', 'nDetects', 'nScenarios', 'Random/All', 'nScenarioShowed'],
+            colModel: [
+                          { name: '_ControlName', index: '_ControlName', width: 150 },
+                          { name: 'nDetect', index: 'nDetect', width: 150 },
+                          { name: 'nScenario', index: 'nScenario', width: 150 },
+                          { name: 'ndisplay', index: 'ndisplay', width: 150, editable: true },
+                          { name: '_IDScenarios', index: '_IDScenarios', width: 150 }
+            ],
+            multiselect: true,            
+            height: 250,
+            sortorder: "asc",
+            scrollrows: true,
+            loadonce: true,
+            sortable: false,
+            rowNum: 50,
+            rowList: [10, 20, 30],
+            sortname: 'id',
+            cellEdit: true,
+            cellsubmit: 'clientArray',
+            editurl: 'clientArray',
+            afterSaveCell: function (rowid, name, val, iRow, iCol) {
+                
+                onCellDisplayChangeValue(rowid, name, val, iRow, iCol);
+            },
+            loadComplete: function () {
+                $("#" + IDGridTestCase).setSelection($("#" + IDGridTestCase).getDataIDs()[0], true);
+            }
+        });
+    }
+
+    function onCellDisplayChangeValue(rowid, name, val, iRow, iCol)
+    {
+        
+        if (name == 'ndisplay') {
+            if (Number(val) === parseInt(val) && parseInt(val) % 1 === 0)  //is integer
+			{
+				var num = parseInt(val);
+                var oTC = _ListTestCases[rowid - 1];
+				
+                if (num <= 0 || num > oTC.nScenario)
+                {                    
+                    jQuery("#" + IDGridTestCase).jqGrid('setCell', iRow, iCol, oTC.ndisplay, "", "", true);
+					return;
+                }
+				else
+				{
+					jQuery("#" + IDGridTestCase).jqGrid('setCell', iRow, iCol, num, "", "", true);
+					_ListTestCases[rowid - 1].ndisplay = num;
+					var ids = generateRandomScenarioID(oTC.nScenario, num);
+
+					jQuery("#" + IDGridTestCase).jqGrid('setCell', iRow, iCol + 1, ids, "", "", true);	
+					_ListTestCases[rowid - 1]._IDScenarios = ids;
+				}
+            }
+        }
+        
+    }
+
+    function LoadDataGridTestCase(sContent) {
+
+        var oIO = new IO();
+
+        _ListTestCases = oIO.getListTestCase(sContent);
+
+        if (_ListTestCases === null) return;
+        if (_ListTestCases.length == 0) return;
+
+        var colNames = ["name", "ndetect", "nscenario", "ndisplay", "idscenarios"];
+
+        for (var i = 0; i < _ListTestCases.length; i++) {
+            _ListTestCases[i]["_IDScenarios"] = generateRandomScenarioID(_ListTestCases[i].nScenario, _ListTestCases[i]["ndisplay"]).toString();
+        }
+
+        $("#" + IDGridTestCase).jqGrid('clearGridData');
+        for (var i = 0; i < _ListTestCases.length; i++) {
+            jQuery("#" + IDGridTestCase).jqGrid('addRowData', i + 1, _ListTestCases[i]);
+        }
+    }
+
+    function generateRandomScenarioID(nScenarios, nDisplay) {
+        var randomList = [];
+        var num;
+        while (randomList.length < nDisplay)
+        {
+            num = Math.floor(Math.random() * nScenarios);
+            if (randomList.indexOf(num) < 0)
+                randomList.push(num);
+        }		
+        return randomList.sort();
+        
+    }
+
+    function ShowViewScenario() {
+	
+        arrSelectedRowID = jQuery("#" + IDGridTestCase).jqGrid('getGridParam', 'selarrrow');        
+        if (arrSelectedRowID.length == 0) return;
+
+        var listSelectedTestCase = [];
+        var idRow;
+
+        for (var i = 0; i < arrSelectedRowID.length; i++) {
+            idRow = arrSelectedRowID[i];
+            listSelectedTestCase.push(_ListTestCases[idRow - 1]);
+        }
+			
+        localStorage["listTestCase"] = JSON.stringify(listSelectedTestCase);
+        window.location = "view_scenario.html?id=" + _urlData;
+    }
+</script>
+</html>

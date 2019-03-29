@@ -1,0 +1,8 @@
+/*
+	UIZE JAVASCRIPT FRAMEWORK
+
+	http://www.uize.com/reference/Uize.Node.CssModule.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'Uize.Node.CssModule',superclass:'Uize.Class',required:'Uize.Node',builder:function(b_a){'use strict';var b_b=Uize.Node.isIe?navigator.appVersion.match(/MSIE (\d+(\.\d*)?)/)[1]<10?4095:65534:Infinity;return b_a.subclass({staticMethods:{add:function(){var b_c=this;if(!b_c.added){var b_d=document,b_e=b_d.styleSheets,b_f=b_d.head||b_d.getElementsByTagName('head')[0],b_g=this.css,b_h=b_e.length,b_i=b_d.createElement('style');if(Uize.isFunction(b_g))b_g=b_g.call(this,{pathToModules:Uize.pathToResources});b_i.type='text/css';b_i.textContent=b_g;b_i.id='UIZE_'+Uize.getGuid();b_f.appendChild(b_i);if(b_e.length==b_h){if(Uize.Node.isIe){var b_j=[],b_k=0;for(var b_l= -1,b_m;++b_l<b_h;){if((b_m=b_e[b_l]).id.slice(0,5)=='UIZE_')b_j[b_k++]=b_m;}if(b_k){var b_n,b_o=function(){for(b_n=b_k;--b_n>=0&& !b_j[b_n].cssRules.length;);var b_p=b_n+1<b_k;if(b_p)b_j[b_n+1].cssText=b_g;return b_p;};if(!b_o()){for(var b_q= -1;++b_q<b_k&&b_j[b_q].cssRules.length>=b_b;);if(b_q<b_k){var b_r=[],b_s=0;for(b_n=b_q-1;
+++b_n<b_k;){for(var b_t= -1,b_u=b_j[b_n].cssRules,b_v=b_u.length;++b_t<b_v;)b_r[b_s++]=b_u[b_t].cssText;}for(b_n=b_q-1;++b_n<b_k;)b_j[b_n].cssText=b_r.splice(0,b_b).join('');b_o();}}}}}b_c.added=true;}}},staticProperties:{added:false,css:''}});}});

@@ -1,0 +1,8 @@
+/*
+	UIZE JAVASCRIPT FRAMEWORK
+
+	http://www.uize.com/reference/Uize.Widget.ColorPicker.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'Uize.Widget.ColorPicker',superclass:'Uize.Widget.V2',required:['Uize.Widget.Bar.Slider.xSkin','Uize.Color','Uize.Templates.ColorPicker'],builder:function(d_a){'use strict';var d_b,d_c=true,d_d=false;return d_a.subclass({alphastructor:function(){var d_e=this;d_e.d_f=Uize.Color();function d_g(d_h,d_i){var d_j=d_e.addChild(d_h,Uize.Widget.Bar.Slider,{minValue:0,maxValue:255,borderThickness:3,borderTintColor:'#fff',borderTintLevel:40,knobSize:28,emptyTintColor:'#fff',emptyTintLevel:10,fullTintColor:d_i,fullTintLevel:100});d_j.wire('Changed.value',function(){if(!d_e.d_k){var d_l=d_e.children;d_e.set({d_m:d_e.d_f.from(d_e.d_n).to('hex')});}});return d_j;}d_e.d_n=[d_g('sliderR','#f00'),d_g('sliderG','#0f0'),d_g('sliderB','#00f')];},instanceMethods:{d_o:function(){this.isWired&&this.setNodeStyle('swatch',{background:'#'+this.d_m});},updateUi:function(){var d_e=this;if(d_e.isWired){Uize.callOn(d_e.children,'updateUi');d_e.d_o();}}},stateProperties:{d_m:{name:'value',
+conformer:function(d_m){return Uize.Color.to(d_m,'hex')},onChange:function(){var d_e=this,d_l=d_e.children,d_p=d_e.d_f.from(this.d_m).tuple;d_e.d_k=d_c;d_l.sliderR.set({value:d_p[0]});d_l.sliderG.set({value:d_p[1]});d_l.sliderB.set({value:d_p[2]});d_e.d_k=d_d;d_e.d_o();},value:'000000'}},set:{html:Uize.Templates.ColorPicker}});}});

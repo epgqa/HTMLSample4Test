@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>クッキーテスト</title>
+<script>
+function creatCookies(){
+	var now = new Date();
+	var time = now.getTime();
+	time += 3600 * 1000;
+	now.setTime(time);
+	var num = document.getElementById("ck_num").value;
+	var name = document.getElementById("ck_name").value;
+	var val = document.getElementById("ck_value").value;
+	for (var i=0;i<num;i++) {
+	var temp = name + i + "=" + val + i;
+    document.cookie= temp;
+	}
+}
+function getAllCookies(){
+	var dc = document.cookie;
+	/*var prefix = name + "=";
+	var begin = dc.indexOf("; " + prefix);
+	if (begin == -1) {
+		begin = dc.indexOf(prefix);
+	if (begin!= 0) return null;
+	} 
+	else {
+		begin += 2;
+	}
+	var end = document.cookie.indexOf(";", begin);
+	if (end == -1) {
+		end = dc.length;
+	}
+	return unescape(dc.substring(begin + prefix.length, end));*/
+	return dc;
+}
+function displayCookie()
+{
+		var display = getAllCookies();
+		div = document.getElementById("divTest");
+		div.innerHTML = "";
+		div.innerHTML = div.innerHTML + display;
+}
+</script>
+</head>
+<body>
+<h4>Cookie name:</h4>
+<input type="text" id="ck_name"></input>
+<h4>Cookie value:</h4>
+<input type="text" id="ck_value"></input>
+<h4>Number of cookies:</h4>
+<input type="text" id="ck_num">
+<p></p>
+<button type="button" onclick='creatCookies()'>Create Cookie</button>&nbsp;
+<button id="btnGetCookies" onclick="displayCookie()">Get all cookies</button>&nbsp;
+<div id ="divTest">
+</div>
+</body>
+</html>

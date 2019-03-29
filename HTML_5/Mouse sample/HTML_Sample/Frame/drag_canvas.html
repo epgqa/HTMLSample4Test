@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<!-- saved from url=(0102)file://lgvn14335/Public/STORM/Sample%20for%20automation%20test/Drag_Canvas_Sample_GWD/drag_canvas.html -->
+<html style=""><head style=""><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style style="border: 0px dashed red;">
+body{ background-color: ivory; }
+#canvas{solid red;}
+
+</style>
+<script>
+
+function dragTo(){
+	var element = document.getElementsByTagName("canvas")[0];
+	//triggerDragAndDrop(null,50,110,150,304);
+	triggerDragAndDrop(element,40,20,150,100);
+}
+
+var triggerDragAndDrop = function (elemDrag, srcX, srcY, desX, desY) {
+	
+	var createEvent = function (type, element, options) {
+		var event;
+		if ( document.createEvent ){
+			event = document.createEvent("CustomEvent");
+			event.initCustomEvent(type, true, true, null);
+			event.button = 0;
+		}else{
+			event = document.createEventObject();
+			event.button = {
+				0 : 1,
+				1 : 4,
+				2 : 2
+			}[ event.button ] || ( event.button === -1 ? 0 : event.button );
+		}
+			
+		event.bubbles = true;
+		event.cancelable  = true;
+		event.view = window;
+		event.detail = 0;
+		event.ctlrKey = false;
+		event.altKey = false;
+		event.shiftKey = false;
+		event.metaKey = false;
+		event.relatedTarget = element;
+		event.clientX = options.clientX;
+		event.clientY = options.clientY;
+		
+		/* if the clientX and clientY options are specified,
+		also calculated the desired screenX and screenY values */
+		if(options.clientX && options.clientY) {
+			event.screenX = window.screenX + options.clientX;
+			event.screenY = window.screenY + options.clientY;
+		}
+
+		/* copy the rest of the options into
+		the event object */
+		for (var prop in options) {
+			event[prop] = options[prop];
+		}
+	
+		return event;
+	};
+	
+	var dispatchEvent = function (element, type, evt){
+		if(element != null && element != undefined){
+			if ( element[ type ] ) {
+				element[ type ]();
+			} else if ( element.dispatchEvent ) {
+				element.dispatchEvent( evt );
+			} else if ( element.fireEvent ) {
+				element.fireEvent( "on" + type, evt );
+			}
+		}
+	};
+	
+	var fireCustomEvent = function (type, element, options) {
+		var evt = createEvent(type, element, options);
+		dispatchEvent(element,type,evt);
+		return evt;
+	};
+	
+	// function for triggering mouse events
+	var fireDragEvent = function (type, element, options) {
+		var evt = createEvent(type, element, options);
+		evt.dataTransfer = {
+				data: {
+				},
+				setData: function(type, val) {
+					this.data[type] = val
+				},
+				getData: function(type) {
+					return this.data[type]
+				}
+		};
+		dispatchEvent(element,type,evt);
+		return evt;
+	};
+	
+	var simulateMoveTo = function(element,srcX,srcY,desX,desY){
+		var dx = desX - srcX;
+		var dy = desY - srcY;
+		var option_move = {};
+
+		var num_step_x = Math.abs(dx);
+        var num_step_y = Math.abs(dy);
+        var num_step = Math.min(num_step_x,num_step_y);
+		
+		num_step = num_step < 1 ? 1 : num_step;
+
+        var double_small_step_x = dx / num_step;
+        var double_small_step_y = dy / num_step;
+
+        var cur_x = srcX;
+        var cur_y = srcY;
+        var cur_step = 1;
+
+        while (cur_step <= num_step){
+            cur_x = srcX + Math.round(cur_step * double_small_step_x);
+            cur_y = srcY + Math.round(cur_step * double_small_step_y);
+			
+			option_move.clientX = cur_x;
+			option_move.clientY = cur_y;
+			
+			fireCustomEvent('mousemove',element, option_move);
+            cur_step = cur_step + 1
+		}
+	};
+	
+	if(elemDrag != null && elemDrag != undefined){
+		var dragElementRect = elemDrag.getBoundingClientRect();
+		srcX += dragElementRect.left;
+		srcY += dragElementRect.top;
+		desX += dragElementRect.left;
+		desY += dragElementRect.top;
+	}
+	
+	var dragElement = document.elementFromPoint(srcX,srcY);
+	var drogElement = document.elementFromPoint(desX,desY);
+	
+	// calculate positions
+	var srcOptions = {clientX : srcX, clientY : srcY};
+	var desOptions = {clientX : desX, clientY : desY};
+	
+	// mouse over dragged element and mousedown
+	fireCustomEvent('mousemove',dragElement, srcOptions);
+	fireCustomEvent('mouseenter',dragElement, srcOptions);
+	fireCustomEvent('mouseover',dragElement, srcOptions);
+	fireCustomEvent('mousedown',dragElement, srcOptions);
+
+	// start dragging process over to drop target
+	var evt = fireDragEvent('dragstart', dragElement, srcOptions);
+	fireCustomEvent('drag',dragElement, srcOptions);
+	
+	//simulate move mouse
+	//simulateMoveTo(srcX,srcY,desX,desY);
+	simulateMoveTo(dragElement, srcX,srcY,desX,desY);
+	
+	// trigger dragging process on top of drop target
+	fireCustomEvent('mouseenter',drogElement, desOptions);
+	fireCustomEvent('dragenter',drogElement, desOptions);
+	fireCustomEvent('mouseover',drogElement, desOptions);
+	fireCustomEvent('mouseover',drogElement, desOptions);
+  
+	//release dragged element on top of drop target
+	var dropEvent = createEvent('drop', drogElement, desOptions);
+	dropEvent.dataTransfer = evt.dataTransfer;
+	dispatchEvent(drogElement,'drop',dropEvent);
+	var dragEndEvent = createEvent('dragend', drogElement, desOptions);
+	dragEndEvent.dataTransfer = evt.dataTransfer
+	dispatchEvent(drogElement,'dragend',dragEndEvent);
+	
+	fireCustomEvent('mouseup',drogElement, desOptions);
+	return true;
+};
+
+window.addEventListener('DOMContentLoaded', function() {
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var BB = canvas.getBoundingClientRect();
+var offsetX = BB.left;
+var offsetY = BB.top;
+var WIDTH = canvas.width;
+var HEIGHT = canvas.height; 
+
+// drag related variables
+var dragok = false;
+var startX;
+var startY;
+
+// an array of objects that define different rectangles
+var rects = [];
+rects.push({
+    x: 75 - 15,
+    y: 50 - 15,
+    width: 30,
+    height: 30,
+    fill: "#444444",
+    isDragging: false
+});
+rects.push({
+    x: 75 - 25,
+    y: 50 - 25,
+    width: 30,
+    height: 30,
+    fill: "#ff550d",
+    isDragging: false
+});
+rects.push({
+    x: 75 - 35,
+    y: 50 - 35,
+    width: 30,
+    height: 30,
+    fill: "#800080",
+    isDragging: false
+});
+rects.push({
+    x: 75 - 45,
+    y: 50 - 45,
+    width: 30,
+    height: 30,
+    fill: "#0c64e8",
+    isDragging: false
+});
+
+// listen for mouse events
+canvas.onmousedown = myDown;
+canvas.onmouseup = myUp;
+canvas.onmousemove = myMove;
+canvas.onmouseout = myMoveOut;
+canvas.onclick = myClick;
+
+// call to draw the scene
+draw();
+
+// draw a single rect
+function rect(x, y, w, h) {
+    ctx.beginPath();
+    ctx.rect(x, y, w, h);
+    ctx.closePath();
+    ctx.fill();
+}
+
+// clear the canvas
+function clear() {
+    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+}
+
+// redraw the scene
+function draw() {
+    clear();
+    ctx.fillStyle = "#FAF7F8";
+    rect(0, 0, WIDTH, HEIGHT);
+    // redraw each rect in the rects[] array
+    for (var i = 0; i < rects.length; i++) {
+        var r = rects[i];
+        ctx.fillStyle = r.fill;
+        rect(r.x, r.y, r.width, r.height);
+    }
+}
+
+function printEvent(e){
+	
+	var options = {type : e.type, bubbles : e.bubbles, cancelable : e.cancelable,
+	view : e.view, detail : e.detail,
+	screenX : e.screenX, screenY : e.screenY, clientX : e.clientX, clientY : e.clientY,
+	ctrlKey : e.ctrlKey, altKey : e.altKey, shiftKey : e.shiftKey, metaKey : e.metaKey,
+	button : e.button, relatedTarget : e.relatedTarget, movementX : e.movementX , movementY : e.movementY};
+	
+	console.log(options);
+}
+
+function myClick(e)
+{
+	document.getElementById("clickXCoord").innerText = e.clientX - Math.ceil(offsetX) ;
+	document.getElementById("clickYCoord").innerText = e.clientY - Math.ceil(offsetY) ;
+}
+
+function myMoveOut(e)
+{
+	document.getElementById("dragXCoord").innerText = "undefined";
+	document.getElementById("dragYCoord").innerText = "undefined";
+	document.getElementById("moveXCoord").innerText = "undefined" ;
+	document.getElementById("moveYCoord").innerText = "undefined" ;
+}
+
+// handle mousedown events
+function myDown(e) {
+
+    // tell the browser we're handling this mouse event
+    e.preventDefault();
+    e.stopPropagation();
+	
+	printEvent(e);
+    // get the current mouse position
+    var mx = parseInt(e.clientX - offsetX);
+    var my = parseInt(e.clientY - offsetY);
+
+    // test each rect to see if mouse is inside
+    dragok = false;
+    for (var i = 0; i < rects.length; i++) {
+        var r = rects[i];
+        if (mx > r.x && mx < r.x + r.width && my > r.y && my < r.y + r.height) {
+            // if yes, set that rects isDragging=true
+            dragok = true;
+            r.isDragging = true;
+        }
+    }
+    // save the current mouse position
+    startX = mx;
+    startY = my;
+	
+	document.getElementById("dragXCoord").innerText = e.clientX - Math.ceil(offsetX);
+	document.getElementById("dragYCoord").innerText = e.clientY - Math.ceil(offsetY);
+}
+
+
+// handle mouseup events
+function myUp(e) {  
+    // tell the browser we're handling this mouse event
+    e.preventDefault();
+    e.stopPropagation();
+	
+	printEvent(e);
+    // clear all the dragging flags
+    dragok = false;
+    for (var i = 0; i < rects.length; i++) {
+        rects[i].isDragging = false;
+    }
+	
+	document.getElementById("dragXCoord").innerText = e.clientX - Math.ceil(offsetX);
+	document.getElementById("dragYCoord").innerText = e.clientY - Math.ceil(offsetY);
+}
+
+
+// handle mouse moves
+function myMove(e) {
+    // if we're dragging anything...
+    if (dragok) {
+
+        // tell the browser we're handling this mouse event
+        e.preventDefault();
+        e.stopPropagation();
+
+		printEvent(e);
+        // get the current mouse position
+        var mx = parseInt(e.clientX);
+        var my = parseInt(e.clientY);
+
+        // calculate the distance the mouse has moved
+        // since the last mousemove
+        var dx = mx - startX;
+        var dy = my - startY;
+
+        // move each rect that isDragging 
+        // by the distance the mouse has moved
+        // since the last mousemove
+        for (var i = 0; i < rects.length; i++) {
+            var r = rects[i];
+            if (r.isDragging) {
+                r.x += dx;
+                r.y += dy;
+            }
+        }
+
+        // redraw the scene with the new rect positions
+        draw();
+
+        // reset the starting mouse position for the next mousemove
+        startX = mx;
+        startY = my;
+
+    }
+	
+	document.getElementById("moveXCoord").innerText = e.clientX - Math.ceil(offsetX) ;
+	document.getElementById("moveYCoord").innerText = e.clientY - Math.ceil(offsetY) ;
+	
+}
+
+var canvasSetup = document.getElementById("canvasSetup");
+
+canvasSetup.addEventListener('click', function(){
+	var width = document.getElementById("inputCanvasX").value;
+	var height = document.getElementById("inputCanvasY").value;
+	var canvas = document.getElementById("canvas");
+	canvas.width = width;
+	canvas.height = height;
+	
+	WIDTH = canvas.width;
+	HEIGHT = canvas.height;
+
+	draw();
+});
+
+}, true);
+
+</script>
+<title>ドラッグ、マウスキャンバスの移動</title>
+</head>
+<body style="margin-top: 0px; margin-left: 0px;">
+<canvas id="canvas" width="1000" height="700"></canvas>
+<div>
+Canvas Width :<input type="number" id="inputCanvasX">
+Canvas Height :<input type="number" id="inputCanvasY">
+<input type="button" value="Setup Canvas" id="canvasSetup">
+</div>
+
+
+<div id="dragCoord"> Drag : X=<span id="dragXCoord">undefined</span> Y=<span id="dragYCoord">undefined</span></div>
+<div id="moveCoord"> Move : X=<span id="moveXCoord">undefined</span> Y=<span id="moveYCoord">undefined</span></div>
+<div id="clickCoord"> Click : X=<span id="clickXCoord">undefined</span> Y=<span id="clickYCoord">undefined</span></div>
+<h4>Drag 1 or more shapes.</h4>
+
+
+</body></html>

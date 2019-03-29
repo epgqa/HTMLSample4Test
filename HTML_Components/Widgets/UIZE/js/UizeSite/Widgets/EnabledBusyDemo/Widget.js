@@ -1,0 +1,8 @@
+/*
+	UIZE Web Site
+
+	http://www.uize.com/reference/UizeSite.Widgets.EnabledBusyDemo.Widget.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'UizeSite.Widgets.EnabledBusyDemo.Widget',superclass:'Uize.Widget.V2',required:['Uize.Widgets.Button.Widget','UizeSite.Widgets.EnabledBusyDemo.Html','UizeSite.Widgets.EnabledBusyDemo.Css'],builder:function(d_a){'use strict';var d_b=d_a.subclass({omegastructor:function(){var d_c=this;d_c.d_d('button1',function(){alert(d_c.get('idPrefix')+' --- click button 1');});d_c.d_d('button2',function(){alert(d_c.get('idPrefix')+' --- click button 2');});var d_e=function(){d_c.updateUi()};d_c.wire({'Changed.enabled':d_e,'Changed.busy':d_e});},instanceMethods:{d_d:Uize.Widgets.Button.Widget.addChildButton,updateUi:function(){var d_c=this;if(d_c.isWired){d_c.setNodeValue('enabledSelector',d_c.get('enabled'));d_c.setNodeValue('busySelector',d_c.get('busy'));}},wireUi:function(){var d_c=this;if(!d_c.isWired){var d_f={'false':false,'true':true,inherit:'inherit'};d_c.wireNode('enabledSelector','change',function(){d_c.set({enabled:d_f[d_c.getNodeValue('enabledSelector')]})});d_c.wireNode('busySelector',
+'change',function(){d_c.set({busy:d_f[d_c.getNodeValue('busySelector')]})});d_a.doMy(d_c,'wireUi');}},resetEnabledAndBusy:function(){this.set({enabled:'inherit',busy:'inherit'});Uize.callOn(this.children,'resetEnabledAndBusy');}},set:{html:UizeSite.Widgets.EnabledBusyDemo.Html},staticProperties:{cssModule:UizeSite.Widgets.EnabledBusyDemo.Css},stateProperties:{d_g:'depth'},stateToCssBindings:{depth:'"depth" + value'}});return d_b;}});

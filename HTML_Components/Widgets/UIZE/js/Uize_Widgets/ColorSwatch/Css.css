@@ -1,0 +1,31 @@
+
+.Uize_Widgets_ColorSwatch_Css {
+	display: inline-block;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ccc #999 #999 #ccc;
+	width: 20px;
+	height: 20px;
+}
+
+/*** different sizes ***/
+	.Uize_Widgets_ColorSwatch_Css-tiny {
+		width: 21px;
+		height: 21px;
+	}
+
+	.Uize_Widgets_ColorSwatch_Css-small {
+		width: 26px;
+		height: 26px;
+	}
+
+	.Uize_Widgets_ColorSwatch_Css-medium {
+		width: 36px;
+		height: 36px;
+	}
+
+	.Uize_Widgets_ColorSwatch_Css-large {
+		width: 49px;
+		height: 49px;
+	}
+

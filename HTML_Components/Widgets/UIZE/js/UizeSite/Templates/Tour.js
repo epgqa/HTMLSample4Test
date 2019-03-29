@@ -1,0 +1,8 @@
+/*
+	UIZE Web Site
+
+	http://www.uize.com/reference/UizeSite.Templates.Tour.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'UizeSite.Templates.Tour',required:['UizeSite.Examples','Uize.Url'],builder:function(){'use strict';var _a=function(){};_a.process=function(input){var output=[];var _b=input.tour,_c=UizeSite.Examples();if(_b.toLowerCase()!='all'){var _d=_c,_e=new RegExp('\\b'+_b+'\\b','i');_c=[];for(var _f= -1,_g=_d.length;++_f<_g;){var _h=_d[_f];_e.test(_h.keywords)&&_c.push(_h);}}var _i=_c.length,_j='?tour='+_b,_k= -1,_l=Uize.Url.from(input.pageUrl).fileName;function _m(_h){return _h.path.match(/[\\\/]([^\\\/]+)$/)[1]+_j;}output.push('\n\n<div id="page-tourPageTooltip" class="tourPageTooltip">\n	<div class="tourPageTooltipBox">\n		<div id="page-tourPageTooltip-title" class="tourPageTitle"></div>\n		<div id="page-tourPageTooltip-description" class="tourPageDescription"></div>\n		<div class="tourPageKeywords">TAGS: <span id="page-tourPageTooltip-keywords"></span></div>\n	</div>\n</div>\n\n<table class="tourPages">\n	<tr>');for(var _n= -1;++_n<_i;){var _o=_c[_n];if(_k<0&&_l==Uize.Url.from(_o.path).fileName)
+_k=_n;output.push('<td>\n			<a href="',_m(_o),'" class="tourPage',_n==_k?' tourCurrentPage':'','"></a>\n		</td>');}output.push('</tr>\n</table>\n');var _p=_k>0?_c[_k-1]:null;if(_p){output.push('\n<a href="',_m(_p),'" class="tourButton tourButtonPrevious"></a>');}output.push('\n');var _q=_k<_i-1?_c[_k+1]:null;if(_q){output.push('\n<a href="',_m(_q),'" class="tourButton tourButtonNext"></a>');}output.push('\n\n');return output.join('');};_a.input={tour:'string',pageUrl:'string'};return _a;}});

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>サンプルウィンドウの待機</title>
+</head>
+<body>
+
+<img src="http://www.testingtoolsguide.net/wp-content/uploads/2016/11/TAtransparent.png">
+
+<script>
+document.addEventListener("DOMContentLoaded", sleep(20000));
+
+function sleep(millis)
+{
+	var date = new Date();
+	var curDate = null;
+	do { 
+		curDate = new Date(); 
+	} while(curDate-date < millis);
+}
+</script>
+
+</body>
+</html>

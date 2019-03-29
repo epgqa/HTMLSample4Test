@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<title>ポップアップの確認</title>
+<body>
+
+<p>Click the button to display a confirm box.</p>
+
+<button onclick="confirm1()">Single confirm</button>
+
+<p id="cfm1"></p>
+
+<br></br>
+
+<p>An alert box will appear after the confirm box.</p>
+
+<button onclick="confirm2()">Combine confirm</button>
+
+<p id="cfm2"></p>
+
+<br></br>
+
+<p>The second confirm box will appear after the first confirm box.</p>
+
+<button onclick="confirm3()">Double confirm</button>
+
+<p id="cfm3"></p>
+
+<br></br>
+
+<p>Click the button to demonstrate line-breaks in a confirm box.</p>
+
+<button onclick="confirm4()">line-break message</button>
+
+<p id="cfm4"></p>
+
+<br></br>
+
+<p>Click the button to demonstrate unicode characters in a confirm box.</p>
+
+<button onclick="confirm5()">unicode characters</button>
+
+<p id="cfm5"></p>
+
+<button onclick="page_reload()">Reload page</button>
+
+<script>
+
+function page_reload() {
+    location.reload();
+}
+
+function confirm1() {
+    var txt;
+    var r = confirm("Press a button!");
+    if (r == true) {
+        txt = "You pressed OK!";
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    document.getElementById("cfm1").innerHTML = txt;
+}
+
+function confirm2() {
+    var r = confirm("Are you sure to format your hard disk?");
+    if (r == true) {
+		txt = "You are very brave!";
+        alert(txt);
+    } else {
+		txt = "You are very shy!";
+        alert(txt);
+    }
+    document.getElementById("cfm2").innerHTML = txt;
+
+}
+
+function confirm3() {
+    var txt;
+	var r = confirm("Do you want to close this confirm box?");
+    if (r == true) {
+        var r = confirm("Are you sure?");
+		if (r == true) {
+			txt = "You exited the confirmbox!";
+			document.getElementById("cfm3").innerHTML = txt;
+		} else {
+			confirm3();
+		}
+    } else {
+        confirm3();
+    }
+}
+
+function confirm4() {
+    var txt;
+    var r = confirm("Press a button!\nEither OK or Cancel.\nThe button you pressed will be displayed in the result window.");
+    if (r == true) {
+        txt = "You pressed OK!";
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    document.getElementById("cfm4").innerHTML = txt;
+}
+
+function confirm5() {
+    var txt;
+    var r = confirm("cơn sốt apple ipad mới CƠN SỐT APPLE IPAD MỚI 123456 我愛你 أنا أحبك !@d#%&'control Quyền thế Lòng kiêu hãnh của FlexNote đã bị tổn thương rất nhiều sau trận đấu vừa qua và tối nay chúng tôi sẽ cho Intern biết con thịnh nộ của FlexnNote là như thế nào");
+    if (r == true) {
+        txt = "You pressed OK!";
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    document.getElementById("cfm5").innerHTML = txt;
+}
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+/*
+	UIZE JAVASCRIPT FRAMEWORK
+
+	http://www.uize.com/reference/Uize.Build.BuildStateCombinationLibraries.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'Uize.Build.BuildStateCombinationLibraries',required:['Uize.Services.FileBuilder','Uize.Services.FileSystem','Uize.Build.ModuleInfo','Uize.Data','Uize.Json'],builder:function(){'use strict';var _a=function(){};_a.perform=function(_b){var _c=_b.builtPath,_d=_b.modulesFolder,_e=_b.packageTargetPathTemplate,_f={},_g=Uize.Services.FileBuilder.singleton(),_h=Uize.Services.FileSystem.singleton(),_i={},_j=_b.excludeModules?_b.excludeModules.split(','):[],_k=Uize.Json.from(_h.readFile({path:_b.stateDefinitionsPath})),_l=Uize.Data.getColumn(_k,'name'),_m={},_n={};Uize.forEach(_k,function(_o){_m[_o.name]=_o});function _p(_q){var _r=_n[_q];if(!_r){var _s=_d+'/'+Uize.modulePathResolver(_q)+'.js';_g.buildFile(Uize.copyInto(Uize.Data.filter(_b,['builtPath','sourcePath','memoryPath','tempPath','staleBefore','isDev']),{url:_s}));_r=_n[_q]=_g.readFile({path:_c+'/'+_s});}return _r;}function _t(_u){var _v=_u.sort().join(','),_w=_i[_v];if(!_w){var _x=[];Uize.forEach(_u,function(_y){Uize.push(_x,_m[_y].modules)}
+);_w=_i[_v]=Uize.Build.ModuleInfo.traceDependencies(_x,_j);}return _w;}function _z(_u){var _A=Uize.lookup(_u,_f);Uize.forEach(_l,function(_y){if(_A[_y]!=_f){_h.writeFile({path:Uize.substituteInto(_e,{previousStates:_u.sort().join('-'),nextState:_y},'{KEY}'),contents:Uize.map(Uize.Build.ModuleInfo.traceDependencies(_m[_y].modules,_j.concat(_t(_u))),_p).join('\n\n')});_z(_u.concat(_y));}});}_z([]);};return _a;}});

@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Standard Control</title>
+<script src="../Scripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../ControlsList/CreateSVG.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/dojo.xd.js"></script>
+	
+<link href="../Scripts/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" /> 
+<link href="../Scripts/themes/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+<link href="../Scripts/css/Stylesheet1.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../Scripts/css/AutoComplete.css" media="screen" type="text/css" />
+
+<style type="text/css">
+            body {
+	            background-image: url(../images/background.jpg);
+	            overflow:hidden;
+            }
+
+            html, body, #wrapper {
+                  height:100%;
+	              width: 100%;
+                  margin: 0;
+                  padding: 0;
+                  border: none;
+                  white-space:nowrap;
+               }
+   
+            .style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+            a:link {
+                COLOR: none;
+                text-decoration:none;
+            }
+            a:visited {
+                COLOR: #FFFFFF;
+            }
+            a:hover {
+                COLOR: red;
+            }
+            a:active {
+                COLOR: #FFFFFF;
+            }
+            a { display: block; }
+                label { display: block; 
+            }  
+            #Checkbox1
+            {
+                width: 173px;
+            }
+            #Reset1
+            {
+                width: 82px;
+            }
+            #chkW4Pro
+            {
+                width: 19px;
+            }
+            .style4
+            {
+                color: #FFFFFF;width: 50%;
+            }
+            #txtDelay
+            {
+                width: 61px;
+            }
+            #TextArea1
+          
+            
+            
+    {
+        width: 706px;
+        height: 39px;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+            #Button1
+    {
+        width: 155px;
+    }
+    #TextArea2
+    {
+        height: 27px;
+    }
+            #proName
+    {
+        height: 19px;
+        width: 131px;
+    }
+    #btnUpd
+    {
+        width: 169px;
+    }
+            #proValue
+    {
+        margin-left: 0px;
+        height: 23px;
+        width: 271px;
+    }
+            .style5
+    {
+        height: 25px;
+    }
+            .style6
+    {
+        width: 50%;
+        height: 25px;
+    }
+    #Text1
+    {
+        width: 748px;
+        height: 45px;
+    }
+    .style7
+    {
+        height: 2%;
+    }
+    #txtComment
+    {
+        width: 743px;
+        height: 34px;
+        margin-left: 0px;
+    }
+    #IDComment
+    {
+        width: 764px;
+        margin-left: 0px;
+    }
+    	* {
+		margin: 0px;
+		padding: 0px;
+	}
+    #Select1 {
+        width: 157px;
+    }
+    #svgSelect {
+        height: 21px;
+        width: 249px;
+    }
+</style>
+ <script type="text/javascript">
+     // Array list of SVG
+
+     sampleArr = [
+     { name: "A circle", value: "A circle" },
+     { name: "A rectangle with opacity", value: "A rectangle with opacity" },
+     { name: "A rectangle with rounded corners", value: "A rectangle with rounded corners" },
+     { name: "An ellipse", value: "An ellipse" },
+     { name: "Three ellipses on top of each other", value: "Three ellipses on top of each other" },
+     { name: "A line", value: "A line" },
+     { name: "A polygon", value: "A polygon" },
+     { name: "A star", value: "A star" },
+     { name: "A polyline", value: "A polyline" },
+     { name: "A path", value: "A path" },
+     { name: "A quadratic Bézier curve", value: "A quadratic Bézier curve" },
+     { name: "Write a text", value: "Write a text" },
+     { name: "Rotate a text", value: "Rotate a text" },
+     { name: "Text on a path", value: "Text on a path" },
+     { name: "Text on several lines", value: "Text on several lines" },
+     { name: "Text as a link", value: "Text as a link" },
+     { name: "Defines the color of a line, text or outline (stroke)", value: "Defines the color of a line, text or outline (stroke)" },
+     { name: "Defines the width of a line, text or outline (stroke-width)", value: "Defines the width of a line, text or outline (stroke-width)" },
+     { name: "Defines different types of endings to an open path (stroke-linecap)", value: "Defines different types of endings to an open path (stroke-linecap)" },
+     { name: "Defines dashed lines (stroke-dasharray)", value: "Defines dashed lines (stroke-dasharray)" },
+     { name: "feGaussianBlur - blur effect", value: "feGaussianBlur - blur effect" },
+     { name: "feOffset - offset a rectangle", value: "feOffset - offset a rectangle" },
+     { name: "feOffset - blur the offset image", value: "feOffset - blur the offset image" },
+     { name: "feOffset - make the shadow black", value: "feOffset - make the shadow black" },
+     { name: "feOffset - treat the shadow as a color", value: "feOffset - treat the shadow as a color" },
+     { name: "A feBlend filter", value: "A feBlend filter" },
+     { name: "A feColorMatrix filter", value: "A feColorMatrix filter" },
+     { name: "A feComponentTransfer filter", value: "A feComponentTransfer filter" },
+     { name: "feOffset, feFlood, feComposite, feMerge, and feMergeNode", value: "feOffset, feFlood, feComposite, feMerge, and feMergeNode" },
+     { name: "A feMorphology filter", value: "A feMorphology filter" },
+     { name: "Filter 1", value: "Filter 1" },
+     { name: "Filter 2", value: "Filter 2" },
+     { name: "Filter 3", value: "Filter 3" },
+     { name: "Filter 4", value: "Filter 4" },
+     { name: "Filter 5", value: "Filter 5" },
+     { name: "Filter 6", value: "Filter 6" },
+     { name: "An ellipse with a horizontal linear gradient from yellow to red", value: "An ellipse with a horizontal linear gradient from yellow to red" },
+     { name: "An ellipse with a vertical linear gradient from yellow to red", value: "An ellipse with a vertical linear gradient from yellow to red" },
+     { name: "An ellipse with a horizontal linear gradient from yellow to red, and a text", value: "An ellipse with a horizontal linear gradient from yellow to red, and a text" },
+     { name: "An ellipse with a radial gradient from white to blue", value: "An ellipse with a radial gradient from white to blue" },
+     { name: "Another ellipse with a radial gradient from white to blue", value: "Another ellipse with a radial gradient from white to blue" },
+     { name: "Rectangle that repeatedly fade away over 5 seconds", value: "Rectangle that repeatedly fade away over 5 seconds" },
+     { name: "A growing rectangle that will change color", value: "A growing rectangle that will change color" },
+     { name: "Three rectangles that will change color", value: "Three rectangles that will change color" },
+     { name: "Move text along a motion path", value: "Move text along a motion path" },
+     { name: "Move, rotate, and scale text along a motion path", value: "Move, rotate, and scale text along a motion path" },
+     { name: "Move, rotate, and scale text along a motion path + a growing rectangle that will change color", value: "Move, rotate, and scale text along a motion path + a growing rectangle that will change color" }
+     ];
+
+     function AddItem_Select() {
+         selectbox = document.getElementById("svgSelect");
+         selectbox.options = null;
+         selectbox.options.length = 0;
+         var newOpt;
+         for (i = 0; i < sampleArr.length; i++) {
+
+             newOpt = new Option((sampleArr[i].name), (sampleArr[i].name));
+             selectbox.options[i] = newOpt;
+         }
+     }
+     function createSVG() {
+         var selectsvg = document.getElementById("svgSelect");
+         var choice = selectsvg.options[selectsvg.selectedIndex].text;
+         if (choice == "A circle") {
+             var inputStr = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">"+
+                        "<circle cx=\"100\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"2\" fill=\"red\" />" +
+                        "</svg>";
+             document.getElementById("DisplayCell").innerHTML = inputStr;
+         }
+     }
+</script>
+</head>
+<body>
+    <center>
+
+    <table id="HTMLContent"  width="60%" height="650" cellspacing="0" cellpadding ="2">
+            <tr >
+                <td colspan="2" height="10%"></td>
+            </tr>
+            <tr bgcolor="#0000CC" >
+                <td id="HeaderCell" align="left" height="2%" style="vertical-align:middle" class="style4"><span class="style1">&nbsp;&nbsp;&nbsp;Standard Control</span></td>
+                <td id="CloseCell" align="right" height="2%"  style="vertical-align:middle"><span class="style1"><a href="../index.html">Home&nbsp;&nbsp;&nbsp;</a></span></td>
+            </tr>
+            <tr >
+                <td id="TitleCell" height="2%" align="left" style="vertical-align:middle" class="style4"><p id="IDCaption" style ="color: red; font-weight: bold; font-family: Tahoma; font-size: 18px">&nbsp;&nbsp;&nbsp; </p></td>
+            </tr>
+             <tr>
+                <td id="DisplayCell"colspan="2" style="text-align:center">
+<!--                    <script type="text/javascript">
+                        createSVG();
+                    </script>-->
+
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+   <circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red" />
+</svg> 
+                </td>
+            </tr>
+            <tr bgcolor="#0000CC">
+                <td id = "UpdateCell"  height ="2%" colspan="2" >
+                    <table cellpadding="2" width="100%" > 
+                        <tr>
+                            <td align="right" width="40%" ><span class="style4" id="proName" >Choose SVG:</span></td>
+                            <td width="40%" ><select id="svgSelect" onchange="createSVG();"><option></option></select></td>
+                            <td align="left"> <input id="btnSubmit" type="button" value="Update" style="height:28px " onclick="return btnUpd_onclick();" /></td>
+                        </tr>
+                    </table>
+               </td>
+            </tr>
+             <tr  >
+                <td id = "CommentCell" colspan="2" width="100%" class="style7">
+                    <textarea id="txtComment" name="S1" rows="2" cols="2"></textarea>
+
+                </td>
+            </tr>
+            <tr>
+                 <td colspan="2" height="10%">
+                     &nbsp;</td>
+            </tr>
+    </table>
+  
+    </center>
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function ($) {
+            AddItem_Select();
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
+
+

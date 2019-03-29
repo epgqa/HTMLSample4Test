@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Standard Control</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/dojo.xd.js"></script>
+<script src="Scripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../ControlsList/CreateSVG.js"></script>
+<script type="text/javascript" src="../Scripts/plugins/jquery-latest.js"></script>
+<style type="text/css">
+body {
+	background-image: url(../images/background.jpg);
+}
+
+html, body, #wrapper {
+      height:850px;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+      white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: red; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+a { display: block; }
+label { display: block; }  
+    #Text3 {
+        width: 101px;
+        text-align: center;
+    }
+    .auto-style1 {
+        text-align: right;
+    }
+    #Select1 {
+        width: 191px;
+    }
+    #svgSelect {
+        height: 22px;
+        width: 228px;
+    }
+    #TextArea1 {
+        height: 132px;
+        width: 386px;
+    }
+</style>  
+<script type="text/javascript">
+    // Array list of SVG
+
+    sampleArr = [
+    { name: "---- Select SVG Element ----", value: "---- Select SVG Element ----" },
+    { name: "A circle", value: "A circle" },
+    { name: "A rectangle", value: "A rectangle" },
+    { name: "A rectangle with opacity", value: "A rectangle with opacity" },
+    { name: "A rectangle with rounded corners", value: "A rectangle with rounded corners" },
+    { name: "An ellipse", value: "An ellipse" },
+    { name: "Three ellipses on top of each other", value: "Three ellipses on top of each other" },
+    { name: "A line", value: "A line" },
+    { name: "A polygon", value: "A polygon" },
+    { name: "A star", value: "A star" },
+    { name: "A polyline", value: "A polyline" },
+    { name: "A path", value: "A path" },
+    { name: "A quadratic Bézier curve", value: "A quadratic Bézier curve" },
+    { name: "Write a text", value: "Write a text" },
+    { name: "Rotate a text", value: "Rotate a text" },
+    { name: "Text on a path", value: "Text on a path" },
+    { name: "Text on several lines", value: "Text on several lines" },
+    { name: "Text as a link", value: "Text as a link" },
+    { name: "Defines the color of a line, text or outline (stroke)", value: "Defines the color of a line, text or outline (stroke)" },
+    { name: "Defines the width of a line, text or outline (stroke-width)", value: "Defines the width of a line, text or outline (stroke-width)" },
+    { name: "Defines different types of endings to an open path (stroke-linecap)", value: "Defines different types of endings to an open path (stroke-linecap)" },
+    { name: "Defines dashed lines (stroke-dasharray)", value: "Defines dashed lines (stroke-dasharray)" },
+    { name: "feGaussianBlur - blur effect", value: "feGaussianBlur - blur effect" },
+    { name: "feOffset - offset a rectangle", value: "feOffset - offset a rectangle" },
+    { name: "feOffset - blur the offset image", value: "feOffset - blur the offset image" },
+    { name: "feOffset - make the shadow black", value: "feOffset - make the shadow black" },
+    { name: "feOffset - treat the shadow as a color", value: "feOffset - treat the shadow as a color" },
+    { name: "A feBlend filter", value: "A feBlend filter" },
+    { name: "A feColorMatrix filter", value: "A feColorMatrix filter" },
+    { name: "A feComponentTransfer filter", value: "A feComponentTransfer filter" },
+    { name: "feOffset, feFlood, feComposite, feMerge, and feMergeNode", value: "feOffset, feFlood, feComposite, feMerge, and feMergeNode" },
+    { name: "A feMorphology filter", value: "A feMorphology filter" },
+    { name: "Filter 1", value: "Filter 1" },
+    { name: "Filter 2", value: "Filter 2" },
+    { name: "Filter 3", value: "Filter 3" },
+    { name: "Filter 4", value: "Filter 4" },
+    { name: "Filter 5", value: "Filter 5" },
+    { name: "Filter 6", value: "Filter 6" },
+    { name: "An ellipse with a horizontal linear gradient from yellow to red", value: "An ellipse with a horizontal linear gradient from yellow to red" },
+    { name: "An ellipse with a vertical linear gradient from yellow to red", value: "An ellipse with a vertical linear gradient from yellow to red" },
+    { name: "An ellipse with a horizontal linear gradient from yellow to red, and a text", value: "An ellipse with a horizontal linear gradient from yellow to red, and a text" },
+    { name: "An ellipse with a radial gradient from white to blue", value: "An ellipse with a radial gradient from white to blue" },
+    { name: "Another ellipse with a radial gradient from white to blue", value: "Another ellipse with a radial gradient from white to blue" },
+    { name: "Rectangle that repeatedly fade away over 5 seconds", value: "Rectangle that repeatedly fade away over 5 seconds" },
+    { name: "A growing rectangle that will change color", value: "A growing rectangle that will change color" },
+    { name: "Three rectangles that will change color", value: "Three rectangles that will change color" },
+    { name: "Move text along a motion path", value: "Move text along a motion path" },
+    { name: "Move, rotate, and scale text along a motion path", value: "Move, rotate, and scale text along a motion path" },
+    { name: "Move, rotate, and scale text along a motion path + a growing rectangle that will change color", value: "Move, rotate, and scale text along a motion path + a growing rectangle that will change color" }
+    ];
+
+    function AddItem_Select() {
+        selectbox = document.getElementById("svgSelect");
+        selectbox.options = null;
+        selectbox.options.length = 0;
+        var newOpt;
+        for (i = 0; i < sampleArr.length; i++) {
+            newOpt = new Option((sampleArr[i].name), (sampleArr[i].name));
+            selectbox.options[i] = newOpt;
+        }
+    }
+    function CallSVG() {
+        var selectsvg = document.getElementById("svgSelect");
+        var choice = selectsvg.options[selectsvg.selectedIndex].text;
+        document.getElementById("spanTitle").innerText = choice
+        if (choice == "A circle") {
+            createCircle();
+        }else if(choice == "A rectangle with opacity"){
+            createRectangleWithOpacity();
+        } else if (choice == "A rectangle") {
+            createRectangle();
+        } else if (choice == "A rectangle with rounded corners") {
+            createRectangleWithRoundedCorners();
+        } else if (choice == "An ellipse") {
+            createEllipse();
+        } else if (choice == "Three ellipses on top of each other") {
+            createThreeEllipsesOnTopOfEachOther();
+        } else if (choice == "A line") {
+            createLine();
+        } else if (choice == "A polygon") {
+            createPolygon();
+        } else if (choice == "A star") {
+            createStar();
+        } else if (choice == "A polyline") {
+            createPolyline();
+        } else if (choice == "A path") {
+            createPath();
+        } else if (choice == "A quadratic Bézier curve") {
+            createQuadratic();
+        } else if (choice == "Write a text") {
+            createText();
+        } else if (choice == "Rotate a text") {
+            createRotateText();
+        } else if (choice == "Text on a path") {
+            createPathText();
+        } else if (choice == "Text on several lines") {
+            createSeveralLineText();
+        } else if (choice == "Text as a link") {
+            createLinkText();
+        } else if (choice == "Defines the color of a line, text or outline (stroke)") {
+            createDefinesTheColor();
+        } else if (choice == "Defines the width of a line, text or outline (stroke-width)") {
+            createDefinesTheColorStroke_Width();
+        } else if (choice == "Defines different types of endings to an open path (stroke-linecap)") {
+            createDefinesTheColorStroke_LineCap();
+        } else if (choice == "Defines dashed lines (stroke-dasharray)") {
+            createDefinesTheColorStroke_Dasharray();
+        } else if (choice == "feGaussianBlur - blur effect") {
+            createfeGaussianBlur_Blur();
+        } else if (choice == "feOffset - offset a rectangle") {
+            createfeOffset_offserarectangle();
+        } else if (choice == "feOffset - blur the offset image") {
+            createfeOffset_offsetimage();
+        } else if (choice == "feOffset - make the shadow black") {
+            createfeOffset_shadowblack();
+        } else if (choice == "feOffset - treat the shadow as a color") {
+            createfeOffset_shadowcolor();
+        } else if (choice == "A feBlend filter") {
+            createBlendFilter();
+        } else if (choice == "A feColorMatrix filter") {
+            createColorMatrixFilter();
+        } else if (choice == "A feComponentTransfer filter") {
+            createfeComponentTransferFilter();
+        } else if (choice == "feOffset, feFlood, feComposite, feMerge, and feMergeNode") {
+            createfeFloodfeCompositefeMerge();
+        } else if (choice == "A feMorphology filter") {
+            createfeMorphology();
+        }else if (choice == "Filter 1") {
+            createFilter1();
+        }else if (choice == "Filter 2") {
+            createFilter2();
+        }else if (choice == "Filter 3") {
+            createFilter3();
+        }else if (choice == "Filter 4") {
+            createFilter4();
+        }else if (choice == "Filter 5") {
+            createFilter5();
+        }else if (choice == "Filter 6") {
+            createFilter6();
+        } else if (choice == "An ellipse with a horizontal linear gradient from yellow to red") {
+            createEllipseWithHorizontalLinearGradient();
+        } else if (choice == "An ellipse with a vertical linear gradient from yellow to red") {
+            createEllipseWithVerticalLinearGradient();
+        } else if (choice == "An ellipse with a horizontal linear gradient from yellow to red, and a text") {
+            createEllipseWithHorizontalLinearGradientText();
+        } else if (choice == "An ellipse with a radial gradient from white to blue") {
+            createEllipseWithRadialGradientWhiletoBlue();
+        } else if (choice == "Another ellipse with a radial gradient from white to blue") {
+            createAnotherEllipseWithRadialGradientWhiletoBlue();
+        } else if (choice == "Rectangle that repeatedly fade away over 5 seconds") {
+            createRecRepeatlyover5s();
+        } else if (choice == "A growing rectangle that will change color") {
+            createGrowingRecandChangeColor();
+        } else if (choice == "Three rectangles that will change color") {
+            createThreeGrowingRecandChangeColor();
+        } else if (choice == "Move text along a motion path") {
+            createMovetext();
+        } else if (choice == "Move, rotate, and scale text along a motion path") {
+            createMovetext2();
+        } else if (choice == "Move, rotate, and scale text along a motion path + a growing rectangle that will change color") {
+            createMovetext3();
+        }
+            txtCode.value = document.getElementById("DisplayCell").innerHTML;
+    }
+    function SubmitCode() {
+        $("SVGTest").empty();
+        document.getElementById("DisplayCell").innerHTML = txtCode.value;
+    }
+</script>
+</head>
+<body onload="AddItem_Select();">
+
+<table id="wrapper" cellspacing="0">
+<tr>
+<td colspan="4" align="right" height="50"></td>
+</tr>
+<tr>
+<td width="25%" height="62%" rowspan="7"></td>
+<td width="25%" height="5%" align="left" bgcolor="#0000CC"><blockquote><span class="style1">Standard Control</span></blockquote></td>
+<td width="26%" height="5%" align="right" bgcolor="#0000CC"><!-- InstanceBeginEditable name="Home" --><blockquote><span class="style1"><a href="../index.html">Home</a></span></blockquote><!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="7"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" bgcolor="#FFFFFF" height="4%"><blockquote><span id="spanTitle" class="style2">SVG Control</span></blockquote></td>
+</tr>
+<tr>
+<td colspan="2" valign="top" bgcolor="#FFFFFF" height="10%">
+<!-- InstanceBeginEditable name="Row2" -->
+	<div id="ItemDisplay" align="center" >
+        <select id="svgSelect" name="D1" onchange="CallSVG();">
+        </select></div>
+</td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="top" bgcolor="#FFFFFF" height="7%" align="center">
+
+      <table style="width: 100%">
+          <tr>
+              <td id="DisplayCell" class="auto-style1" colspan="2" style="text-align:center" height="400">
+                  <svg id="SVGTest" xmlns="http://www.w3.org/2000/svg" version="1.1" height="190" width="190">
+                        <rect width="300" height="100" style="fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)" />
+                  </svg>
+              </td>
+          </tr>
+          <tr>
+              <td class="auto-style1" colspan="2"></td>
+          </tr>
+          <tr>
+              <td style="text-align: center">
+                  <textarea id="txtCode" name="S1" style="width:500px;height:100px"></textarea></td>
+          </tr>
+              </table>
+
+  <!-- InstanceEndEditable --></td>
+</tr>
+<tr>
+  <td colspan="2" valign="top" bgcolor="#FFFFFF" height="14%">
+  <!-- InstanceBeginEditable name="Row6" -->
+  <table align="center" width="530" height="50%" bgcolor="#CCCCCC">
+  <tr><td colspan="2" align="center"><input type="submit" id="btnAdd" name="btnAdd" value="Submit code" onclick="SubmitCode();"/></td></tr>
+  </table>
+  <!-- InstanceEndEditable --></td>
+</tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

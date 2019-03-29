@@ -1,0 +1,379 @@
+﻿<!DOCTYPE html>
+<html>
+<!-- InstanceBegin template="/Templates/control.dwt" codeOutsideHTMLIsLocked="false" -->
+<head runat="server">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Standard Control</title>
+    <script src="../Scripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../Scripts/js/jquery.jqGrid.min.js"></script>
+    <script type="text/javascript" src="../ControlsList/Util.js"></script>
+    <script type="text/javascript" src="../ControlsList/Variables.js"></script>
+    <script type="text/javascript" src="../ControlsList/Data.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/dojo.xd.js"></script>
+
+    <link href="../Scripts/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="../Scripts/themes/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+    <link href="../Scripts/css/Stylesheet1.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../Scripts/css/AutoComplete.css" media="screen" type="text/css" />
+
+
+    <style type="text/css">
+        body {
+            background-image: url(../images/background.jpg);
+        }
+
+        html, body, #wrapper {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border: none;
+            white-space: 0;
+        }
+
+        .style1 {
+            color: #FFFFFF;
+            font-weight: bold;
+            font-family: Tahoma;
+            font-size: 15px;
+        }
+
+        .style2 {
+            color: red;
+            font-weight: bold;
+            font-family: Tahoma;
+            font-size: 15px;
+        }
+
+        .style3 {
+            color: #00F;
+            font-family: Tahoma;
+            font-size: 12px;
+        }
+
+        .style4 {
+            color: #00F;
+            font-weight: bold;
+            font-family: Tahoma;
+            font-size: 13px;
+        }
+
+        a:link {
+            COLOR: #FFFFFF;
+            text-decoration: none;
+        }
+
+        a:visited {
+            COLOR: #FFFFFF;
+        }
+
+        a:hover {
+            COLOR: #FFFFFF;
+        }
+
+        a:active {
+            COLOR: #FFFFFF;
+        }
+
+        a {
+            display: block;
+        }
+
+        label {
+            display: block;
+        }
+
+        #Text3 {
+            width: 101px;
+            text-align: center;
+        }
+
+        .auto-style1 {
+            text-align: right;
+        }
+
+        .auto-style2 {
+            text-align: left;
+        }
+    </style>
+    <script type="text/javascript">
+        function _DspSelectedItem(idRow) {
+            // SelectedData[0],[1],[2],[3],[4] <==> [id selected row], [proName], [proValue], [type], [status]
+
+            SelectedData[0] = idRow;
+            for (i = 0; i < 4; i++) {
+                SelectedData[i + 1] = jQuery("#" + IDPropertyList).jqGrid('getCell', idRow, i);
+            }
+
+            document.getElementById(IDPropertyName).innerHTML = SelectedData[1];
+            document.getElementById(IDtxtProValue).value = SelectedData[2];
+            //Enable or Disable updValue or updButton
+            document.getElementById(IDtxtProValue).disabled = (SelectedData[4] == '0');
+            document.getElementById(IDbtnUpd).disabled = (SelectedData[4] == '0');
+
+        }
+        function loadProperty_Window() {
+            PropertyData = [
+                         { name: "Title", value: "Window Test", type: "string", status: 1 },
+                         { name: "Left-Screen", value: "300", type: "int", status: 1 },
+                         { name: "Top-Screen", value: "300", type: "int", status: 1 },
+                         { name: "Width", value: "500", type: "int", status: 1 },
+                         { name: "Height", value: "500", type: "int", status: 1 },
+            ];
+        }
+        function createPropertyList() {
+
+            $.extend($.fn.fmatter, {
+                htmlContent: function (cellval, options, rowdata) {
+                    return $.jgrid.htmlEncode(cellval);
+                }
+            });
+
+            $.extend($.fn.fmatter.htmlContent, {
+                unformat: function (cellval, options) {
+                    return $.jgrid.htmlDecode(cellval);
+                }
+            });
+
+            jQuery("#" + IDPropertyList).jqGrid({
+                datatype: "local", //json
+                height: 250,
+                width: 400,
+                colNames: ['Properties name', 'Value', 'Type', 'Edit'],
+                colModel: [
+                              { name: 'name', index: 'name asc', width: 150 },
+                              { name: 'value', index: 'value', width: 150, formatter: 'htmlContent' },
+                              { name: 'type', index: 'type', width: 150 },
+                              { name: 'status', index: 'status', hidden: true }
+                ],
+                multiselect: false,
+                width: 600,
+                height: "124",
+                sortorder: "asc",
+                //scrollrows: true,
+                rowNum: 10,
+                rowList: [10, 20, 30],
+                sortname: 'id',
+                onSelectRow: function (id) {
+                    _DspSelectedItem(id);
+                },
+                loadComplete: function () {
+                    $("#" + IDPropertyList).setSelection($("#" + IDPropertyList).getDataIDs()[0], true);
+                }
+            });
+
+            //======= Event keypress =====================================
+
+            loadPropertyList(PropertyData);
+            return;
+
+        }
+
+        function loadPropertyList(data) {
+
+            $("#" + IDPropertyList).jqGrid('clearGridData');
+            for (var i = 0; i < data.length; i++) {
+                jQuery("#" + IDPropertyList).jqGrid('addRowData', i + 1, data[i]);
+            }
+        }
+    </script>
+</head>
+<body onload="showComment();">
+    <table id="wrapper" cellspacing="0">
+        <tr>
+            <td colspan="4" align="right" height="15%"></td>
+        </tr>
+        <tr>
+            <td width="25%" height="62%" rowspan="7"></td>
+            <td width="25%" height="5%" align="left" bgcolor="#0000CC">
+                <blockquote><span class="style1">Standard Control</span></blockquote>
+            </td>
+            <td width="26%" height="5%" align="right" bgcolor="#0000CC">
+                <!-- InstanceBeginEditable name="Home" -->
+                <blockquote><span class="style1"><a href="../index.html">Home</a></span></blockquote>
+                <!-- InstanceEndEditable -->
+            </td>
+            <td width="24%" height="70%" rowspan="7"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" valign="bottom" bgcolor="#FFFFFF" height="4%">
+                <blockquote><span class="style2">Window Wait </span></blockquote>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" valign="top" bgcolor="#FFFFFF" height="7%" align="center">
+
+                <table style="width: 100%;">
+                                        <tr>
+                        <td class="auto-style1"><span style="font-family: Tahoma; font-size: 12px; color: Black; font-weight: normal;" align="left">Delay Window(milisecond):</span></td>
+                        <td class="auto-style2">
+                            <input type="text" id="txtDelayWin" name="txtDelayWin" size="15" value="1000" /></td>
+                        <td class="auto-style1"><span style="font-family: Tahoma; font-size: 12px; color: Black; font-weight: normal;" align="left">Delay Close(milisecond)</span></td>
+                        <td class="auto-style2">
+                            <input type="text" id="txtDelayClose" name="txtDelayClose" size="15" value="1000" /></td>
+                        <td align="right" style="text-align: left">
+                            <input type="button" id="btnShow" name="btnShow" value="Apply" onclick="dspWIndow();" /></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1"><span style="font-family: Tahoma; font-size: 12px; color: Black; font-weight: normal;" align="left">Delay Property(milisecond):</span></td>
+                        <td class="auto-style2">
+                            <input type="text" id="txtDelayPro" name="txtDelayPro" size="15" value="1000" /></td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            </td>
+                        <td align="right" style="text-align: left">
+                         </td>
+                    </tr>
+                </table>
+        </tr>
+        <tr>
+            <td colspan="2" id="PropertyCell" valign="top" bgcolor="#FFFFFF" height="10%">
+                <script type="text/javascript">
+                    document.write(' <center><table id=' + IDPropertyList + ' align="center"></table></center>');
+                </script>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" valign="top" bgcolor="#FFFFFF" height="7%" align="center">
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="auto-style1" style="width: 30%; text-align: right"><span style="font-family: Tahoma; font-size: 12px; color: Black; font-weight: normal;" align="left" id="proName">Property Name:</span></td>
+                        <td class="auto-style2" style="width: 40%; text-align: center">
+                            <input type="text" id="txtProValue" name="txtProValue" size="30" value="" /></td>
+                        <td class="auto-style2" style="width: 30%; text-align: left">
+                            <input type="button" id="btnUpd" name="btnUpd" value="Update" onclick="return Update();" /></td>
+                    </tr>
+                </table>
+        </tr>
+        <tr>
+            <td colspan="2" valign="top" bgcolor="#FFFFFF" height="14%">
+                <!-- InstanceBeginEditable name="Row6" -->
+                <table align="center" width="530" height="50%" bgcolor="#CCCCCC">
+                    <tr>
+                        <td colspan="2" align="left" id="txtComments">
+                           </td>
+                    </tr>
+                </table>
+
+                <!-- InstanceEndEditable -->
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" align="right" height="19%"><span class="style3"></span></td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        var oWin = false;
+        var bcheck = false;
+        jQuery(document).ready(function ($) {
+            loadProperty_Window();
+            createPropertyList();
+            loadPropertyList(PropertyData);
+
+        });
+
+        function dspWIndow()
+        {
+                document.body.style.cursor = 'wait';
+                document.getElementById('btnShow').disabled = true;
+                varInterval = setInterval(function () { clearInterval(varInterval); createNewWindow(); document.body.style.cursor = 'default'; }, parseInt(txtDelayWin.value));
+        }
+        function createNewWindow() {
+            var strConfig = 'height='+ PropertyData[4].value +',width=' + PropertyData[3].value + ', toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, directories=no, status=no';
+            var newPage = "<html><head><title>";
+            newPage += PropertyData[0].value;
+            newPage += "</title></head><body>";
+            newPage += "<button type=\"button\" name=\"btnClose\" style=\"width:200px;top:50;left:50\" value=\"Close\" onclick=\"return window.close();\"/>";
+            newPage += "<p><font size=\"5\"> Close</font>";
+            newPage += "</p></body></html>";
+            oWin = window.open('', 'newwindow', config = strConfig);
+            oWin.document.write(newPage);
+            oWin.moveTo(PropertyData[1].value, PropertyData[2].value);
+            oWin.resizeTo(PropertyData[3].value, PropertyData[4].value);
+            oWin.onbeforeunload = function (e) {
+                document.getElementById('btnShow').disabled = false;
+                bcheck = false;
+                fnUnloadHandler();
+            };
+            oWin.onunload = function (e) {
+            };
+            bcheck = true;
+            oWin.focus();
+        }
+        function closepopup() {
+            if (false == my_window.closed) {
+                oWin.close();
+            }
+            else {
+                alert('Window already closed!');
+            }
+        }
+        function fnUnloadHandler() {
+            // Add your code here
+            var date = new Date();
+            var curDate = null;
+            do {
+                curDate = new Date();
+            }
+            while (curDate - date < parseInt(txtDelayClose.value))
+        }
+        function Update() {
+                document.body.style.cursor = 'wait';
+                document.getElementById('btnUpd').disabled = true;
+            varInterval = setInterval(function () { clearInterval(varInterval); updPropertyControl(); document.body.style.cursor = 'default'; }, parseInt(txtDelayPro.value));
+        }
+        function updPropertyControl() {
+            SelectedData[2] = document.getElementById(IDtxtProValue).value; //set ProValue
+            $("#" + IDPropertyList).jqGrid('setCell', SelectedData[0], 'value', ("" + SelectedData[2])); //update value to GRD
+
+            var name = document.getElementById('proName').innerHTML;
+            var val = document.getElementById(IDtxtProValue).value;
+
+            for (i = 0; i < PropertyData.length; i++)
+            {
+                oAttributes = PropertyData[i];
+
+                if (oAttributes.name == name)
+                {
+                    if (val != null) {
+                        oAttributes.value = val;
+                    }
+                    else oAttributes.value = "";
+                    PropertyData[i] = oAttributes;
+                }
+            }
+            if (bcheck) {
+                if (name == "Title") {
+                    oWin.document.title = val;
+                } else if (name == "Left-Screen") {
+                    var oTop = PropertyData[2].value;
+                    oWin.moveTo(val,oTop);
+                } else if (name == "Top-Screen") {
+                    var oLeft = PropertyData[1].value;
+                    oWin.moveTo(oLeft,val);
+                } else if (name == "Width") {
+                    var oHeight = PropertyData[4].value;
+                    oWin.resizeTo(val, oHeight);
+                } else if (name == "Height") {
+                    var oWidth = PropertyData[3].value;
+                    oWin.resizeTo(oWidth,val);
+                }
+                oWin.focus();
+            }
+            document.getElementById('btnUpd').disabled = false;
+        }
+        function showComment()
+        {
+            var strText = "Each browser has a limit size such as :<br/>";
+            strText += "IE: limit width = 250, limit height = 100 <br/>";
+            strText += "FireFox & Chrome: limit width = 132, limit height = 68";
+            document.getElementById('txtComments').innerHTML = strText;
+        }
+    </script>
+</body>
+<!-- InstanceEnd -->
+</html>

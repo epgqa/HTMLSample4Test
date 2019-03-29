@@ -1,0 +1,8 @@
+/*
+	UIZE JAVASCRIPT FRAMEWORK
+
+	http://www.uize.com/reference/Uize.Test.Performance.ArraySummingApproaches.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'Uize.Test.Performance.ArraySummingApproaches',builder:function(){'use strict';function c_a(c_b){var c_c=0;for(var c_d=c_b.length;--c_d>=0;)c_c+=c_b[c_d];return c_c;}function c_e(c_b){return eval(c_b.join('+'));}function c_f(c_g){var c_b=[];for(var c_d=c_g;--c_d>=0;)c_b.push(Math.random()*1000000);return c_b;}var c_h=c_f(10),c_i=c_f(100),c_j=c_f(1000),c_k=500;return Uize.Test.declare({title:'Test the performance of different approaches to summing all the elements of an array',test:[{title:'Use a loop to iterate over the elements of an array and add each element\'s value to a sum variable',test:[{title:'Sum a short array (10 elements) 500 times',test:function(){for(var c_l=c_k;--c_l>=0;)c_a(c_h);return true;}},{title:'Sum a medium array (100 elements) 500 times',test:function(){for(var c_l=c_k;--c_l>=0;)c_a(c_i);return true;}},{title:'Sum a long array (1000 elements) 500 times',test:function(){for(var c_l=c_k;--c_l>=0;)c_a(c_j);return true;}}]},{
+title:'Join all the elements of an array using "+" as the delimiter and use eval to evaluate the resulting summation expression',test:[{title:'Sum a short array (10 elements) 500 times',test:function(){for(var c_l=c_k;--c_l>=0;)c_e(c_h);return true;}},{title:'Sum a medium array (100 elements) 500 times',test:function(){for(var c_l=c_k;--c_l>=0;)c_e(c_i);return true;}},{title:'Sum a long array (1000 elements) 500 times',test:function(){for(var c_l=c_k;--c_l>=0;)c_e(c_j);return true;}}]}]});}});

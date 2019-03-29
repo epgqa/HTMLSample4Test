@@ -1,0 +1,127 @@
+Platform: HTML
+[TestCase_0]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 0
+[End]
+[TestCase_1]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 24
+[End]
+[TestCase_2]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 48
+[End]
+[TestCase_3]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 72
+[End]
+[TestCase_4]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 96
+[End]
+[TestCase_5]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 120
+[End]
+[TestCase_6]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 144
+[End]
+[TestCase_7]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 168
+[End]
+[TestCase_8]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 192
+[End]
+[TestCase_9]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 216
+[End]
+[TestCase_10]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 240
+[End]
+[TestCase_11]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 264
+[End]
+[TestCase_12]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 288
+[End]
+[TestCase_13]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 312
+[End]
+[TestCase_14]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 336
+[End]
+[TestCase_15]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 360
+[End]
+[TestCase_16]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 384
+[End]
+[TestCase_17]
+Control: input-button
+SuggestProperties: id;name;value
+NDetect: 1
+NScenario: 3
+Address: 408
+[End]

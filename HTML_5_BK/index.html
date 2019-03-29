@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Standard Controls</title>
+<script src="Scripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<script src="ControlsList/Data.js" type="text/javascript"></script>
+
+<style type="text/css">
+    body {
+	    background-image: url(images/background.jpg);
+	    overflow:hidden;
+    }
+
+    html, body, #wrapper {
+          height:100%;
+	      width: 100%;
+          margin: 0;
+          padding: 0;
+          border: none;
+	      white-space:normal;
+	      white-space: nowrap;
+       }
+   
+    .style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+    .style2 {color: #F00; font-weight: bold; font-family: Tahoma; font-size: 17px; }
+
+    .style3 {color: #00F; font-weight: bold; font-family: Times New Roman; font-size: 15px; }
+     checkbox { font-size:20px}
+     
+    .style4
+    {
+        width: 25%;
+    }
+     
+    </style>
+
+</head>
+
+<body>
+<iframe id="frmFileScenario" src="ScenarioData_HTML/config.txt" style="display: none;"></iframe>
+<iframe id="frmFileEvent" src="ScenarioFireEvents_HTML/config.txt" style="display: none;"></iframe>
+<iframe id="frmFileViewer" src="ScenarioViewerData_Files/config.txt" style="display: none;"></iframe>
+
+<table id="wrapper" cellspacing="0" >
+    <tr>
+            <td colspan="5" align="right" height="15%"></td>
+    </tr>
+
+    <tr>
+            <td rowspan="5" class="style4" ></td>
+            <td colspan="2" align="left" bgcolor="#0000CC" width="34%"  style="vertical-align:middle"><span class="style1">&nbsp;&nbsp;&nbsp;Standard Controls</span></td>
+            <td height="5%" width="17%" align="right" valign="middle"  style="vertical-align:middle" bgcolor="#0000CC"><!-- InstanceBeginEditable name="Home" --><span class="style1">Home&nbsp;&nbsp;&nbsp;</span><!-- InstanceEndEditable --></td>
+            <td width="24%" height="70%" rowspan="5"></td>
+    </tr>
+
+    <tr>
+            <td height="7%" colspan="3" width="51%"><span class="style2"><label id="lblTitle">List Controls</label></span></td>
+    </tr>
+    <tr>
+          <td height="2%" width="17%" valign="top" align="center"><!-- InstanceBeginEditable name="Col1" -->
+            <p/><div class="style3"><label id="lblComponents">Components</label></div>
+          </td>
+          <td width="17%" height="2%" align="center" valign="top"><!-- InstanceBeginEditable name="Col2" -->
+              <p /><div class="style3"><label id="lblControls">Controls</label></div>
+           </td>
+           <td width="17%" height="2%" align="center" valign="top"><!-- InstanceBeginEditable name="Col3" -->
+               <p /><div class="style3"><label id="lblSamples">Samples</label></div>
+            </td>
+    </tr>
+    <tr>
+          <td width="17%" height="48%" valign="top" align="right"><!-- InstanceBeginEditable name="Col4" -->
+              <select name="Components" id="lstComponents" size="20" style="width:180px;" onchange="loadControls();"></select>
+          </td>
+          <td width="17%" height="48%" align="center" valign="top"><!-- InstanceBeginEditable name="Col5" -->
+                <select name="Controls" id="lstControls" size="20" style="width:180px;" onchange="loadSample();"></select>
+          </td>
+          <td width="17%" height="48%" align="left" valign="top"><!-- InstanceBeginEditable name="Col6" -->
+                <select name="Samples" id="lstSamples" size="20" style="width:180px;" onchange="navigateSample();"></select>
+             
+          </td>
+    </tr>
+    <tr>
+          <td colspan="4" align="right" height="21%"><span class="style3"></span></td>
+     </tr>
+</table>
+
+        <script type="text/javascript">
+            
+            jQuery(document).ready(function ($) {
+                loadComponents();
+            });
+
+            function loadComponents() {
+                lstComp = document.getElementById('lstComponents');
+                for (i = 0; i < componentsArr.length; i++) {
+                    var newOpt = new Option(componentsArr[i], componentsArr[i]);
+                    newOpt.value = componentsArr[i];
+                    newOpt.text = componentsArr[i];
+                    lstComp.add(newOpt);
+
+                }
+                lstComp.selectedIndex = 0;
+                loadControls();
+                sortlist(document.getElementById('lstControls'));
+                lstControls.selectedIndex = 0;
+                loadSample();
+            }
+
+            function loadControls() {
+                lstCtr = document.getElementById('lstControls');
+                lstComp = document.getElementById('lstComponents');
+                var compValue = lstComp.options[lstComp.selectedIndex].value;
+                var temp = new Array();
+                for (i = 0; i < controlsArr.length; i++) {
+
+                    var objControl = controlsArr[i];
+
+                    if (objControl.name == compValue) {
+
+                        temp = objControl.value.split(',');
+
+                        removeItem("lstControls");
+
+
+                        for (i = 0; i < temp.length; i++) {
+                            var elOptNew = document.createElement('option');
+                            elOptNew.text = temp[i];
+                            elOptNew.value = temp[i];
+                            try {
+                                lstCtr.add(elOptNew, null); // standards compliant; doesn't work in IE
+                            }
+                            catch (ex) {
+                                lstCtr.add(elOptNew); // IE only
+                            }
+                        }
+                        sortlist(lstCtr);
+                        lstCtr.selectedIndex = 0;
+                        loadSample();
+                        return;
+                    }
+                }
+            }
+
+            function loadSample() {
+                lstComp = document.getElementById('lstComponents');
+                lstCtr = document.getElementById('lstControls');
+                lstSmp = document.getElementById('lstSamples');
+                var ctrValue = lstCtr.options[lstCtr.selectedIndex].value;
+				
+                if (lstComp.options[lstComp.selectedIndex].value == "Layout") {
+                    for (var i = 0; i < lstCtr.options.length; i++) {
+
+                        if (lstCtr.options[i].selected) {
+
+                            var elOptNew = document.createElement('option');
+                            elOptNew.text = lstCtr.options[i].value + "_sample";
+                            elOptNew.value = lstCtr.options[i].value;
+                        }
+                    }
+                    try {
+                            removeItem("lstSamples");
+                            lstSmp.add(elOptNew, null); // standards compliant; doesn't work in IE
+                        }
+                    catch (ex) {
+                            removeItem("lstSamples");
+                            lstSmp.add(elOptNew); // IE only
+                        }
+						sortlist(document.getElementById('lstSamples'));
+                    }
+				else if(ctrValue == "ScenarioControls"){
+                    loadScenarioControls();
+                }
+				else if (ctrValue == "ScenarioEvents") {
+
+				    loadScenarioEvents();
+				}
+				else if (ctrValue == "ScenarioViewer") {
+
+				    loadScenarioViewer();
+				}
+                else {
+
+                    var temp = new Array();
+                    for (i = 0; i < sampleArr.length; i++) {
+
+                        var objSample = sampleArr[i];
+
+                        if (objSample.name == ctrValue) {
+
+                            temp = objSample.value.split(',');
+
+                            removeItem("lstSamples");
+
+                            for (i = 0; i < temp.length; i++) {
+                                var elOptNew = document.createElement('option');
+                                elOptNew.text = temp[i] + "_sample";
+                                elOptNew.value = temp[i];
+                                try {
+                                    lstSmp.add(elOptNew, null); // standards compliant; doesn't work in IE
+                                }
+                                catch (ex) {
+                                    lstSmp.add(elOptNew); // IE only
+                                }
+                            }
+							sortlist(document.getElementById('lstSamples'));
+                            return;
+                        }
+                    }
+                }
+            }
+
+            function loadScenarioViewer() {
+                var oFrame = document.getElementById("frmFileViewer");
+                var strRawContents = oFrame.contentWindow.document.body.childNodes[0].innerHTML;
+                while (strRawContents.indexOf("\r") >= 0)
+                    strRawContents = strRawContents.replace("\r", "");
+                var arrLines = strRawContents.split("\n");
+
+                removeItem("lstSamples");
+                for (var i = 0; i < arrLines.length; i++) {
+                    var curLine = arrLines[i];
+                    var elOptNew = document.createElement('option');
+                    elOptNew.text = curLine;
+                    elOptNew.value = "VIEWER";
+                    try {
+                        lstSmp.add(elOptNew, null); // standards compliant; doesn't work in IE
+                    }
+                    catch (ex) {
+                        lstSmp.add(elOptNew); // IE only
+                    }
+                }
+            }
+			
+			function loadScenarioControls() {
+                var oFrame = document.getElementById("frmFileScenario");
+                var strRawContents = oFrame.contentWindow.document.body.childNodes[0].innerHTML;
+                while (strRawContents.indexOf("\r") >= 0)
+                    strRawContents = strRawContents.replace("\r", "");
+                var arrLines = strRawContents.split("\n");
+
+                removeItem("lstSamples");
+                for (var i = 0; i < arrLines.length; i++) {
+                    var curLine = arrLines[i];
+                    var elOptNew = document.createElement('option');
+                    elOptNew.text = curLine;
+                    elOptNew.value = "SCENARIO";
+                    try {
+                        lstSmp.add(elOptNew, null); // standards compliant; doesn't work in IE
+                    }
+                    catch (ex) {
+                        lstSmp.add(elOptNew); // IE only
+                    }
+                }
+            }
+			
+			function loadScenarioEvents() {
+                var oFrame = document.getElementById("frmFileEvent");
+                var strRawContents = oFrame.contentWindow.document.body.childNodes[0].innerHTML;
+                while (strRawContents.indexOf("\r") >= 0)
+                    strRawContents = strRawContents.replace("\r", "");
+                var arrLines = strRawContents.split("\n");
+
+                removeItem("lstSamples");
+                for (var i = 0; i < arrLines.length; i++) {
+                    var curLine = arrLines[i];
+					
+                    var elOptNew = document.createElement('option');
+                    elOptNew.text = curLine;
+                    elOptNew.value = "EVENT";
+                    try {
+                        lstSmp.add(elOptNew, null); // standards compliant; doesn't work in IE
+                    }
+                    catch (ex) {
+                        lstSmp.add(elOptNew); // IE only
+                    }
+                }
+            }
+
+            function navigateSample() {
+
+                lstSmp = document.getElementById('lstSamples');
+                selectedCtr = lstSmp.options[lstSmp.selectedIndex].value;
+
+                if (lstSmp.options[lstSmp.selectedIndex].value == "VIEWER") {
+                    if (lstSmp.options[lstSmp.selectedIndex].text.lastIndexOf(".txt") < 0)
+                        window.location = "ScenarioViewer_src/Selection_TestCase.html?id=" + lstSmp.options[lstSmp.selectedIndex].text + ".txt";
+                    else window.location = "ScenarioViewer_src/Selection_TestCase.html?id=" + lstSmp.options[lstSmp.selectedIndex].text;
+                    return;
+                }
+				if (lstSmp.options[lstSmp.selectedIndex].value == "SCENARIO") {
+					window.location = "CustomizeControls/ScenarioDynamic.html?id=" + lstSmp.options[lstSmp.selectedIndex].text;
+                    return;
+                }
+				if (lstSmp.options[lstSmp.selectedIndex].value == "EVENT") {
+					var selectedName = lstSmp.options[lstSmp.selectedIndex].text;
+                    window.location = "ScenarioFireEvents_HTML/"+ selectedName + ".html";
+                    return;
+                }
+                if (selectedCtr.substring(0,5) == "Input" && selectedCtr != "InputImage") {
+
+                    var splitStr = selectedCtr.split('Input');
+                    window.location = "CustomizeControls/controls.html?id=" + splitStr[1];
+                }
+                else if (selectedCtr == "InputImage") {
+                    window.location = "CustomizeControls/controls.html?id=imagebtn";
+                }				
+                else {
+                    window.location = "CustomizeControls/controls.html?id=" + selectedCtr;
+                }
+            }
+
+            function removeItem(itemCtr)
+            {
+
+                lstCtr = document.getElementById(itemCtr);
+                for (i = lstCtr.length - 1; i >= 0; i--) {
+                    lstCtr.remove(i);
+                }
+            }
+
+            function sortlist(listBox) {
+				if(listBox == null) return;
+               
+				arrTexts = new Array();
+
+                for (i = 0; i < listBox.length; i++) {
+					arrTexts[i] = new Array();
+					arrTexts[i][0] = listBox.options[i].text;
+					arrTexts[i][1] = listBox.options[i].value;                    
+                }
+				
+				arrTexts.sort();
+                 
+				while (listBox.options.length > 0){
+					//listBox.options[0] = null;
+					listBox.remove(0);
+				}
+                for (i = 0; i < arrTexts.length; i++) {
+					var op = new Option(arrTexts[i][0], arrTexts[i][1]);
+					listBox.options[i] = op;
+                }
+				return;
+            }
+    </script>
+
+</body>
+</html>

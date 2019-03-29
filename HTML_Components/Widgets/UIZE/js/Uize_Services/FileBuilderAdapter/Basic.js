@@ -1,0 +1,8 @@
+/*
+	UIZE JAVASCRIPT FRAMEWORK
+
+	http://www.uize.com/reference/Uize.Services.FileBuilderAdapter.Basic.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'Uize.Services.FileBuilderAdapter.Basic',required:['Uize.Build.FileBuilders.SourceFiles','Uize.Build.FileBuilders.UnprocessedFiles','Uize.Build.FileBuilders.InMemoryCompiledJstTemplates','Uize.Build.FileBuilders.InMemoryParsedSimpleDataFiles','Uize.Build.FileBuilders.BuiltLibraryModules','Uize.Build.FileBuilders.BuiltModules','Uize.Build.FileBuilders.TempUizeModule','Uize.Build.FileBuilders.TempJsModules','Uize.Build.FileBuilders.CompiledCss','Uize.Build.FileBuilders.CompiledCssModules','Uize.Build.FileBuilders.CompiledJstModules','Uize.Build.FileBuilders.TempGeneratedNamespaceModules'],builder:function(d_a){'use strict';return d_a.subclass({instanceMethods:{init:function(d_b,d_c){this.registerFileBuilders(Uize.Build.FileBuilders.SourceFiles,Uize.Build.FileBuilders.UnprocessedFiles,Uize.Build.FileBuilders.InMemoryCompiledJstTemplates,Uize.Build.FileBuilders.InMemoryParsedSimpleDataFiles,Uize.Build.FileBuilders.BuiltLibraryModules,Uize.Build.FileBuilders.BuiltModules,
+Uize.Build.FileBuilders.TempUizeModule,Uize.Build.FileBuilders.TempJsModules,Uize.Build.FileBuilders.CompiledCss,Uize.Build.FileBuilders.CompiledCssModules,Uize.Build.FileBuilders.CompiledJstModules,Uize.Build.FileBuilders.TempGeneratedNamespaceModules);d_c();}}});}});

@@ -1,0 +1,8 @@
+/*
+	UIZE JAVASCRIPT FRAMEWORK
+
+	http://www.uize.com/reference/Uize.Comm.Iframe.html
+	Available under MIT License or GNU General Public License -- http://www.uize.com/license.html
+*/
+Uize.module({name:'Uize.Comm.Iframe',required:['Uize.Url','Uize.Node'],builder:function(c_a){'use strict';var c_b=c_a.subclass(),c_c=c_b.prototype,c_d=typeof window!='undefined'?window:{};var c_e;c_c.performRequest=function(c_f,c_g){var c_h=this,c_i=Uize.Node.getById(c_e),c_j=Uize.Url.resolve(c_f.url,{comm_mode:'ajax',output:'js',rnd:c_f.cache=='never'?Uize.Url.getCacheDefeatStr():null}),c_k=c_f.returnType,c_l=c_k=='object';c_d.handleResponse=function(c_m){if(c_l||c_k=='json')c_f.responseJson=Uize.clone(c_m);Uize.Node.isIe&&c_i.contentWindow.history.go(-1);c_g();};if(c_f.requestMethod=='POST'){var c_n=Uize.Node.getById('CommIframe_form'),c_o=Uize.Node.getById('CommIframe_params'),c_p=c_j.indexOf('?');c_o.value=c_p> -1?c_j.substr(c_p+1):'';c_n.action=c_j.slice(0,c_p);c_n.submit();}else{c_i.src=c_j;}};if(typeof navigator!='undefined'){c_e=c_c.iframeId='Uize_Comm_Iframe_iframe'+Uize.Url.getCacheDefeatStr();Uize.Node.injectHtml(Uize.Node.getById('globalContent')||document.body,
+'<form id="CommIframe_form" style="display:none;" target="'+c_e+'" method="POST" accept-charset="utf-8">'+'<input id="CommIframe_params" name="params" type="hidden"/>'+'</form>'+'<iframe id="'+c_e+'" name="'+c_e+'" width="1" height="1" src="'+Uize.pathToResources+'Uize_Comm_Iframe/blank.html" frameborder="1" style="position:absolute; visibility:hidden;" scrolling="no"></iframe>');}c_d.handleResponse=function(){};return c_b;}});

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://lgvn14027/html5/testPrompt.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>テストプロンプト</title></head><body>
+
+<p>Click the button to display a prompt box.</p>
+
+<input type="button" onclick="test_prompt_normal(&#39;Input Name&#39;,&#39;Your first name &#39;)" value="Test Prompt Normal">
+
+<p>
+<input type="button" onclick="test_prompt_special(&#39;输入你的名字&#39;,&#39;你的名字&#39;)" value="Test Prompt Special">
+</p>
+
+<p>Click the button to display a prompt box.</p>
+
+<input type="button" onclick="test_prompt_defaulttext(&#39;Chào bạn, bạn tên là gì?&#39;,&#39; Phương &#39;)" value="Test Prompt Default text">
+
+<p id="text"></p>
+<p id="text1"></p>
+<p id="text2"></p>
+
+<p>
+
+<input type="button" onclick="refreshFunction()" value="Refresh" id="refreshButton">
+
+</p>
+
+<p>Click the button to display an alert box.</p>
+
+<button onclick="myFunctionAlert()" id="alert">Alert</button>
+
+<p>Click the button to display a confirm box.</p>
+
+<button onclick="myFunctionConfirm()" id="confirm">Confirm</button>
+
+<script>
+
+function myFunctionConfirm() {
+    confirm("Press a button!");
+}
+
+function myFunctionAlert() {
+    alert("Hello! I am an alert box!");
+}
+
+//normal
+function test_prompt_normal(str, mess){
+	var result = prompt(str,mess);
+	if (result != null){
+		document.getElementById('text').innerHTML = "You choose OK at prompt 1 with value: "+result;
+		result = prompt('Input Again','Your last name');
+		if (result != null){
+			document.getElementById('text1').innerHTML = "You choose OK at prompt 2 with value : "+result;
+			result = confirm('Is it OK?');
+			if (result==true){
+				document.getElementById('text2').innerHTML = "You choose OK at prompt 3";
+			}else{
+				document.getElementById('text2').innerHTML = "You choose Cancel at prompt 3";
+			}
+		}else{
+			document.getElementById('text1').innerHTML = "You choose Cancel at prompt 2";
+		}
+	}else{
+		document.getElementById('text').innerHTML = "You choose Cancel at prompt 1";
+	}
+}
+
+//special-------------------------------------------------------------------------------------------------
+function test_prompt_special(str, mess){
+	var resultSpecial = prompt(str,mess);
+	if (resultSpecial != null){
+		document.getElementById('text').innerHTML = "You choose OK at prompt 1 with value: "+resultSpecial;
+		resultSpecial = prompt('再次输入你的名字','你的名字');
+		if (resultSpecial != null){
+			document.getElementById('text1').innerHTML = "You choose OK at prompt 2 with value : "+resultSpecial;
+			resultSpecial = confirm('那是正确的？');
+			if (resultSpecial==true){
+				document.getElementById('text2').innerHTML = "You choose OK at prompt 3";
+			}else{
+				document.getElementById('text2').innerHTML = "You choose Cancel at prompt 3";
+			}
+		}else{
+			document.getElementById('text1').innerHTML = "You choose Cancel at prompt 2";
+		}
+	}else{
+		document.getElementById('text').innerHTML = "You choose Cancel at prompt 1";
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//default text
+function test_prompt_defaulttext(str, mess){
+	var resultDefault = prompt(str,mess);
+	if (resultDefault != null){
+		document.getElementById('text').innerHTML = "You choose OK at prompt 1 with value: "+resultDefault;
+		resultDefault = prompt('Chào bạn, bạn tên là gì?','Thu');
+		if (resultDefault != null){
+			document.getElementById('text1').innerHTML = "You choose OK at prompt 2 with value : "+resultDefault;
+			resultDefault = confirm('Bạn xác nhận?');
+			if (resultDefault==true){
+				document.getElementById('text2').innerHTML = "You choose OK at prompt 3";
+			}else{
+				document.getElementById('text2').innerHTML = "You choose Cancel at prompt 3";
+			}
+		}else{
+			document.getElementById('text1').innerHTML = "You choose Cancel at prompt 2";
+		}
+	}else{
+		document.getElementById('text').innerHTML = "You choose Cancel at prompt 1";
+	}
+}
+
+
+//refresh----------------------------------------
+function refreshFunction(){
+document.getElementById('text').innerHTML = "";
+document.getElementById('text1').innerHTML = "";
+document.getElementById('text2').innerHTML = "";
+}
+/////////////////////////////////////////////////
+</script>
+
+</body></html>

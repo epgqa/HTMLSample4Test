@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<title>Web Plugin</title>
+	<style type="text/css">
+
+		body {
+			background-image: url(../../../images/background.jpg);
+		}
+
+		html, body, #wrapper {
+			  height:100%;
+			  width: 100%;
+			  margin: 0;
+			  padding: 0;
+			  border: none;
+			  white-space:0;
+		   }
+		   
+		.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+		.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+		.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+		.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+		a:link {
+		COLOR: #FFFFFF;
+		text-decoration:none;
+		}
+		a:visited {
+		COLOR: #FFFFFF;
+		}
+		a:hover {
+		COLOR: #FFFFFF;
+		}
+		a:active {
+		COLOR: #FFFFFF;
+		}
+	</style>
+</head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<!-- InstanceEndEditable -->
+<body>
+
+<table id="wrapper" cellspacing="0">
+
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+
+<tr>
+<td width="25%" height="70%" rowspan="4"></td>
+<td width="34%"  align="left" bgcolor="#0000CC" style="vertical-align:middle"><span class="style1">&nbsp;&nbsp;&nbsp;Web Plugin</span></td>
+<td width="17%" height="5%" align="right" bgcolor="#0000CC" style="vertical-align:middle"><!-- InstanceBeginEditable name="Home" --><span class="style1"><a href="../../../index.html">Home&nbsp;&nbsp;&nbsp;</a></span> <!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="4"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" height="4%">
+    <!-- InstanceBeginEditable name="Row1" -->
+       	<span style="font-family: Tahoma; font-size: 14; color: #F00; font-weight:bold" align="left">KineticJS Path</span>
+    <!-- InstanceEndEditable --></td>
+</tr>
+
+<tr>
+	<td colspan="2" valign="top" bgcolor="#FFFFFF" height="53%"><!-- InstanceBeginEditable name="Row2" -->
+		<table width="100%" height="100%">
+		<tr>
+		<td width="100%" height="20%">
+			<table width="70%" align='center'>
+                <tr>
+                    <td>
+						<div id="renderer">
+							<div id="container"></div>
+								<script src="../js/kinetic-v4.5.4.min.js"></script>
+								<script defer="defer">
+								  var stage = new Kinetic.Stage({
+									container: 'container',
+									width: 578,
+									height: 200
+								  });
+								  var layer = new Kinetic.Layer();
+
+								  var path = new Kinetic.Path({
+									x: 240,
+									y: 40,
+									data: 'M12.582,9.551C3.251,16.237,0.921,29.021,7.08,38.564l-2.36,1.689l4.893,2.262l4.893,2.262l-0.568-5.36l-0.567-5.359l-2.365,1.694c-4.657-7.375-2.83-17.185,4.352-22.33c7.451-5.338,17.817-3.625,23.156,3.824c5.337,7.449,3.625,17.813-3.821,23.152l2.857,3.988c9.617-6.893,11.827-20.277,4.935-29.896C35.591,4.87,22.204,2.658,12.582,9.551z',
+									fill: 'green',
+									scale: 2
+								  });
+
+								  // add the shape to the layer
+								  layer.add(path);
+
+								  // add the layer to the stage
+								  stage.add(layer);
+								</script>
+						</div>
+                    </td>
+                </tr>
+			</table>
+		</td>
+		</tr>
+		
+		</table>
+	<!-- InstanceEndEditable -->
+	</td>
+</tr>
+<tr>
+	<td colspan="4" align="right" height="19%"></td>
+</tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

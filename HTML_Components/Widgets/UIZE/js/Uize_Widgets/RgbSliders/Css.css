@@ -1,0 +1,98 @@
+
+.Uize_Widgets_RgbSliders_Css {
+	border-collapse: collapse;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.Uize_Widgets_RgbSliders_Css tr, .Uize_Widgets_RgbSliders_Css td {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.Uize_Widgets_RgbSliders_Css-verticalSpacer {
+	height: 3px;
+}
+
+.Uize_Widgets_RgbSliders_Css-horizontalSpacer {
+	width: 3px;
+}
+
+.Uize_Widgets_RgbSliders_Css-swatch, .Uize_Widgets_RgbSliders_Css-sliderLabel {
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+.Uize_Widgets_RgbSliders_Css-swatch {
+	color: #fff;
+	text-shadow:-1px -1px 0 rgba(0,0,0,.6),-1px 0 0 rgba(0,0,0,.6),-1px 1px 0 rgba(0,0,0,.6),0 -1px 0 rgba(0,0,0,.6),0 1px 0 rgba(0,0,0,.6),1px -1px 0 rgba(0,0,0,.6),1px 0 0 rgba(0,0,0,.6),1px 1px 0 rgba(0,0,0,.6);
+	text-transform: uppercase;
+}
+
+.Uize_Widgets_RgbSliders_Css-sliderLabel {
+	font-weight: bold;
+	color: #000;
+	background: #eee;
+}
+
+.Uize_Widgets_RgbSliders_Css-swatch {
+	font-family: "Courier New", "Courier";
+	font-weight: bold;
+}
+
+/*** different sizes ***/
+			/*** tiny ***/
+				.Uize_Widgets_RgbSliders_Css-tiny .Uize_Widgets_RgbSliders_Css-sliderLabel,
+				.Uize_Widgets_RgbSliders_Css-tiny .Uize_Widgets_RgbSliders_Css-swatch {
+					line-height: 12px;
+					padding-top: 6px;
+					padding-bottom: 5px;
+				}
+				.Uize_Widgets_RgbSliders_Css-tiny .Uize_Widgets_RgbSliders_Css-sliderLabel {
+					font-size: 12px;
+				}
+			/*** small ***/
+				.Uize_Widgets_RgbSliders_Css-small .Uize_Widgets_RgbSliders_Css-sliderLabel,
+				.Uize_Widgets_RgbSliders_Css-small .Uize_Widgets_RgbSliders_Css-swatch {
+					line-height: 13px;
+					padding-top: 8px;
+					padding-bottom: 7px;
+				}
+				.Uize_Widgets_RgbSliders_Css-small .Uize_Widgets_RgbSliders_Css-sliderLabel {
+					font-size: 13px;
+				}
+			/*** medium ***/
+				.Uize_Widgets_RgbSliders_Css-medium .Uize_Widgets_RgbSliders_Css-sliderLabel,
+				.Uize_Widgets_RgbSliders_Css-medium .Uize_Widgets_RgbSliders_Css-swatch {
+					line-height: 15px;
+					padding-top: 12px;
+					padding-bottom: 11px;
+				}
+				.Uize_Widgets_RgbSliders_Css-medium .Uize_Widgets_RgbSliders_Css-sliderLabel {
+					font-size: 15px;
+				}
+			/*** large ***/
+				.Uize_Widgets_RgbSliders_Css-large .Uize_Widgets_RgbSliders_Css-sliderLabel,
+				.Uize_Widgets_RgbSliders_Css-large .Uize_Widgets_RgbSliders_Css-swatch {
+					line-height: 21px;
+					padding-top: 15px;
+					padding-bottom: 15px;
+				}
+				.Uize_Widgets_RgbSliders_Css-large .Uize_Widgets_RgbSliders_Css-sliderLabel {
+					font-size: 21px;
+				}
+	.Uize_Widgets_RgbSliders_Css-tiny .Uize_Widgets_RgbSliders_Css-swatch {
+		font-size: 15px;
+	}
+	.Uize_Widgets_RgbSliders_Css-small .Uize_Widgets_RgbSliders_Css-swatch {
+		font-size: 17px;
+	}
+	.Uize_Widgets_RgbSliders_Css-medium .Uize_Widgets_RgbSliders_Css-swatch {
+		font-size: 21px;
+	}
+	.Uize_Widgets_RgbSliders_Css-large .Uize_Widgets_RgbSliders_Css-swatch {
+		font-size: 28px;
+	}
+

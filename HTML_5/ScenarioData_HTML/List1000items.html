@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<title>1000アイテムのリスト</title>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>
+$(function () {
+	for (i = 0; i <= 1000; i++) {
+		$("#lstSample").append("<li> Item checkbox " + i + "<input type=\"checkbox\"" + "></li>");
+	}
+});
+</script>
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<div class="demo">
+<ul id="lstSample">
+</table>
+</div>
+</body>
+</html>

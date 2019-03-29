@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>Untitled Document</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+
+<style type="text/css">
+body {
+	background-image: url(../images/background.png);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+	  white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+</style>
+
+</head>
+<title>Silverlight_StandarControl</title>
+
+<body>
+
+<table id="wrapper" cellspacing="0">
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+
+<tr>
+<td width="25%" height="62%" rowspan="8"></td>
+<td width="25%" height="5%" align="left" bgcolor="#0000CC"><blockquote><span class="style1">Standard Controls</span></blockquote></td>
+<td width="26%" height="5%" align="right" bgcolor="#0000CC"><!-- TemplateBeginEditable name="Home" --><blockquote><span class="style1">Home</span>  <blockquote><!-- TemplateEndEditable --></td>
+<td width="24%" height="70%" rowspan="8"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" bgcolor="#FFFFFF" height="4%">
+    <!-- TemplateBeginEditable name="Row1" --><!-- TemplateEndEditable --></td>
+</tr>
+<tr>
+  <td colspan="2" valign="top" bgcolor="#FFFFFF" height="10%"><!-- TemplateBeginEditable name="Row2" -->Row2<!-- TemplateEndEditable --></td>
+</tr>
+<tr>
+  <td colspan="2" valign="top" align="center" bgcolor="#FFFFFF" height="2%"><!-- TemplateBeginEditable name="Row3" -->Row3<!-- TemplateEndEditable --></td>
+</tr>
+<tr>
+  <td colspan="2" valign="top" bgcolor="#FFFFFF" height="20%" align="center"><!-- TemplateBeginEditable name="Row4" -->Row4<!-- TemplateEndEditable --></td>
+</tr>
+<tr>
+  <td colspan="2" valign="top" bgcolor="#FFFFFF" height="7%" align="center"><!-- TemplateBeginEditable name="Row5" -->Row5<!-- TemplateEndEditable --></td>
+</tr>
+<tr>
+  <td colspan="2" valign="top" bgcolor="#FFFFFF" height="14%"><!-- TemplateBeginEditable name="Row6" -->Row6<!-- TemplateEndEditable --></td>
+</tr>
+<tr>
+  <td colspan="4" align="right" height="19%"><span class="style3"></span></td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HtmlEvent>
+	<Group Name="Form">
+		<Element Name="onblur"></Element>
+		<Element Name="onchange"></Element>	
+		<Element Name="oncontextmenu"></Element>	
+		<Element Name="onfocus"></Element>
+		<Element Name="oninput"></Element>
+		<Element Name="oninvalid"></Element>
+		<Element Name="onreset"></Element>
+		<Element Name="onsearch"></Element>
+		<Element Name="onselect"></Element>
+		<Element Name="onsubmit"></Element>
+	</Group>
+	<Group Name="Window">
+		<Element Name="onafterprint"></Element>
+		<Element Name="ononline"></Element>
+		<Element Name="onload"></Element>	
+	</Group>	
+	<Group Name="Keyboard">
+		<Element Name="onkeydown"></Element>
+		<Element Name="onkeypress"></Element>
+		<Element Name="onkeyup"></Element>	
+	</Group>
+	<Group Name="Mouse">
+		<Element Name="onclick"></Element>
+		<Element Name="ondblclick"></Element>	
+		<Element Name="ondrag"></Element>
+		<Element Name="ondragend"></Element>
+		<Element Name="ondragenter"></Element>
+		<Element Name="ondragleave"></Element>
+		<Element Name="ondragover"></Element>
+		<Element Name="ondragstart"></Element>
+		<Element Name="ondrop"></Element>
+		<Element Name="onmousedown"></Element>
+		<Element Name="onmousemove"></Element>
+		<Element Name="onmouseout"></Element>
+		<Element Name="onmouseover"></Element>
+		<Element Name="onmouseup"></Element>
+		<Element Name="onmousewheel"></Element>
+		<Element Name="onscroll"></Element>
+		<Element Name="onwheel"></Element>
+	</Group>
+	<Group Name="Media">
+		<Element Name="onabort"></Element>
+		<Element Name="oncanplay"></Element>
+		<Element Name="oncanplaythrough"></Element>
+		<Element Name="oncuechange"></Element>
+		<Element Name="ondurationchange"></Element>
+		<Element Name="onemptied"></Element>
+		<Element Name="onended"></Element>
+		<Element Name="onerror"></Element>
+		<Element Name="onloadeddata"></Element>
+		<Element Name="onloadedmetadata"></Element>
+		<Element Name="onloadstart"></Element>
+		<Element Name="onpause"></Element>
+		<Element Name="onplay"></Element>
+		<Element Name="onplaying"></Element>
+		<Element Name="onprogress"></Element>
+		<Element Name="onratechange"></Element>
+		<Element Name="onseeked"></Element>
+		<Element Name="onseeking"></Element>
+		<Element Name="onstalled"></Element>
+		<Element Name="onsuspend"></Element>
+		<Element Name="ontimeupdate"></Element>
+		<Element Name="onvolumechange"></Element>
+		<Element Name="onwaiting"></Element>
+	</Group>
+</HtmlEvent>

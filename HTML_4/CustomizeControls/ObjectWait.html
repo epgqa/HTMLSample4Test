@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Standard Control</title>
+<style type="text/css">
+body {
+	background-image: url(../images/background.jpg);
+}
+
+html, body, #wrapper {
+      height:100%;
+	  width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+	  white-space:0;
+   }
+   
+.style1 {color: #FFFFFF; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style2 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 15px; }
+
+.style3 {color: #00F; font-family: Tahoma; font-size: 12px;}
+
+.style4 {color: #00F; font-weight: bold; font-family: Tahoma; font-size: 13px;}
+
+a:link {
+COLOR: #FFFFFF;
+text-decoration:none;
+}
+a:visited {
+COLOR: #FFFFFF;
+}
+a:hover {
+COLOR: #FFFFFF;
+}
+a:active {
+COLOR: #FFFFFF;
+}
+</style>
+
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<script type="text/javascript">
+    var str = "";
+    var num = 0;
+    var nummar = 10;
+    var numofItem = 0;
+    function AddItem_Select() {
+        numofitem = 0;
+        num = 0;
+        str = '';
+        numofItem = document.getElementById('txtNumberItems');
+        if (selectedControl() == "RadioButton" && numofItem.value<2)
+        {
+            numofItem.value = '2';
+        }
+        var AddButton = document.getElementById('btnAdd');
+        AddButton.disabled = true;
+        var delaytime = document.getElementById('txtDelay');
+        var time = 1;
+        if (numofItem <= 0) return;
+		//clear content
+		var divDynamic = document.getElementById("btnDynamicButton");
+		divDynamic.innerHTML = "";
+		
+        for (i = 0; i < numofItem.value; i++) {
+            //window.setTimeout(function () { additem(ti); setvalueofText(time); ti++; time++; }, 1000 * parseInt(delaytime.value) * (i + 1));
+			btnDynamicButton
+            window.setTimeout(function () { AddControl(); }, 1000 * parseInt(delaytime.value) * (i + 1));
+        }
+        window.setTimeout(function () { AddButton.disabled = false; }, parseInt(numofItem.value) * (1000 * parseInt(delaytime.value)));
+
+    }
+    function setvalueofText() {
+        txtMiliSecond = document.getElementById('txtDelay');
+        txtSecond = document.getElementById('lblComment');
+        var second = txtMiliSecond.value;
+        txtSecond.innerHTML = "Second:"+second * (parseInt(num)+1);
+    }
+    
+    function selectedControl()
+    {
+        var oSelect = document.getElementById('cbbControl');
+        for (var i = 0; i < oSelect.options.length; i++) {
+            if (oSelect.options[i].selected) {
+                _oCtrl = oSelect.options[i].value;
+            }
+        }
+        return _oCtrl;
+    }
+
+    function AddControl() {
+        setvalueofText();
+        oCtrl = selectedControl();
+        if (oCtrl == "Button")
+        {
+            CreateButton();
+        }
+        else if (oCtrl == "ComboBox")
+        {
+            CreateSelect();
+        }
+        else if (oCtrl == "Select_Single")
+        {
+            CreateListBox();
+        }
+        else if (oCtrl == "Select_Multiple") {
+            CreateListBoxMulti();
+        }
+        else if (oCtrl == "TextBox")
+        {
+            CreateTextBox();
+        }
+        else if (oCtrl == "Table")
+        {
+            CreateTable();
+        }
+        else if (oCtrl == "RadioButton") {
+            CreateRadio();
+        }
+        else if (oCtrl == "CheckBox") {
+            CreateCheckBox();
+        }
+        else { return; }
+        num++;
+    }
+
+    function CreateButton() {
+            str += "<input type='button' id='btn" + num + "' value='Button"+ "_" + num + "' name='Button" +num + "' style='width:70px;height:23px;' onclick=\"showComment('Button_" + num + "');\">&nbsp;";
+
+        var pos = document.getElementById("btnDynamicButton");
+        pos.innerHTML = str;
+    }
+
+    function CreateSelect() {
+        str += "<select id='combobox" + num + "' name='combobox" + num + "' size='1' style='width:100px;height:23px;'  onchange=\"select_selectionchange('combobox" + num + "')\" >" +
+                        "<option value=\"Item_1\">Item_1</option>"+
+                        "<option value=\"Item_2\">Item_2</option>"+
+                        "<option value=\"Item_3\">Item_3</option>"+
+                    "</select>&nbsp;";
+
+        var pos = document.getElementById("btnDynamicButton");
+        pos.innerHTML = str;
+    }
+
+    function CreateListBox() {
+        str += "<select id='listbox" + num + "' name='listbox" + num + "' size='3' style='width:140px;height:70px;'  onchange=\"select_selectionchange('listbox" + num + "')\" >" +
+                        "<option value=\"Item_1\">Item_1</option>" +
+                        "<option value=\"Item_2\">Item_2</option>" +
+                        "<option value=\"Item_3\">Item_3</option>" +
+                    "</select>&nbsp;";
+
+        var pos = document.getElementById("btnDynamicButton");
+        pos.innerHTML = str;
+    }
+    function CreateListBoxMulti() {
+        str += "<select multiple id='listbox_multi" + num + "' name='listbox_multi" + num + "' size='3' style='width:150px;height:70px;'  onchange=\"select_selectionchange('listbox_multi" + num + "')\" >" +
+                        "<option value=\"Item_1\">Item_1</option>" +
+                        "<option value=\"Item_2\">Item_2</option>" +
+                        "<option value=\"Item_3\">Item_3</option>" +
+                    "</select>&nbsp;";
+
+        var pos = document.getElementById("btnDynamicButton");
+        pos.innerHTML = str;
+    }
+    function select_selectionchange(idCtr) {
+        var selectbox = document.getElementById(idCtr);
+        var cmt = document.getElementById("txtComments");
+        var sSelectedItem = "";
+        for (var i = 0; i < selectbox.options.length; i++) {
+            
+            if (selectbox.options[i].selected) {
+                sSelectedItem += sSelectedItem == "" ? selectbox.options[i].value : "," + selectbox.options[i].value;
+            }
+        }
+        cmt.innerHTML = "<label id='txtComments' style='font-family:tahoma;color:blue;font-size:12px'>" + idCtr + ": " + sSelectedItem + "</label>";        
+    }
+
+    function CreateTextBox() {
+        str += "<input type=\"text\"  id='textbox" + num + "' name='textbox" + num + "' maxlength=\"20\" />&nbsp;";
+
+        var pos = document.getElementById("btnDynamicButton");
+        pos.innerHTML = str;
+    }
+    
+    function CreateTable() {
+        str += "<TABLE id='table" + num + "' name='table" + num + "' border=\"1\" style=\"width:200px;height:100px;\">" +
+                        "<tr>" +
+                        "<th width=\"20%\">String</td>" +
+                        "<th width=\"30%\">文本</td>" +
+                        "<th width=\"20%\">Boolean</td>" +
+                        "</tr>" +
+                        "<tr onmouseover=\"ChangeColor(this, true);\" onmouseout=\"ChangeColor(this, false);\">" +
+                "<td width=\"20%\" onclick =\"showcommentTable('table" + num + "_cb1','table" + num + ": String_1 | 文本_1 | ');\">String_1</td>" +
+                "<td width=\"30%\" onclick =\"showcommentTable('table" + num + "_cb1','table" + num + ": String_1 | 文本_1 | ');\">文本_1</td>" +
+                "<td width=\"20%\"><input type=\"checkbox\" id='table" + num + "_cb1' onclick =\"showcommentTable('table" + num + "_cb1','table" + num + ": String_1 | 文本_1 | ');\"/></td>" +
+                "</tr>" +
+                "<tr onmouseover=\"ChangeColor(this, true);\" onmouseout=\"ChangeColor(this, false);\">" +
+                "<td width=\"20%\" onclick =\"showcommentTable('table" + num + "_cb2','table" + num + ": String_2 | 文本_2 | ');\">String_2</td>" +
+                "<td width=\"30%\" onclick =\"showcommentTable('table" + num + "_cb2','table" + num + ": String_2 | 文本_2 | ');\">文本_2</td>" +
+                "<td width=\"20%\"><input type=\"checkbox\" id='table" + num + "_cb2' onclick =\"showcommentTable('table" + num + "_cb2','table" + num + ": String_2 | 文本_2 | ');\"/></td>" +
+                "</tr>" +
+                "<tr onmouseover=\"ChangeColor(this, true);\" onmouseout=\"ChangeColor(this, false);\">" +
+                "<td width=\"20%\" onclick =\"showcommentTable('table" + num + "_cb3','table" + num + ": String_3 | 文本_3 | ');\">String_3</td>" +
+                "<td width=\"30%\" onclick =\"showcommentTable('table" + num + "_cb3','table" + num + ": String_3 | 文本_3 | ');\">文本_3</td>" +
+                "<td width=\"20%\"><input type=\"checkbox\" id='table" + num + "_cb3' onclick =\"showcommentTable('table" + num + "_cb3','table" + num + ": String_3 | 文本_3 | ');\"/></td>" +
+                "</tr>" +
+                 "</TABLE>&nbsp;";
+        var pos = document.getElementById("btnDynamicButton");
+        pos.innerHTML = str;
+    }
+    function showcommentTable(cbID, rowval)
+    {
+        var valCb = document.getElementById(cbID).checked;
+        var cmt = document.getElementById("txtComments");
+        var strDsp = rowval + valCb;
+        cmt.innerHTML = "<label id='txtComments' style='font-family:tahoma;color:blue;font-size:12px'>" + strDsp + "</label>";
+    }
+    // Make Full Row select
+    function ChangeColor(tableRow, highLight) {
+        if (highLight) {
+            tableRow.style.backgroundColor = '#dcfac9';
+        }
+        else {
+            tableRow.style.backgroundColor = 'white';
+        }
+    }
+
+    function CreateRadio() {
+        str += "<input type=\"Radio\" id='radio" + num + "' name='radio' value='Radio_" + num + "' onclick=\"showComment('Radio_" + num + "')\"/>Radio_" + num + " &nbsp;";
+
+        var pos = document.getElementById("btnDynamicButton");
+        pos.innerHTML = str;
+    }
+
+    function CreateCheckBox() {
+        str += "<input type=\"CheckBox\" id='checkBox" + num + "' name='checkBox" + num + "' value='CheckBox_" + num + "' onclick=\"showComment('CheckBox_" + num + "')\"/>CheckBox_" + num + " &nbsp;";
+
+        var pos = document.getElementById("btnDynamicButton");
+        pos.innerHTML = str;
+    }
+
+			function showComment(button)
+			{
+				var cmt = document.getElementById("txtComments");
+				cmt.innerHTML = "<label id='txtComments' style='font-family:tahoma;color:blue;font-size:12px'>" + button + "</label>";
+			}
+
+</script>
+</head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<!-- InstanceEndEditable -->
+<body>
+
+<table id="wrapper" cellspacing="0">
+
+<tr>
+<td colspan="4" align="right" height="15%"></td>
+</tr>
+
+<tr>
+<td width="25%" height="70%" rowspan="4"></td>
+<td width="34%"  align="left" bgcolor="#0000CC" style="vertical-align:middle"><span class="style1">&nbsp;&nbsp;&nbsp;Standard Control</span></td>
+<td width="17%" height="5%" align="right" bgcolor="#0000CC" style="vertical-align:middle"><!-- InstanceBeginEditable name="Home" --><span class="style1"><a href="../index.html">Home&nbsp;&nbsp;&nbsp;</a></span> <!-- InstanceEndEditable --></td>
+<td width="24%" height="70%" rowspan="4"></td>
+</tr>
+
+<tr>
+  <td colspan="2" valign="bottom" height="4%">
+    <!-- InstanceBeginEditable name="Row1" -->
+       	<span style="font-family: Tahoma; font-size: 14; color: #F00; font-weight:bold" align="left">ObjectWait</span>
+    <!-- InstanceEndEditable --></td>
+</tr>
+
+<tr>
+	<td colspan="2" valign="top" bgcolor="#FFFFFF" height="53%"><!-- InstanceBeginEditable name="Row2" -->
+		<table width="100%" height="100%">
+	
+		<tr>
+		<td width="600px" height="20%">
+            <div id="btnDynamicButton" style="border : none; padding : 4px; width : 98%; height : 400px; overflow : auto; "></div>
+		</td>
+		</tr>
+		
+		<tr>
+		<td width="100%" height="20%">
+			<table width="70%" align='center'>
+				<tr>
+					<td width="30%"><label id="lblNumberItems" style="font-size:smaller;">Number of Items:</label></td>
+					<td width="30%"><input id="txtNumberItems" type='text' size="9"  style="text-align:right" value="3" /></td>
+					<td align='right'><select id="cbbControl" name="cbbControl" size="1" style="width:200px">
+                        <option value=""></option>
+                        <option value="Button">Button</option>
+                        <option value="ComboBox">ComboBox</option>
+                        <option value="Select_Single">Select_Single</option>
+                        <option value="Select_Multiple">Select_Multiple</option>
+                        <option value="TextBox">TextBox</option>
+                        <option value="Table">Table</option>
+                        <option value="RadioButton">RadioButton</option>
+                        <option value="CheckBox">CheckBox</option>
+                    </select></td>
+				</tr>
+				<tr>
+					<td width="30%"><label id="lblItemName" style="font-size:smaller;">Delay time:</label></td>
+					<td width="30%"><input id="txtDelay" type='text' size="9" style="text-align:right" value="0" /></td>
+					<td style="text-align:right;"><input type='button' id="btnAdd" style="text-align:center;width:100px" value="Apply" onclick="AddItem_Select();" /></td>
+				</tr>
+                <td width="30%"></td>
+					<td width="30%"></td>
+					<td style="text-align:right;"><label id="lblComment" style="font-size:smaller; color:red">Second:0</label></td>
+				<tr>
+				</tr>
+				<tr>
+					<td colspan="4" width="100%" align="right" style="background:#C7CEDF; height:50px"><blockquote><div id="txtComments" align="right" /></blockquote></td>
+				</tr>
+			</table>
+		</td>
+		</tr>
+		
+		</table>
+	<!-- InstanceEndEditable -->
+	</td>
+</tr>
+<tr>
+	<td colspan="4" align="right" height="19%"></td>
+</tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>
