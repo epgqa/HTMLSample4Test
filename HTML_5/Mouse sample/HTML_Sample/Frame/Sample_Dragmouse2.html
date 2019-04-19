@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sample drag mouse, move mouse</title>
+  <style>
+  body {
+    background-color: #eef;
+  }
+  div {
+    padding: 20px;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div id="log">Document : pageX: 0, pageY: 0</div>
+<div id="logScreen">Screen : pageX: 0, pageY: 0</div>
+ 
+<script>
+$( document ).on( "mousemove", function( event ) {
+  $( "#log" ).text( "Document : pageX: " + Math.round(event.pageX) + ", pageY: " + Math.round(event.pageY) );
+});
+$( document ).on( "mousemove", function( event ) {
+  $( "#logScreen" ).text( "Screen: pageX: " + Math.round(event.pageX+getParamValue('param1')) + ", pageY: " + Math.round(event.pageY+getParamValue('param2')) );
+});
+function getParamValue(paramName)
+{
+    var url = window.location.search.substring(1);
+    var qArray = url.split('&');
+    for (var i = 0; i < qArray.length; i++) 
+    {
+        var pArr = qArray[i].split('=');
+        if (pArr[0] == paramName) 
+            return parseInt(pArr[1]);
+    }
+}
+</script>
+</body>
+</html>

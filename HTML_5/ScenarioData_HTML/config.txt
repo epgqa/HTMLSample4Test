@@ -2,6 +2,7 @@ General_All_Control
 MultiControls_sample
 MultiControls_sample_with_HTML5
 MultiControls_sample_with_AR
+複数コントロール_日本語
 new_input_type
 textbox
 FireEvent

@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>メインページ</title>
+		<title>Main Page</title>
 		<style type="text/css">
 			.wrap {
 				width:100%;
@@ -17,20 +17,205 @@
 		</style>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
-		<script type="text/javascript">
-		$( document ).ready(function() {
-		});
-		$( document ).on( "mousemove", function( event ) {
-			$( "#console" ).text( "pageX: " + Math.ceil(event.pageX) + ", pageY: " + Math.ceil(event.pageY) );
-		});
-		</script>
-		
+		<script>
+$( document ).on( "mousemove", function( event ) {
+  $( "#console" ).text( "Document : pageX: " + Math.round(event.pageX) + ", pageY: " + Math.round(event.pageY));
+});
+
+$( document ).on( "mousemove", function( event ) {
+  $( "#consoleScreen" ).text( "Screen : pageX: " + (event.pageX+getElement_ScreenLeft("body")) + ", pageY: " + (event.pageY+getElement_ScreenTop("body")) );
+});
+
+$( document ).on( "mousemove", function( event ) {
+  $( "#consoleWindow" ).text( "Window : pageX: " + (event.pageX+getDomPositionOfWindow()[0]) + ", pageY: " + (event.pageY+getDomPositionOfWindow()[1]));
+});
+
+function load_iframe4(){
+var frame4_border_left = parseInt(getComputedStyle(document.getElementById("frame_4"))["border-left-width"],10);
+var frame4_border_top = parseInt(getComputedStyle(document.getElementById("frame_4"))["border-top-width"],10);
+var body_border =  parseInt(getComputedStyle(document.getElementsByTagName("body")[0])["border-top-width"],10);
+document.getElementById("frame_4").setAttribute("src", "Sample_Dragmouse2.html?param1="+(getElement_ScreenLeft("frame_4")+frame4_border_left)+"&param2="+(getElement_ScreenTop("frame_4")+frame4_border_top))
+//alert(body_border)
+}
+function getElement_ScreenLeft(idElement) {
+    var posEle = getElementAbsolutePos(idElement);
+    var posVP = _getPositionViewport();
+    var posScreenLeft;
+    if ((posEle.x + posVP.x).toString() != 'NaN') {
+        posScreenLeft = (posEle.x + posVP.x);
+    } else {
+        posScreenLeft = (parseInt(getSvg_Left()) + parseInt(posVP.x));
+    }
+    return posScreenLeft;
+}
+function getElement_ScreenTop(idElement) {
+
+    var posEle = getElementAbsolutePos(idElement);
+    var posVP = _getPositionViewport();
+    var posScreenTop;
+    if ((posEle.y + posVP.y).toString() != 'NaN') {
+        posScreenTop = (posEle.y + posVP.y);
+    } else {
+        posScreenTop = (parseInt(getSvg_Top()) + parseInt(posVP.y));
+    }
+    return posScreenTop;
+}
+function _getPositionViewport() {
+    var res = new Object();
+    res.x = 0;
+    res.y = 0;
+
+    if (__isIE) {
+        res.x = window.screenLeft;
+        res.y = window.screenTop;
+    }
+    else if (__isFireFox) {
+        res.x = window.mozInnerScreenX;
+        res.y = window.mozInnerScreenY;
+    }
+	else if (__isEdge) {
+        res.x = window.screenLeft;
+        res.y = window.screenTop;
+    }
+    else {        
+        var boder = (window.outerWidth - window.innerWidth) / 2;        
+        res.x = window.screenX + boder;
+        res.y = window.screenY + (window.outerHeight - (window.innerHeight + boder));
+    }
+    return res;
+}
+var __userAgent = navigator.userAgent;
+var __isIE = navigator.appVersion.match(/MSIE/) != null;
+var __IEVersion = __getIEVersion();
+var __isIENew = __isIE && __IEVersion >= 8;
+var __isIEOld = __isIE && !__isIENew;
+
+var __isFireFox = __userAgent.match(/firefox/i) != null;
+var __isFireFoxOld = __isFireFox && ((__userAgent.match(/firefox\/2./i) != null) || (__userAgent.match(/firefox\/1./i) != null));
+var __isFireFoxNew = __isFireFox && !__isFireFoxOld;
+var __isEdge = navigator.appVersion.match(/Edge/) !=null;
+var __isWebKit = navigator.appVersion.match(/WebKit/) != null;
+var __isChrome = navigator.appVersion.match(/Chrome/) != null;
+var __isOpera = window.opera != null;
+var __operaVersion = __getOperaVersion();
+var __isOperaOld = __isOpera && (__operaVersion < 10);
+function getElementAbsolutePos(elemID) {
+    var element;
+    if (typeof (elemID) == "string") {
+        element = document.getElementById(elemID);
+    }
+    else {
+        element = elemID;
+    }
+
+    var res = new Object();
+    res.x = 0; res.y = 0;
+    if (element !== null) {
+        res.x = element.offsetLeft;
+
+        var offsetParent = element.offsetParent;
+        var offsetParentTagName = offsetParent != null ? offsetParent.tagName.toLowerCase() : "";
+
+        if (__isIENew && offsetParentTagName == 'td') {
+            res.y = element.scrollTop;
+        }
+        else {
+            res.y = element.offsetTop;
+        }
+
+        var parentNode = element.parentNode;
+        var borderWidth = null;
+
+        while (offsetParent != null) {
+            res.x += offsetParent.offsetLeft;
+            res.y += offsetParent.offsetTop;
+
+            var parentTagName = offsetParent.tagName.toLowerCase();
+
+            if ((__isIEOld && parentTagName != "table") || (__isFireFoxNew && parentTagName == "td") || __isChrome) {
+                borderWidth = __getBorderWidth(offsetParent);
+                res.x += borderWidth.left;
+                res.y += borderWidth.top;
+            }
+
+            if (offsetParent != document.body && offsetParent != document.documentElement) {
+                res.x -= offsetParent.scrollLeft;
+                res.y -= offsetParent.scrollTop;
+            }
+
+
+            //next lines are necessary to fix the problem with offsetParent  
+            if (!__isIE && !__isOperaOld || __isIENew) {
+                while (offsetParent != parentNode && parentNode !== null) {
+                    res.x -= parentNode.scrollLeft;
+                    res.y -= parentNode.scrollTop;
+                    if (__isFireFoxOld || __isWebKit) {
+                        borderWidth = __getBorderWidth(parentNode);
+                        res.x += borderWidth.left;
+                        res.y += borderWidth.top;
+                    }
+                    parentNode = parentNode.parentNode;
+                }
+            }
+
+            parentNode = offsetParent.parentNode;
+            offsetParent = offsetParent.offsetParent;
+        }
+    }
+    return res;
+}
+function getDomPositionOfWindow(){ var borderWidth = (window.outerWidth - window.innerWidth) / 2; var left = Math.round(borderWidth); var top = Math.round(window.outerHeight - window.innerHeight - borderWidth); return [left, top]; }
+function __getIEVersion() {
+    var rv = -1; // Return value assumes failure.  
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+        var ua = navigator.userAgent;
+        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+        if (re.exec(ua) != null)
+            rv = parseFloat(RegExp.$1);
+    }
+    return rv;
+}
+
+function __getOperaVersion() {
+    var rv = 0; // Default value  
+    if (window.opera) {
+        var sver = window.opera.version();
+        rv = parseFloat(sver);
+    }
+    return rv;
+}
+
+function __getBorderWidth(element) {
+    var res = new Object();
+    res.left = 0; res.top = 0; res.right = 0; res.bottom = 0;
+    if (window.getComputedStyle) {
+        //for Firefox  
+        var elStyle = window.getComputedStyle(element, null);
+        res.left = parseInt(elStyle.borderLeftWidth.slice(0, -2));
+        res.top = parseInt(elStyle.borderTopWidth.slice(0, -2));
+        res.right = parseInt(elStyle.borderRightWidth.slice(0, -2));
+        res.bottom = parseInt(elStyle.borderBottomWidth.slice(0, -2));
+    }
+    else {
+        //for other browsers  
+        res.left = __parseBorderWidth(element.style.borderLeftWidth);
+        res.top = __parseBorderWidth(element.style.borderTopWidth);
+        res.right = __parseBorderWidth(element.style.borderRightWidth);
+        res.bottom = __parseBorderWidth(element.style.borderBottomWidth);
+    }
+
+    return res;
+}
+</script>
+
 	</head>
-	<body class="wrap">
+	<body class="wrap" onload="load_iframe4();" onresize="location.reload()">
 		<iframe id="frame_1" class="left_col" src="TestDrag.html" width=500 height=300></iframe>
 		<iframe id="frame_2" class="right_col" src="drag_paragraph.html" width=500 height=300></iframe>
-		<iframe id="frame_3" class="left_col" src="drag_canvas.html" width=500 height=300></iframe>
-		<iframe id="frame_4" class="right_col" src="Sample_Dragmouse.html" width=500 height=300></iframe>
+		<iframe id="frame_3" class="right_col" src="drag_canvas.html" width=500 height=300></iframe>	
+		<iframe id="frame_4" class="left_col" width=500 height=300></iframe>
 		<div id="console"></div>
+		<div id="consoleWindow"></div>
+		<div id="consoleScreen"></div>
 	</body>
 </html>

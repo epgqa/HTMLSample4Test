@@ -7,12 +7,25 @@ body{ background-color: ivory; }
 
 </style>
 <script>
-
+function showMess1(){
+  alert("Clicked button 1");
+}
+function showMess2(){
+  alert("Clicked button 2");
+}
+function showMess3(){
+  alert("Clicked button 3");
+}
+function showMess4(){
+  alert("Clicked button 4");
+}
 function dragTo(){
 	var element = document.getElementsByTagName("canvas")[0];
 	//triggerDragAndDrop(null,50,110,150,304);
 	triggerDragAndDrop(element,40,20,150,100);
 }
+
+function getDomPositionOfWindow(){ var borderWidth = (window.outerWidth - window.innerWidth) / 2; var left = Math.round(borderWidth); var top = Math.round(window.outerHeight - window.innerHeight - borderWidth); return [left, top]; }
 
 var triggerDragAndDrop = function (elemDrag, srcX, srcY, desX, desY) {
 	
@@ -269,16 +282,22 @@ function printEvent(e){
 
 function myClick(e)
 {
-	document.getElementById("clickXCoord").innerText = e.clientX - Math.ceil(offsetX) ;
-	document.getElementById("clickYCoord").innerText = e.clientY - Math.ceil(offsetY) ;
+	document.getElementById("clickXCoordWindow").innerText = e.clientX + getDomPositionOfWindow()[0] ;
+	document.getElementById("clickYCoordWindow").innerText = e.clientY + getDomPositionOfWindow()[1] ;
+	document.getElementById("clickXCoordControl").innerText = e.clientX ;
+	document.getElementById("clickYCoordControl").innerText = e.clientY ;
 }
 
 function myMoveOut(e)
 {
-	document.getElementById("dragXCoord").innerText = "undefined";
-	document.getElementById("dragYCoord").innerText = "undefined";
-	document.getElementById("moveXCoord").innerText = "undefined" ;
-	document.getElementById("moveYCoord").innerText = "undefined" ;
+	document.getElementById("dragXCoordWindow").innerText = "undefined";
+	document.getElementById("dragYCoordWindow").innerText = "undefined";
+	document.getElementById("moveXCoordWindow").innerText = "undefined" ;
+	document.getElementById("moveYCoordWindow").innerText = "undefined" ;
+	document.getElementById("dragXCoordControl").innerText = "undefined";
+	document.getElementById("dragYCoordControl").innerText = "undefined";
+	document.getElementById("moveXCoordControl").innerText = "undefined" ;
+	document.getElementById("moveYCoordControl").innerText = "undefined" ;
 }
 
 // handle mousedown events
@@ -307,8 +326,10 @@ function myDown(e) {
     startX = mx;
     startY = my;
 	
-	document.getElementById("dragXCoord").innerText = e.clientX - Math.ceil(offsetX);
-	document.getElementById("dragYCoord").innerText = e.clientY - Math.ceil(offsetY);
+	document.getElementById("dragXCoordWindow").innerText = e.clientX - Math.ceil(offsetX)+ getDomPositionOfWindow()[0];
+	document.getElementById("dragYCoordWindow").innerText = e.clientY - Math.ceil(offsetY)+ getDomPositionOfWindow()[1];
+	document.getElementById("dragXCoordControl").innerText = e.clientX - Math.ceil(offsetX);
+	document.getElementById("dragYCoordControl").innerText = e.clientY - Math.ceil(offsetY);
 }
 
 
@@ -325,8 +346,10 @@ function myUp(e) {
         rects[i].isDragging = false;
     }
 	
-	document.getElementById("dragXCoord").innerText = e.clientX - Math.ceil(offsetX);
-	document.getElementById("dragYCoord").innerText = e.clientY - Math.ceil(offsetY);
+	document.getElementById("dragXCoordWindow").innerText = e.clientX - Math.ceil(offsetX)+ getDomPositionOfWindow()[0] ;
+	document.getElementById("dragYCoordWindow").innerText = e.clientY - Math.ceil(offsetY)+ getDomPositionOfWindow()[1] ;
+	document.getElementById("dragXCoordControl").innerText = e.clientX - Math.ceil(offsetX);
+	document.getElementById("dragYCoordControl").innerText = e.clientY - Math.ceil(offsetY);
 }
 
 
@@ -369,8 +392,10 @@ function myMove(e) {
 
     }
 	
-	document.getElementById("moveXCoord").innerText = e.clientX - Math.ceil(offsetX) ;
-	document.getElementById("moveYCoord").innerText = e.clientY - Math.ceil(offsetY) ;
+	document.getElementById("moveXCoordWindow").innerText = e.clientX - Math.ceil(offsetX) + getDomPositionOfWindow()[0] ;
+	document.getElementById("moveYCoordWindow").innerText = e.clientY - Math.ceil(offsetY) + getDomPositionOfWindow()[1] ;
+	document.getElementById("moveXCoordControl").innerText = e.clientX - Math.ceil(offsetX) ;
+	document.getElementById("moveYCoordControl").innerText = e.clientY - Math.ceil(offsetY) ;
 	
 }
 
@@ -389,23 +414,39 @@ canvasSetup.addEventListener('click', function(){
 	draw();
 });
 
-}, true);
+}, true);t 
 
 </script>
-<title>ドラッグ、マウスキャンバスの移動</title>
+<title>Drag,Move mouse canvas</title>
 </head>
 <body style="margin-top: 0px; margin-left: 0px;">
 <canvas id="canvas" width="1000" height="700"></canvas>
+<table>
+<tr>
+	<td><input type="button" value="Test click 1" id="testClick1" onclick="showMess1()"></td>
+	<td><input type="button" value="Test click 2" id="testClick2" onclick="showMess2()"></td>
+</tr>
+<tr>
+	<td><input type="button" value="Test click 3" id="testClick3" onclick="showMess3()"></td>
+	<td><input type="button" value="Test click 4" id="testClick4" onclick="showMess4()"></td>
+</tr>
+</table>
 <div>
 Canvas Width :<input type="number" id="inputCanvasX">
 Canvas Height :<input type="number" id="inputCanvasY">
 <input type="button" value="Setup Canvas" id="canvasSetup">
 </div>
+<h2>Coordinates reference to Window</h2>
+<br>
+<div id="dragCoordWindow"> Drag : X=<span id="dragXCoordWindow">undefined</span> Y=<span id="dragYCoordWindow">undefined</span></div>
+<div id="moveCoordWindow"> Move : X=<span id="moveXCoordWindow">undefined</span> Y=<span id="moveYCoordWindow">undefined</span></div>
+<div id="clickCoordWindow"> Click : X=<span id="clickXCoordWindow">undefined</span> Y=<span id="clickYCoordWindow">undefined</span></div>
 
-
-<div id="dragCoord"> Drag : X=<span id="dragXCoord">undefined</span> Y=<span id="dragYCoord">undefined</span></div>
-<div id="moveCoord"> Move : X=<span id="moveXCoord">undefined</span> Y=<span id="moveYCoord">undefined</span></div>
-<div id="clickCoord"> Click : X=<span id="clickXCoord">undefined</span> Y=<span id="clickYCoord">undefined</span></div>
+<h2>Coordinates reference to Control</h2>
+<br>
+<div id="dragCoordControl"> Drag : X=<span id="dragXCoordControl">undefined</span> Y=<span id="dragYCoordControl">undefined</span></div>
+<div id="moveCoordControl"> Move : X=<span id="moveXCoordControl">undefined</span> Y=<span id="moveYCoordControl">undefined</span></div>
+<div id="clickCoordControl"> Click : X=<span id="clickXCoordControl">undefined</span> Y=<span id="clickYCoordControl">undefined</span></div>
 <h4>Drag 1 or more shapes.</h4>
 
 
