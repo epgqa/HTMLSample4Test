@@ -15,8 +15,6 @@
       // Listen to message from child window
       eventer(messageEvent,function(e) {
         if(e.origin == "https://logigear.github.io"){
-          alert("Received following message: " + e.data);
-          <!-- location.reload();    -->
 		  document.title = e.data;
         } else {
           alert("error");
